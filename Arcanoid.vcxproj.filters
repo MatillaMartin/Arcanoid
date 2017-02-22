@@ -7,6 +7,21 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Level.cpp">
+      <Filter>src\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tile.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DropComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileMatrix.cpp">
+      <Filter>src\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PositionComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2d.cpp">
       <Filter>addons\ofxBox2d\src</Filter>
     </ClCompile>
@@ -172,64 +187,28 @@
     <ClCompile Include="..\..\..\addons\ofxBox2d\libs\triangle\del_impl.cpp">
       <Filter>addons\ofxBox2d\libs\triangle</Filter>
     </ClCompile>
-    <ClCompile Include="src\Box.cpp">
-      <Filter>src\Box</Filter>
+    <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp">
+      <Filter>addons\ofxEntityX\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileSystem.cpp">
+      <Filter>src\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\LifeComponent.cpp">
-      <Filter>src\Box</Filter>
+      <Filter>src\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="src\DropComponent.cpp">
-      <Filter>src\Box</Filter>
+    <ClCompile Include="src\BasicVisualComponent.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StrongVisualComponent.cpp">
+      <Filter>src\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons">
-      <UniqueIdentifier>{32737a22-bdf7-4703-85aa-bfbd40462930}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d">
-      <UniqueIdentifier>{dd6ebd60-8af3-4e98-a553-8f818234de60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\src">
-      <UniqueIdentifier>{ad7df502-9c78-47d1-912c-4bacd2945506}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs">
-      <UniqueIdentifier>{7058e27d-5c82-4a9e-8c19-15b7b6f7b284}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D">
-      <UniqueIdentifier>{53df423e-6581-48c5-8b04-533233479751}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Collision">
-      <UniqueIdentifier>{63aec6a8-ea52-4d06-a0ef-6e4c8f580786}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Collision\Shapes">
-      <UniqueIdentifier>{f95c9c07-baf5-4da2-ab9d-430e9c4d1b35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Common">
-      <UniqueIdentifier>{e44b1882-abad-4d8f-936e-0b36aef026d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Dynamics">
-      <UniqueIdentifier>{1da18a71-7962-4c41-a230-df24105e93cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Dynamics\Contacts">
-      <UniqueIdentifier>{d1cd8de8-13d7-4f57-b845-adfbae14a3a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Dynamics\Joints">
-      <UniqueIdentifier>{8416b537-a3b0-4033-8efc-2fee825686fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\Box2D\Rope">
-      <UniqueIdentifier>{c73ccaf7-b12d-4d68-b175-79d4d2c1d2fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxBox2d\libs\triangle">
-      <UniqueIdentifier>{572c0b38-01a3-424d-9be7-7aab5373d7a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Player">
       <UniqueIdentifier>{cca2756d-bf59-4ab7-bab6-56a9ed5605b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Box">
-      <UniqueIdentifier>{40c01864-95b6-44d7-942a-67fc0a27b5c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Ball">
       <UniqueIdentifier>{185cdd10-613a-4453-b787-67f1857ca3ff}</UniqueIdentifier>
@@ -240,10 +219,94 @@
     <Filter Include="src\Level">
       <UniqueIdentifier>{7672bd5f-9b4b-4c77-801c-4c0961ca20f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Tile">
+      <UniqueIdentifier>{40c01864-95b6-44d7-942a-67fc0a27b5c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Systems">
+      <UniqueIdentifier>{b751f368-abd3-4d2c-93ec-270ceb8f7ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{25f68240-be9e-4ab5-b45c-76cf1de41d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{bbaedacc-7dbd-40e0-af0e-8376b235ad99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d">
+      <UniqueIdentifier>{1a59448a-d3f0-4674-800b-9e9eccbf44eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\src">
+      <UniqueIdentifier>{b1b2d70d-7834-49a4-ae15-7546d5ca285d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs">
+      <UniqueIdentifier>{bae099bc-6f16-4aa4-b2fc-bc05aebe1358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D">
+      <UniqueIdentifier>{0b52d084-b691-4511-8fa9-b7e5f7257852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Collision">
+      <UniqueIdentifier>{964e0789-eb1b-4e57-af7b-112c82b68174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Collision\Shapes">
+      <UniqueIdentifier>{d5dd9912-c856-4e6f-aa44-fe4e5cae3aeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Common">
+      <UniqueIdentifier>{1640be2e-0f2d-460d-9fe5-ca7a51c8bec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Dynamics">
+      <UniqueIdentifier>{9e419ed0-1091-4694-b085-ee385593a7e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Dynamics\Contacts">
+      <UniqueIdentifier>{817d7043-ee43-4761-a4eb-5f4417bfc3e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Dynamics\Joints">
+      <UniqueIdentifier>{375d678e-0ca3-44f1-b94d-9430d07ae107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\Box2D\Rope">
+      <UniqueIdentifier>{c4e3cdd5-e2c6-467c-aa48-a65f03a4094e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxBox2d\libs\triangle">
+      <UniqueIdentifier>{7cdb51cb-e4da-4e51-b2e5-ca3c52f7efd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxEntityX">
+      <UniqueIdentifier>{d2d38f0c-b2eb-48d6-8ada-f35bc4dcc2c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxEntityX\src">
+      <UniqueIdentifier>{cc4eb0c8-fa40-4925-ba8d-ab1c71c4d535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Components">
+      <UniqueIdentifier>{22535c06-ce00-485d-98e9-8aad0918d78b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Level.h">
+      <Filter>src\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tile.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DropComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileMatrix.h">
+      <Filter>src\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayerSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BallSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HitInfo.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PositionComponent.h">
+      <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2d.h">
       <Filter>addons\ofxBox2d\src</Filter>
@@ -437,14 +500,17 @@
     <ClInclude Include="..\..\..\addons\ofxBox2d\libs\triangle\triangle_impl.hpp">
       <Filter>addons\ofxBox2d\libs\triangle</Filter>
     </ClInclude>
-    <ClInclude Include="src\Box.h">
-      <Filter>src\Box</Filter>
+    <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h">
+      <Filter>addons\ofxEntityX\src</Filter>
     </ClInclude>
     <ClInclude Include="src\LifeComponent.h">
-      <Filter>src\Box</Filter>
+      <Filter>src\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\DropComponent.h">
-      <Filter>src\Box</Filter>
+    <ClInclude Include="src\BasicVisualComponent.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StrongVisualComponent.h">
+      <Filter>src\Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

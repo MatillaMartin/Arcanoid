@@ -2,6 +2,10 @@
 
 class DropComponent
 {
-	DropComponent();
-	~DropComponent();
+public:
+	enum DropType { NONE, STICK, SHOT /*...*/ };
+
+	DropComponent(DropType type);
+	
+	DropType m_type;
 };

@@ -49,19 +49,27 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_release.props" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="libs\ofxBox2D.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_release.props" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="libs\ofxBox2D.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_debug.props" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="libs\ofxBox2D.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_debug.props" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="libs\ofxBox2D.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -95,24 +103,14 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxBox2d\src;
-..\..\..\addons\ofxBox2d\libs\Box2D;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision\Shapes;
-..\..\..\addons\ofxBox2d\libs\Box2D\Common;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;
-..\..\..\addons\ofxBox2d\libs\Box2D\Rope;
-..\..\..\addons\ofxBox2d\libs\triangle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBox2d\src;..\..\..\addons\ofxBox2d\libs\Box2D;..\..\..\addons\ofxBox2d\libs\Box2D\Collision;..\..\..\addons\ofxBox2d\libs\Box2D\Collision\Shapes;..\..\..\addons\ofxBox2d\libs\Box2D\Common;..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics;..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;..\..\..\addons\ofxBox2d\libs\Box2D\Rope;..\..\..\addons\ofxBox2d\libs\triangle;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision\Shapes;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Common;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Rope;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\triangle;
+C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -125,25 +123,15 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxBox2d\src;
-..\..\..\addons\ofxBox2d\libs\Box2D;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision\Shapes;
-..\..\..\addons\ofxBox2d\libs\Box2D\Common;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;
-..\..\..\addons\ofxBox2d\libs\Box2D\Rope;
-..\..\..\addons\ofxBox2d\libs\triangle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision\Shapes;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Common;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Rope;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\triangle;
+C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -155,17 +143,8 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxBox2d\src;
-..\..\..\addons\ofxBox2d\libs\Box2D;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision\Shapes;
-..\..\..\addons\ofxBox2d\libs\Box2D\Common;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;
-..\..\..\addons\ofxBox2d\libs\Box2D\Rope;
-..\..\..\addons\ofxBox2d\libs\triangle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxBox2d\src;..\..\..\addons\ofxBox2d\libs\Box2D;..\..\..\addons\ofxBox2d\libs\Box2D\Collision;..\..\..\addons\ofxBox2d\libs\Box2D\Collision\Shapes;..\..\..\addons\ofxBox2d\libs\Box2D\Common;..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics;..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;..\..\..\addons\ofxBox2d\libs\Box2D\Rope;..\..\..\addons\ofxBox2d\libs\triangle;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision\Shapes;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Common;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Rope;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\triangle;
+C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -176,7 +155,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -188,18 +166,8 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxBox2d\src;
-..\..\..\addons\ofxBox2d\libs\Box2D;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision;
-..\..\..\addons\ofxBox2d\libs\Box2D\Collision\Shapes;
-..\..\..\addons\ofxBox2d\libs\Box2D\Common;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;
-..\..\..\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;
-..\..\..\addons\ofxBox2d\libs\Box2D\Rope;
-..\..\..\addons\ofxBox2d\libs\triangle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalIncludeDirectories>C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision\Shapes;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Common;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Rope;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\triangle;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -208,7 +176,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -270,11 +237,18 @@
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dJoint.cpp" />
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dPolygon.cpp" />
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
-    <ClCompile Include="src\Box.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
+    <ClCompile Include="src\BasicVisualComponent.cpp" />
+    <ClCompile Include="src\PositionComponent.cpp" />
+    <ClCompile Include="src\StrongVisualComponent.cpp" />
+    <ClCompile Include="src\Tile.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
+    <ClCompile Include="src\Level.cpp" />
     <ClCompile Include="src\LifeComponent.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\TileMatrix.cpp" />
+    <ClCompile Include="src\TileSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxBox2d\libs\Box2D\Box2D.h" />
@@ -341,10 +315,20 @@
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.h" />
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRender.h" />
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
-    <ClInclude Include="src\Box.h" />
+    <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
+    <ClInclude Include="src\BallSystem.h" />
+    <ClInclude Include="src\BasicVisualComponent.h" />
+    <ClInclude Include="src\HitInfo.h" />
+    <ClInclude Include="src\PlayerSystem.h" />
+    <ClInclude Include="src\PositionComponent.h" />
+    <ClInclude Include="src\StrongVisualComponent.h" />
+    <ClInclude Include="src\TileSystem.h" />
+    <ClInclude Include="src\Tile.h" />
     <ClInclude Include="src\DropComponent.h" />
+    <ClInclude Include="src\Level.h" />
     <ClInclude Include="src\LifeComponent.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\TileMatrix.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
