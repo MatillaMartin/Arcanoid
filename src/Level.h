@@ -12,12 +12,18 @@ class Level : public ofxEntityX
 		unsigned int time;
 	};
 
-	Level(const LevelParams & params);
+	struct LevelVisuals
+	{
+		ofRectangle tileMatrixRegion;
+	};
+
+	Level(const LevelParams & params, const LevelVisuals & visuals);
 
 	void update(double delta);
 	void draw();
 
 	LevelParams m_params;
+	LevelVisuals m_visuals;
 
 private:
 	void createTiles();

@@ -7,13 +7,17 @@
 #include "BoxCollisionComponent.h"
 
 #include "TileMatrix.h"
+
 #include "TileSystem.h"
 #include "PlayerSystem.h"
 #include "BallSystem.h"
 
-Level::Level(const LevelParams & params)
+#include "ofGraphics.h"
+
+Level::Level(const LevelParams & params, const LevelVisuals & visuals)
 	:
-	m_params(params)
+	m_params(params),
+	m_visuals(visuals)
 {
 	createTiles();
 }
@@ -50,13 +54,13 @@ void Level::createTiles()
 			break;
 		case TileMatrix::BASIC:
 		{
-			entity.assign<BasicVisualComponent>();
+			entity.assign<BasicVisualComponent>(tileWidth, tileHeight);
 			entity.assign<LifeComponent>(1);
 			break;
 		}
 		case TileMatrix::STRONG:
 		{
-			entity.assign<StrongVisualComponent>();
+			entity.assign<StrongVisualComponent>(tileWidth, tileHeight);
 			entity.assign<LifeComponent>(2);
 			break;
 		}
@@ -69,10 +73,18 @@ void Level::createTiles()
 
 void Level::update(double delta)
 {
-
+	systems.update<CollisionSystem>(dt);
+	systems.update<BoundsSystem>(dt);
+	systems.update<MovementSystem>(dt);
+	systems.update<DebugSystem>(dt);
 }
 
 void Level::draw()
 {
-
+	entities.each<PositionComponent, BasicVisualComponent>(
+		[this](Entity entity, PositionComponent & position, BasicVisualComponent & visual)
+	{
+		ofVec2f pos = position * this->m_visuals.tileMatrixRegion // TODO get postion of tile in rect
+	}
+	);
 }
