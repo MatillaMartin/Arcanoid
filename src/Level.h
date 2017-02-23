@@ -1,11 +1,8 @@
 #pragma once
 
-#include "TileMatrix.h"
-#include "TileSystem.h"
-#include "PlayerSystem.h"
-#include "BallSystem.h"
-#include "Tile.h"
 #include "ofxEntityX.h"
+
+class TileMatrix;
 
 class Level : public ofxEntityX
 {
@@ -21,8 +18,6 @@ class Level : public ofxEntityX
 	void draw();
 
 	LevelParams m_params;
-
-	vector<Tile> m_tiles;
 
 private:
 	void createTiles();

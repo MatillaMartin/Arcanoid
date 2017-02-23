@@ -10,9 +10,6 @@
     <ClCompile Include="src\Level.cpp">
       <Filter>src\Level</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tile.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
     <ClCompile Include="src\DropComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
@@ -202,6 +199,12 @@
     <ClCompile Include="src\StrongVisualComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
+    <ClCompile Include="src\BoxCollisionComponent.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CircleCollisionComponent.cpp">
+      <Filter>src\Ball</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -283,9 +286,6 @@
     </ClInclude>
     <ClInclude Include="src\Level.h">
       <Filter>src\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tile.h">
-      <Filter>src\Tile</Filter>
     </ClInclude>
     <ClInclude Include="src\DropComponent.h">
       <Filter>src\Components</Filter>
@@ -511,6 +511,12 @@
     </ClInclude>
     <ClInclude Include="src\StrongVisualComponent.h">
       <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoxCollisionComponent.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CircleCollisionComponent.h">
+      <Filter>src\Ball</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
