@@ -1,8 +1,9 @@
 #include "BasicVisualComponent.h"
 
-BasicVisualComponent::BasicVisualComponent(double width, double height)
-	:
-	width(width),
-	height(height)
+BasicVisualComponent::BasicVisualComponent() : TileVisualComponent(BASIC)
+{}
+
+void BasicVisualComponent::onHit()
 {
+	// no changes here
 }

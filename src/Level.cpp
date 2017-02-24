@@ -45,7 +45,7 @@ void Level::createTiles()
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition);
-		entity.assign<BoxCollisionComponent>(tileWidth, tileHeight);
+		entity.assign<TileCollisionComponent>(tileWidth, tileHeight);
 
 		switch (tiletype)
 		{
@@ -73,10 +73,10 @@ void Level::createTiles()
 
 void Level::update(double delta)
 {
-	systems.update<CollisionSystem>(dt);
-	systems.update<BoundsSystem>(dt);
-	systems.update<MovementSystem>(dt);
-	systems.update<DebugSystem>(dt);
+	//systems.update<CollisionSystem>(delta);
+	//systems.update<BoundsSystem>(delta);
+	//systems.update<MovementSystem>(delta);
+	//systems.update<DebugSystem>(delta);
 }
 
 void Level::draw()
@@ -84,7 +84,8 @@ void Level::draw()
 	entities.each<PositionComponent, BasicVisualComponent>(
 		[this](Entity entity, PositionComponent & position, BasicVisualComponent & visual)
 	{
-		ofVec2f pos = position * this->m_visuals.tileMatrixRegion // TODO get postion of tile in rect
-	}
-	);
+		ofSetColor(ofColor::blue);
+		ofDrawRectangle(position, visual.)
+	});
+
 }

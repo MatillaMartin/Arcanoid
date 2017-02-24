@@ -1,10 +1,11 @@
 #pragma once
-#include "ofVec2f.h"
+#include "ofxEntityX.h"
+#include "ofMath.h"
 
-class PositionComponent
+class PositionComponent : public Component<PositionComponent>
 {
 public:
-	PositionComponent(const ofVec2f & initial = ofVec2f());
+	PositionComponent(const glm::vec2 & position = glm::vec2());
 
-	ofVec2f position;
+	glm::vec2 position;
 };

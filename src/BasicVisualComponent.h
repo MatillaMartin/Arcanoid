@@ -1,13 +1,11 @@
 #pragma once
 
 #include "ofxEntityX.h"
+#include "TileVisualComponent.h"
 
-class BasicVisualComponent : public Component<BasicVisualComponent>
+class BasicVisualComponent : public Component<BasicVisualComponent>, public TileVisualComponent
 {
-	BasicVisualComponent(double width, double height);
+	BasicVisualComponent();
 
-	double width;
-	double height;
-
-	// texture is assigned in the system, as the texture is constant for all components
+	void onHit() override;
 };

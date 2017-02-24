@@ -190,20 +190,23 @@
     <ClCompile Include="src\TileSystem.cpp">
       <Filter>src\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="src\LifeComponent.cpp">
-      <Filter>src\Tile</Filter>
+    <ClCompile Include="src\CircleCollisionComponent.cpp">
+      <Filter>src\Ball</Filter>
     </ClCompile>
     <ClCompile Include="src\BasicVisualComponent.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LifeComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
     <ClCompile Include="src\StrongVisualComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="src\BoxCollisionComponent.cpp">
+    <ClCompile Include="src\TileCollisionComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="src\CircleCollisionComponent.cpp">
-      <Filter>src\Ball</Filter>
+    <ClCompile Include="src\TileVisualComponent.cpp">
+      <Filter>src\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -503,20 +506,23 @@
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h">
       <Filter>addons\ofxEntityX\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\LifeComponent.h">
-      <Filter>src\Tile</Filter>
+    <ClInclude Include="src\CircleCollisionComponent.h">
+      <Filter>src\Ball</Filter>
     </ClInclude>
     <ClInclude Include="src\BasicVisualComponent.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LifeComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
     <ClInclude Include="src\StrongVisualComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\BoxCollisionComponent.h">
+    <ClInclude Include="src\TileCollisionComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\CircleCollisionComponent.h">
-      <Filter>src\Ball</Filter>
+    <ClInclude Include="src\TileVisualComponent.h">
+      <Filter>src\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

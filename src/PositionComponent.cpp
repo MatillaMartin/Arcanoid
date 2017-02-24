@@ -1,7 +1,7 @@
 #include "PositionComponent.h"
 
-PositionComponent::PositionComponent(const ofVec2f & initial)
+PositionComponent::PositionComponent(const glm::vec2 & position)
 	:
-	position(initial)
+	position(position)
 {
 }

@@ -17,6 +17,12 @@ class Level : public ofxEntityX
 		ofRectangle tileMatrixRegion;
 	};
 
+	struct TileVisuals
+	{
+		glm::size2 tileSize;
+		map<TileVisualComponent::TileVisual, ofTexture> m_tileTextures;
+	};
+
 	Level(const LevelParams & params, const LevelVisuals & visuals);
 
 	void update(double delta);
@@ -24,6 +30,8 @@ class Level : public ofxEntityX
 
 	LevelParams m_params;
 	LevelVisuals m_visuals;
+
+	TileVisuals m_tileVisuals;
 
 private:
 	void createTiles();

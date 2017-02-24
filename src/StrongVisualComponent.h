@@ -1,13 +1,12 @@
 #pragma once
 
 #include "ofxEntityX.h"
+#include "ofMath.h"
+#include "TileVisualComponent.h"
 
-class StrongVisualComponent : public Component<StrongVisualComponent>
+class StrongVisualComponent : public Component<StrongVisualComponent>, public TileVisualComponent
 {
-	StrongVisualComponent(double width, double heigth);
+	StrongVisualComponent();
 
-	double width;
-	double height;
-
-	// texture is assigned in the system, as the texture is constant for all components
+	void onHit() override;
 };
