@@ -1,29 +1,30 @@
 #pragma once
 
 #include "ofxEntityX.h"
-
+#include "TileVisuals.h"
+#include "TileVisualComponent.h"
+#include "ofTexture.h"
 class TileMatrix;
 
 class Level : public ofxEntityX
 {
-	struct LevelParams
+public:
+	class LevelParams
 	{
+	public:
 		std::shared_ptr<TileMatrix> tiles;
 		unsigned int time;
 	};
 
-	struct LevelVisuals
+	class LevelVisuals
 	{
+	public:
+		map<TileVisualComponent::TileVisual, ofTexture> tileTextures;
 		ofRectangle tileMatrixRegion;
 	};
 
-	struct TileVisuals
-	{
-		glm::size2 tileSize;
-		map<TileVisualComponent::TileVisual, ofTexture> m_tileTextures;
-	};
-
 	Level(const LevelParams & params, const LevelVisuals & visuals);
+
 
 	void update(double delta);
 	void draw();

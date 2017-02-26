@@ -1,7 +1,7 @@
 #include "TileVisualComponent.h"
-
-TileVisualComponent::TileVisualComponent(TileVisual visual)
+TileVisualComponent::TileVisualComponent(TileVisual visual, const glm::vec2 & size)
 	:
-	visual(visual)
+	visual(visual),
+	size(size)
 {
 }

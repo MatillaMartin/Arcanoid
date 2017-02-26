@@ -1,12 +1,12 @@
 #pragma once
 
-#include "ofxEntityX.h"
 #include "ofMath.h"
 #include "TileVisualComponent.h"
 
-class StrongVisualComponent : public Component<StrongVisualComponent>, public TileVisualComponent
+class StrongVisualComponent : public TileVisualComponent
 {
-	StrongVisualComponent();
+public:
+	StrongVisualComponent(const glm::size & size);
 
 	void onHit() override;
 };

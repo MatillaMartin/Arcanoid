@@ -202,11 +202,14 @@
     <ClCompile Include="src\StrongVisualComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileCollisionComponent.cpp">
-      <Filter>src\Tile</Filter>
+    <ClCompile Include="src\TileVisuals.cpp">
+      <Filter>src\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BoxCollisionComponent.cpp">
+      <Filter>src\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\TileVisualComponent.cpp">
-      <Filter>src\Components</Filter>
+      <Filter>src\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -518,11 +521,14 @@
     <ClInclude Include="src\StrongVisualComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\TileCollisionComponent.h">
-      <Filter>src\Tile</Filter>
+    <ClInclude Include="src\TileVisuals.h">
+      <Filter>src\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoxCollisionComponent.h">
+      <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\TileVisualComponent.h">
-      <Filter>src\Components</Filter>
+      <Filter>src\Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,8 @@
 Level::Level(const LevelParams & params, const LevelVisuals & visuals)
 	:
 	m_params(params),
-	m_visuals(visuals)
+	m_visuals(visuals),
+	m_tileVisuals(visuals.tileMatrixRegion, params.tiles->matrixWidth, params.tiles->matrixHeight)
 {
 	createTiles();
 }
@@ -37,15 +38,18 @@ void Level::createTiles()
 		// determine normalized position
 		unsigned int col = index % m_params.tiles->matrixWidth;
 		unsigned int row = (index - col) / m_params.tiles->matrixWidth;
-		ofVec2f tilePosition(col, row);
+		glm::size2 tilePosition(col, row);
 
-		double tileWidth = 1.0 / m_params.tiles->matrixWidth;
-		double tileHeight = 1.0 / m_params.tiles->matrixHeight;
+		// map position to correct position with respect to layout
+		tilePosition = m_visuals.tileMatrixRegion.map(tilePosition);
+
+		unsigned int tileWidth = m_tileVisuals.tileSize.x;
+		unsigned int tileHeight = m_tileVisuals.tileSize.y;
 
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition);
-		entity.assign<TileCollisionComponent>(tileWidth, tileHeight);
+		entity.assign<BoxCollisionComponent>(m_tileVisuals.tileSize);
 
 		switch (tiletype)
 		{
@@ -54,13 +58,13 @@ void Level::createTiles()
 			break;
 		case TileMatrix::BASIC:
 		{
-			entity.assign<BasicVisualComponent>(tileWidth, tileHeight);
+			entity.assign<BasicVisualComponent>(m_tileVisuals.tileSize);
 			entity.assign<LifeComponent>(1);
 			break;
 		}
 		case TileMatrix::STRONG:
 		{
-			entity.assign<StrongVisualComponent>(tileWidth, tileHeight);
+			entity.assign<StrongVisualComponent>(m_tileVisuals.tileSize);
 			entity.assign<LifeComponent>(2);
 			break;
 		}
@@ -84,8 +88,10 @@ void Level::draw()
 	entities.each<PositionComponent, BasicVisualComponent>(
 		[this](Entity entity, PositionComponent & position, BasicVisualComponent & visual)
 	{
-		ofSetColor(ofColor::blue);
-		ofDrawRectangle(position, visual.)
+		ofTexture & tex = m_visuals.tileTextures.at(visual.visual);
+		tex.bind();
+		ofDrawRectangle(position.position, visual.size.x, visual.size.y);
+		tex.unbind();
 	});
 
 }

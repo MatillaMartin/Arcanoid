@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(OF_ROOT)\addons\ofxBox2D\libs;$(OF_ROOT)\addons\ofxBox2D\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\addons\ofxBox2D\libs;$(OF_ROOT)\addons\ofxBox2D\src;$(OF_ROOT)\addons\ofxBox2D\libs\Box2D;$(OF_ROOT)\addons\ofxBox2D\libs\triangle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

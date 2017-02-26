@@ -49,27 +49,27 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
     <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_release.props" />
     <Import Project="libs\ofxBox2D.props" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
     <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_release.props" />
     <Import Project="libs\ofxBox2D.props" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
     <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_debug.props" />
     <Import Project="libs\ofxBox2D.props" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
     <Import Project="..\..\..\addons\ofxEntityX\ofxEntityX_debug.props" />
     <Import Project="libs\ofxBox2D.props" />
-    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -125,8 +125,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision\Shapes;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Common;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Rope;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\triangle;
-C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\src;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Collision\Shapes;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Common;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Contacts;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Dynamics\Joints;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\Box2D\Rope;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxBox2d\libs\triangle;C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -240,7 +239,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
     <ClCompile Include="src\BasicVisualComponent.cpp" />
     <ClCompile Include="src\StrongVisualComponent.cpp" />
-    <ClCompile Include="src\TileCollisionComponent.cpp" />
+    <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
     <ClCompile Include="src\PositionComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
@@ -251,6 +250,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\TileMatrix.cpp" />
     <ClCompile Include="src\TileSystem.cpp" />
     <ClCompile Include="src\TileVisualComponent.cpp" />
+    <ClCompile Include="src\TileVisuals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxBox2d\libs\Box2D\Box2D.h" />
@@ -321,7 +321,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\BallSystem.h" />
     <ClInclude Include="src\StrongVisualComponent.h" />
     <ClInclude Include="src\BasicVisualComponent.h" />
-    <ClInclude Include="src\TileCollisionComponent.h" />
+    <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />
     <ClInclude Include="src\HitInfo.h" />
     <ClInclude Include="src\PlayerSystem.h" />
@@ -333,6 +333,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\TileMatrix.h" />
     <ClInclude Include="src\TileVisualComponent.h" />
+    <ClInclude Include="src\TileVisuals.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

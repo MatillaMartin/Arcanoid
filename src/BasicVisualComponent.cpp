@@ -1,6 +1,8 @@
 #include "BasicVisualComponent.h"
 
-BasicVisualComponent::BasicVisualComponent() : TileVisualComponent(BASIC)
+BasicVisualComponent::BasicVisualComponent(const glm::size & size) 
+	:
+	TileVisualComponent(BASIC, size)
 {}
 
 void BasicVisualComponent::onHit()

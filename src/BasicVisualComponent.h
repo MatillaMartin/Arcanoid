@@ -1,11 +1,10 @@
 #pragma once
 
-#include "ofxEntityX.h"
 #include "TileVisualComponent.h"
 
-class BasicVisualComponent : public Component<BasicVisualComponent>, public TileVisualComponent
+class BasicVisualComponent : public TileVisualComponent
 {
-	BasicVisualComponent();
-
+public:
+	BasicVisualComponent(const glm::size & size);
 	void onHit() override;
 };

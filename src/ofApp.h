@@ -22,4 +22,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		unique_ptr<Level> level;
+
+		ofImage levelDescriptor;
+		ofImage basicTile;
+		ofImage strongTile_0;
+		ofImage strongTile_1;
 };
