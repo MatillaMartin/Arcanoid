@@ -24,7 +24,15 @@ public:
 	class LevelVisuals
 	{
 	public:
+		// layouts
+		ofRectangle levelRegion;
 		ofRectangle tileMatrixRegion;
+
+		// relative sizes (tiles already defined by TileMatrix)
+		glm::vec2 paddleSize;
+		glm::vec2 ballSize;
+
+		// textures
 		map<TileTexture, ofTexture> tileTextures;
 		ofTexture paddleTexture;
 		ofTexture ballTexture;

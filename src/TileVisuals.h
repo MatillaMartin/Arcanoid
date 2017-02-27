@@ -7,6 +7,8 @@ class TileVisuals
 {
 public:
 	TileVisuals(const ofRectangle & tileMatrixRegion, float nTilesWidth, float nTilesHeight);
+
+	vector<glm::vec2> tilePositions;
 	glm::vec2 tileSize;
 	ofVboMesh tileQuad;
 	ofShader tileShader;

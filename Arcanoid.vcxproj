@@ -237,10 +237,12 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dPolygon.cpp" />
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
+    <ClCompile Include="src\BallVisuals.cpp" />
     <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
     <ClCompile Include="src\PaddleController.cpp" />
     <ClCompile Include="src\PaddleVisualComponent.cpp" />
+    <ClCompile Include="src\PaddleVisuals.cpp" />
     <ClCompile Include="src\PositionComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
     <ClCompile Include="src\Level.cpp" />
@@ -319,10 +321,12 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
     <ClInclude Include="src\BallSystem.h" />
+    <ClInclude Include="src\BallVisuals.h" />
     <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />
     <ClInclude Include="src\HitInfo.h" />
     <ClInclude Include="src\PaddleController.h" />
+    <ClInclude Include="src\PaddleVisuals.h" />
     <ClInclude Include="src\PlayerSystem.h" />
     <ClInclude Include="src\PaddleVisualComponent.h" />
     <ClInclude Include="src\PositionComponent.h" />
@@ -332,6 +336,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\LifeComponent.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\TileMatrix.h" />
+    <ClInclude Include="src\TileTexture.h" />
     <ClInclude Include="src\TileVisualComponent.h" />
     <ClInclude Include="src\TileVisuals.h" />
   </ItemGroup>

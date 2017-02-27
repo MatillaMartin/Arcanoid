@@ -196,9 +196,6 @@
     <ClCompile Include="src\LifeComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileVisuals.cpp">
-      <Filter>src\Level</Filter>
-    </ClCompile>
     <ClCompile Include="src\BoxCollisionComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
@@ -206,18 +203,24 @@
       <Filter>src\Tile</Filter>
     </ClCompile>
     <ClCompile Include="src\PaddleController.cpp">
-      <Filter>src\Player</Filter>
+      <Filter>src\Paddle</Filter>
     </ClCompile>
     <ClCompile Include="src\PaddleVisualComponent.cpp">
-      <Filter>src\Player</Filter>
+      <Filter>src\Paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaddleVisuals.cpp">
+      <Filter>src\Paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileVisuals.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BallVisuals.cpp">
+      <Filter>src\Ball</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Player">
-      <UniqueIdentifier>{cca2756d-bf59-4ab7-bab6-56a9ed5605b3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Ball">
       <UniqueIdentifier>{185cdd10-613a-4453-b787-67f1857ca3ff}</UniqueIdentifier>
@@ -284,6 +287,9 @@
     </Filter>
     <Filter Include="src\Components">
       <UniqueIdentifier>{22535c06-ce00-485d-98e9-8aad0918d78b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Paddle">
+      <UniqueIdentifier>{cca2756d-bf59-4ab7-bab6-56a9ed5605b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -515,9 +521,6 @@
     <ClInclude Include="src\LifeComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\TileVisuals.h">
-      <Filter>src\Level</Filter>
-    </ClInclude>
     <ClInclude Include="src\BoxCollisionComponent.h">
       <Filter>src\Components</Filter>
     </ClInclude>
@@ -525,10 +528,22 @@
       <Filter>src\Tile</Filter>
     </ClInclude>
     <ClInclude Include="src\PaddleController.h">
-      <Filter>src\Player</Filter>
+      <Filter>src\Paddle</Filter>
     </ClInclude>
     <ClInclude Include="src\PaddleVisualComponent.h">
-      <Filter>src\Player</Filter>
+      <Filter>src\Paddle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaddleVisuals.h">
+      <Filter>src\Paddle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileVisuals.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BallVisuals.h">
+      <Filter>src\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileTexture.h">
+      <Filter>src\Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
