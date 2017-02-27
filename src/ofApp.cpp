@@ -5,8 +5,11 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofDisableArbTex();
+	ofLogToConsole();
 	ofSetLogLevel(ofLogLevel::OF_LOG_VERBOSE);
 	ofSetFrameRate(60.0f);
+
+	ofLogVerbose("ofApp") << "Starting application";
 
 	levelDescriptor.load("level0.png");
 	basicTile.load("basicTile.png");

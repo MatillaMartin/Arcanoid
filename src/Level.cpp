@@ -94,7 +94,7 @@ void Level::draw()
 	entities.each<PositionComponent, TileVisualComponent>(
 		[this](Entity entity, PositionComponent & position, TileVisualComponent & visual)
 	{
-		ofTexture & tex = m_visuals.tileTextures.at(visual.visual);
+		ofTexture tex = m_visuals.tileTextures.at(visual.visual);
 
 		m_tileVisuals.tileShader.begin();
 		m_tileVisuals.tileShader.setUniform2f("tileDisplacement", position.position);

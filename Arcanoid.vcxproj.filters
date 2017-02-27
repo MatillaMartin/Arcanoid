@@ -522,4 +522,12 @@
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\data\shader\TileShader.frag">
+      <Filter>src\Tile</Filter>
+    </None>
+    <None Include="bin\data\shader\TileShader.vert">
+      <Filter>src\Tile</Filter>
+    </None>
+  </ItemGroup>
 </Project>
