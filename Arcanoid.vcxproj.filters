@@ -205,6 +205,12 @@
     <ClCompile Include="src\TileVisualComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
+    <ClCompile Include="src\PaddleController.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaddleVisualComponent.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -517,6 +523,12 @@
     </ClInclude>
     <ClInclude Include="src\TileVisualComponent.h">
       <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaddleController.h">
+      <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaddleVisualComponent.h">
+      <Filter>src\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

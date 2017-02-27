@@ -1,11 +1,15 @@
 #include "Level.h"
 
 #include "PositionComponent.h"
-#include "TileVisualComponent.h"
 #include "LifeComponent.h"
 #include "BoxCollisionComponent.h"
 
+#include "TileVisualComponent.h"
 #include "TileMatrix.h"
+
+#include "PaddleVisualComponent.h"
+
+#include "CircleCollisionComponent.h"
 
 #include "TileSystem.h"
 #include "PlayerSystem.h"
@@ -21,6 +25,8 @@ Level::Level(const LevelParams & params, const LevelVisuals & visuals)
 {
 	setupEntityX();
 	createTiles();
+	createPaddle();
+	createBall();
 }
 
 void Level::setupEntityX()
@@ -64,13 +70,13 @@ void Level::createTiles()
 			break;
 		case TileMatrix::BASIC:
 		{
-			entity.assign<TileVisualComponent>(TileVisualComponent::BASIC, m_tileVisuals.tileSize);
+			entity.assign<TileVisualComponent>(TileTexture::BASIC, m_tileVisuals.tileSize);
 			entity.assign<LifeComponent>(1);
 			break;
 		}
 		case TileMatrix::STRONG:
 		{
-			entity.assign<TileVisualComponent>(TileVisualComponent::STRONG_1, m_tileVisuals.tileSize);
+			entity.assign<TileVisualComponent>(TileTexture::STRONG_1, m_tileVisuals.tileSize);
 			entity.assign<LifeComponent>(2);
 			break;
 		}
@@ -78,6 +84,26 @@ void Level::createTiles()
 			break;
 		}
 	}
+}
+
+void Level::createPaddle()
+{
+	m_paddle = entities.create();
+	m_paddle.assign<PositionComponent>(m_params.paddlePosition);
+	m_paddle.assign<BoxCollisionComponent>(m_paddleVisuals.paddleSize);
+	m_paddle.assign<PaddleVisualComponent>(m_paddleVisuals.paddleSize);
+}
+
+void Level::createBall()
+{
+	// find location relative to the paddle
+	glm::vec2 ballPosition = m_paddle.component<PositionComponent>()->position;
+	ballPosition.x += m_paddle.component<PaddleVisualComponent>()->size.x / 2.0f;
+
+	m_ball = entities.create();
+	m_ball.assign<PositionComponent>(ballPosition);
+	m_ball.assign<CircleCollisionComponent>(m_paddleVisuals.paddleSize);
+	m_ball.assign<PaddleVisualComponent>(m_paddleVisuals.paddleSize);
 }
 
 

@@ -2,13 +2,13 @@
 
 #include "ofxEntityX.h"
 #include "ofMath.h"
+#include "TileTexture.h"
 
 class TileVisualComponent : public Component<TileVisualComponent>
 {
 public:
-	enum TileVisual { NONE, BASIC, STRONG_1, STRONG_0 };
-	TileVisualComponent(TileVisual visual, const glm::vec2 & size);
+	TileVisualComponent(TileTexture visual, const glm::vec2 & size);
 
-	TileVisual visual;
+	TileTexture visual;
 	glm::vec2 size;
 };

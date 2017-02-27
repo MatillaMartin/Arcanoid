@@ -1,9 +1,13 @@
 #pragma once
+#include "ofTexture.h"
 
 #include "ofxEntityX.h"
+
+#include "TileTexture.h"
 #include "TileVisuals.h"
-#include "TileVisualComponent.h"
-#include "ofTexture.h"
+#include "PaddleVisuals.h"
+#include "BallVisuals.h"
+
 class TileMatrix;
 
 class Level : public ofxEntityX
@@ -14,13 +18,16 @@ public:
 	public:
 		std::shared_ptr<TileMatrix> tiles;
 		unsigned int time;
+		glm::vec2 paddlePosition;
 	};
 
 	class LevelVisuals
 	{
 	public:
-		map<TileVisualComponent::TileVisual, ofTexture> tileTextures;
 		ofRectangle tileMatrixRegion;
+		map<TileTexture, ofTexture> tileTextures;
+		ofTexture paddleTexture;
+		ofTexture ballTexture;
 	};
 
 	Level(const LevelParams & params, const LevelVisuals & visuals);
@@ -33,8 +40,15 @@ public:
 	LevelVisuals m_visuals;
 
 	TileVisuals m_tileVisuals;
+	PaddleVisuals m_paddleVisuals;
+	BallVisuals m_ballVisuals;
+	// no need to look for them if we already have them
+	Entity m_paddle;
+	Entity m_ball;
 
 private:
 	void setupEntityX();
 	void createTiles();
+	void createPaddle();
+	void createBall();
 };

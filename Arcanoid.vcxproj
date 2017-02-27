@@ -239,6 +239,8 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
     <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
+    <ClCompile Include="src\PaddleController.cpp" />
+    <ClCompile Include="src\PaddleVisualComponent.cpp" />
     <ClCompile Include="src\PositionComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
     <ClCompile Include="src\Level.cpp" />
@@ -320,7 +322,9 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />
     <ClInclude Include="src\HitInfo.h" />
+    <ClInclude Include="src\PaddleController.h" />
     <ClInclude Include="src\PlayerSystem.h" />
+    <ClInclude Include="src\PaddleVisualComponent.h" />
     <ClInclude Include="src\PositionComponent.h" />
     <ClInclude Include="src\TileSystem.h" />
     <ClInclude Include="src\DropComponent.h" />

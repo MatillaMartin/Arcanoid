@@ -21,9 +21,9 @@ void ofApp::setup(){
 	params.time = 120; // in secs
 
 	Level::LevelVisuals visuals;
-	visuals.tileTextures[TileVisualComponent::TileVisual::BASIC] = basicTile.getTexture();
-	visuals.tileTextures[TileVisualComponent::TileVisual::STRONG_0] = strongTile_0.getTexture();
-	visuals.tileTextures[TileVisualComponent::TileVisual::STRONG_1] = strongTile_1.getTexture();
+	visuals.tileTextures[TileTexture::BASIC] = basicTile.getTexture();
+	visuals.tileTextures[TileTexture::STRONG_0] = strongTile_0.getTexture();
+	visuals.tileTextures[TileTexture::STRONG_1] = strongTile_1.getTexture();
 	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
 
 	level = make_unique<Level>(params, visuals);
