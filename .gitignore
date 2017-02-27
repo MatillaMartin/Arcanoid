@@ -18,7 +18,7 @@ safebin/
 x64/
 build/
 [Bb]in/*
-![Bb]in/data/
+![Bb]in/data/*.png
 
 [Oo]bj/
 
