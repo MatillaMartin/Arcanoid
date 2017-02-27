@@ -17,22 +17,6 @@ x64/
 build/
 [Bb]in/*
 
-#allow data folder  ########
-![Bb]in/data
-![Bb]in/data/avcodec*
-![Bb]in/data/avdevice*
-![Bb]in/data/avfilter*
-![Bb]in/data/avformat*
-![Bb]in/data/avutil*
-![Bb]in/data/postproc*
-![Bb]in/data/swresample*
-![Bb]in/data/swscale*
-![Bb]in/testOnDemandRTSPServer.exe
-![Bb]in/OnvifServer.exe
-
-[Bb]in/data/*.png
-[Bb]in/data/*.jpg
-
 [Oo]bj/
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
