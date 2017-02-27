@@ -4,6 +4,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofDisableArbTex();
+	ofSetLogLevel(ofLogLevel::OF_LOG_VERBOSE);
 	ofSetFrameRate(60.0f);
 
 	levelDescriptor.load("level0.png");
@@ -19,7 +21,7 @@ void ofApp::setup(){
 	visuals.tileTextures[TileVisualComponent::TileVisual::BASIC] = basicTile.getTexture();
 	visuals.tileTextures[TileVisualComponent::TileVisual::STRONG_0] = strongTile_0.getTexture();
 	visuals.tileTextures[TileVisualComponent::TileVisual::STRONG_1] = strongTile_1.getTexture();
-	visuals.tileMatrixRegion = ofRectangle(0, 0, 1000, 1000);
+	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
 
 	level = make_unique<Level>(params, visuals);
 }
@@ -32,6 +34,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	ofPushStyle();
+		ofNoFill();
+		ofDrawRectangle(0, 0, 1100, 500);
+	ofPopStyle();
 	level->draw();
 }
 

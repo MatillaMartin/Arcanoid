@@ -35,5 +35,6 @@ public:
 	TileVisuals m_tileVisuals;
 
 private:
+	void setupEntityX();
 	void createTiles();
 };
