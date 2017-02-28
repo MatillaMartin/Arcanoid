@@ -8,7 +8,7 @@ class BallVisuals
 public:
 	BallVisuals(float radius);
 
-	glm::vec2 ballSize;
+	float ballSize;
 	ofVboMesh ballQuad;
 	ofShader ballShader;
 };

@@ -15,16 +15,24 @@ void ofApp::setup(){
 	basicTile.load("basicTile.png");
 	strongTile_0.load("strongTile_0.png");
 	strongTile_1.load("strongTile_1.png");
+	paddle.load("paddle.png");
+	ball.load("ball.png");
 
 	Level::LevelParams params;
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
+	params.paddlePosition = glm::vec2(0.5, 0.9);
 
 	Level::LevelVisuals visuals;
 	visuals.tileTextures[TileTexture::BASIC] = basicTile.getTexture();
 	visuals.tileTextures[TileTexture::STRONG_0] = strongTile_0.getTexture();
 	visuals.tileTextures[TileTexture::STRONG_1] = strongTile_1.getTexture();
 	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
+	visuals.paddleTexture = paddle.getTexture();
+	visuals.ballTexture = ball.getTexture();
+	visuals.ballSize = ball.getWidth() * 10;
+	visuals.paddleSize = glm::vec2(paddle.getWidth() * 10, paddle.getHeight() * 10);
+	visuals.levelRegion = ofRectangle(0, 0, 1100, 768);
 
 	level = make_unique<Level>(params, visuals);
 }

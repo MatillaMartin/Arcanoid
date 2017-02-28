@@ -1,5 +1,5 @@
 #include "BallVisualComponent.h"
-BallVisualComponent::BallVisualComponent(double radius)
+BallVisualComponent::BallVisualComponent(float radius)
 	:
 	radius(radius)
 {

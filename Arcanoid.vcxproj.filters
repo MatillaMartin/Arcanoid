@@ -217,6 +217,9 @@
     <ClCompile Include="src\BallVisuals.cpp">
       <Filter>src\Ball</Filter>
     </ClCompile>
+    <ClCompile Include="src\BallVisualComponent.cpp">
+      <Filter>src\Ball</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -544,6 +547,9 @@
     </ClInclude>
     <ClInclude Include="src\TileTexture.h">
       <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BallVisualComponent.h">
+      <Filter>src\Ball</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

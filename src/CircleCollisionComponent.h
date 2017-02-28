@@ -4,7 +4,8 @@
 
 class CircleCollisionComponent : public Component<CircleCollisionComponent>
 {
-	CircleCollisionComponent(double radius);
+public:
+	CircleCollisionComponent(float radius);
 
-	double radius;
+	float radius;
 };

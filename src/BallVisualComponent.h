@@ -4,9 +4,7 @@
 class BallVisualComponent : Component<BallVisualComponent>
 {
 public:
-	BallVisualComponent(double radius);
+	BallVisualComponent(float radius);
 
-	virtual void onHit() = 0;
-
-	double radius;
+	float radius;
 };

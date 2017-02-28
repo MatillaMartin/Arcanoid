@@ -2,12 +2,12 @@
 
 BallVisuals::BallVisuals(float radius)
 	:
-	ballSize(radius, radius)
+	ballSize(radius*2.0f)
 {
 	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(0, 0, 0)));
-	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(ballSize.x, 0, 0)));
-	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(ballSize.x, ballSize.y, 0)));
-	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(0, ballSize.y, 0)));
+	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(ballSize, 0, 0)));
+	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(ballSize, ballSize, 0)));
+	ballQuad.addVertex(ofDefaultVertexType(glm::vec3(0, ballSize, 0)));
 
 	ballQuad.addTexCoord(ofDefaultTexCoordType(0, 0));
 	ballQuad.addTexCoord(ofDefaultTexCoordType(1, 0));

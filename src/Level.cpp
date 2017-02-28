@@ -22,7 +22,8 @@ Level::Level(const LevelParams & params, const LevelVisuals & visuals)
 	m_params(params),
 	m_visuals(visuals),
 	m_tileVisuals(visuals.tileMatrixRegion, params.tiles->matrixWidth, params.tiles->matrixHeight),
-	m_paddleVisuals(visuals.)
+	m_paddleVisuals(visuals.paddleSize.x, visuals.paddleSize.y),
+	m_ballVisuals(visuals.ballSize)
 {
 	setupEntityX();
 	createTiles();
@@ -89,8 +90,10 @@ void Level::createTiles()
 
 void Level::createPaddle()
 {
+	// map position to correct position with respect to layout
+	glm::vec2 paddlePosition = m_visuals.levelRegion.map(m_params.paddlePosition);
 	m_paddle = entities.create();
-	m_paddle.assign<PositionComponent>(m_params.paddlePosition);
+	m_paddle.assign<PositionComponent>(paddlePosition);
 	m_paddle.assign<BoxCollisionComponent>(m_paddleVisuals.paddleSize);
 	m_paddle.assign<PaddleVisualComponent>(m_paddleVisuals.paddleSize);
 }
@@ -100,7 +103,7 @@ void Level::createBall()
 	// find initial location relative to the paddle
 	glm::vec2 ballPosition = m_paddle.component<PositionComponent>()->position;
 	ballPosition.x += m_paddle.component<PaddleVisualComponent>()->size.x / 2.0f;
-	ballPosition.y += m_ballVisuals.ballSize.y;
+	ballPosition.y -= m_ballVisuals.ballSize;
 
 	m_ball = entities.create();
 	m_ball.assign<PositionComponent>(ballPosition);
@@ -131,4 +134,15 @@ void Level::draw()
 		m_tileVisuals.tileShader.end();
 	});
 
+	m_paddleVisuals.paddleShader.begin();
+	m_paddleVisuals.paddleShader.setUniform2f("paddleDisplacement", m_paddle.component<PositionComponent>()->position);
+	m_paddleVisuals.paddleShader.setUniformTexture("paddleTexture", m_visuals.paddleTexture, 0);
+	m_paddleVisuals.paddleQuad.draw();
+	m_paddleVisuals.paddleShader.end();
+
+	m_ballVisuals.ballShader.begin();
+	m_ballVisuals.ballShader.setUniform2f("ballDisplacement", m_ball.component<PositionComponent>()->position);
+	m_ballVisuals.ballShader.setUniformTexture("ballTexture", m_visuals.ballTexture, 0);
+	m_ballVisuals.ballQuad.draw();
+	m_ballVisuals.ballShader.end();
 }

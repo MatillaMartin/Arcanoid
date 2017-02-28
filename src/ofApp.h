@@ -29,4 +29,6 @@ class ofApp : public ofBaseApp{
 		ofImage basicTile;
 		ofImage strongTile_0;
 		ofImage strongTile_1;
+		ofImage paddle;
+		ofImage ball;
 };

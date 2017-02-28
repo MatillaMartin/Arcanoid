@@ -237,6 +237,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dPolygon.cpp" />
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
+    <ClCompile Include="src\BallVisualComponent.cpp" />
     <ClCompile Include="src\BallVisuals.cpp" />
     <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
@@ -321,6 +322,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
     <ClInclude Include="src\BallSystem.h" />
+    <ClInclude Include="src\BallVisualComponent.h" />
     <ClInclude Include="src\BallVisuals.h" />
     <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />

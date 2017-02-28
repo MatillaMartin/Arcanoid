@@ -30,7 +30,7 @@ public:
 
 		// relative sizes (tiles already defined by TileMatrix)
 		glm::vec2 paddleSize;
-		glm::vec2 ballSize;
+		float ballSize;
 
 		// textures
 		map<TileTexture, ofTexture> tileTextures;

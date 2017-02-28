@@ -1,6 +1,6 @@
 #include "CircleCollisionComponent.h"
 
-CircleCollisionComponent::CircleCollisionComponent(double radius)
+CircleCollisionComponent::CircleCollisionComponent(float radius)
 	:
 	radius(radius)
 {
