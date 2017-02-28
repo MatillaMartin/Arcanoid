@@ -220,6 +220,15 @@
     <ClCompile Include="src\BallVisualComponent.cpp">
       <Filter>src\Ball</Filter>
     </ClCompile>
+    <ClCompile Include="src\CollisionSystem.cpp">
+      <Filter>src\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LevelManager.cpp">
+      <Filter>src\LevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaddleDriver.cpp">
+      <Filter>src\Paddle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -294,6 +303,12 @@
     <Filter Include="src\Paddle">
       <UniqueIdentifier>{cca2756d-bf59-4ab7-bab6-56a9ed5605b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Events">
+      <UniqueIdentifier>{3c44e5ae-164c-4062-8307-c19505175c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LevelManager">
+      <UniqueIdentifier>{e73ff4fb-0713-4d83-b0df-0e9d6a76af51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -307,9 +322,6 @@
     </ClInclude>
     <ClInclude Include="src\TileMatrix.h">
       <Filter>src\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PlayerSystem.h">
-      <Filter>src\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\BallSystem.h">
       <Filter>src\Systems</Filter>
@@ -550,6 +562,24 @@
     </ClInclude>
     <ClInclude Include="src\BallVisualComponent.h">
       <Filter>src\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaddleSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events.h">
+      <Filter>src\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LevelEndHandler.h">
+      <Filter>src\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LevelManager.h">
+      <Filter>src\LevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaddleDriver.h">
+      <Filter>src\Paddle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

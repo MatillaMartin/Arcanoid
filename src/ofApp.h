@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-#include "Level.h"
+#include "LevelManager.h"
 
 class ofApp : public ofBaseApp{
 
@@ -23,12 +23,14 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		unique_ptr<Level> level;
-
+private:
+		void onGameEnd();
 		ofImage levelDescriptor;
 		ofImage basicTile;
 		ofImage strongTile_0;
 		ofImage strongTile_1;
 		ofImage paddle;
 		ofImage ball;
+
+		std::unique_ptr<LevelManager> levels;
 };

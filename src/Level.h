@@ -8,6 +8,8 @@
 #include "PaddleVisuals.h"
 #include "BallVisuals.h"
 
+#include "LevelEndHandler.h"
+
 class TileMatrix;
 
 class Level : public ofxEntityX
@@ -30,7 +32,7 @@ public:
 
 		// relative sizes (tiles already defined by TileMatrix)
 		glm::vec2 paddleSize;
-		float ballSize;
+		float ballRadius;
 
 		// textures
 		map<TileTexture, ofTexture> tileTextures;
@@ -38,7 +40,7 @@ public:
 		ofTexture ballTexture;
 	};
 
-	Level(const LevelParams & params, const LevelVisuals & visuals);
+	Level(const LevelParams & params, const LevelVisuals & visuals, LevelEndHandler * handler);
 
 
 	void update(double delta);
@@ -53,6 +55,8 @@ public:
 	// no need to look for them if we already have them
 	Entity m_paddle;
 	Entity m_ball;
+
+	LevelEndHandler * m_levelEndHandler;
 
 private:
 	void setupEntityX();

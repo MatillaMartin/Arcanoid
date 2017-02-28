@@ -13,6 +13,8 @@ public:
 	unsigned int matrixWidth;
 	unsigned int matrixHeight;
 
+	unsigned int count();
+
 private:
 	const static ofColor s_EmptyColor;
 	const static ofColor s_BasicColor;

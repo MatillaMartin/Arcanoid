@@ -241,7 +241,10 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\BallVisuals.cpp" />
     <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
+    <ClCompile Include="src\CollisionSystem.cpp" />
+    <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\PaddleController.cpp" />
+    <ClCompile Include="src\PaddleDriver.cpp" />
     <ClCompile Include="src\PaddleVisualComponent.cpp" />
     <ClCompile Include="src\PaddleVisuals.cpp" />
     <ClCompile Include="src\PositionComponent.cpp" />
@@ -326,10 +329,15 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\BallVisuals.h" />
     <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />
+    <ClInclude Include="src\CollisionSystem.h" />
+    <ClInclude Include="src\Events.h" />
     <ClInclude Include="src\HitInfo.h" />
+    <ClInclude Include="src\LevelEndHandler.h" />
+    <ClInclude Include="src\LevelManager.h" />
     <ClInclude Include="src\PaddleController.h" />
+    <ClInclude Include="src\PaddleDriver.h" />
     <ClInclude Include="src\PaddleVisuals.h" />
-    <ClInclude Include="src\PlayerSystem.h" />
+    <ClInclude Include="src\PaddleSystem.h" />
     <ClInclude Include="src\PaddleVisualComponent.h" />
     <ClInclude Include="src\PositionComponent.h" />
     <ClInclude Include="src\TileSystem.h" />

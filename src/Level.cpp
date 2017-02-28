@@ -12,18 +12,22 @@
 #include "CircleCollisionComponent.h"
 
 #include "TileSystem.h"
-#include "PlayerSystem.h"
+#include "CollisionSystem.h"
+#include "PaddleSystem.h"
 #include "BallSystem.h"
+
+#include "Events.h"
 
 #include "ofGraphics.h"
 
-Level::Level(const LevelParams & params, const LevelVisuals & visuals)
+Level::Level(const LevelParams & params, const LevelVisuals & visuals, LevelEndHandler * handler, PaddleDriver * driver)
 	:
 	m_params(params),
 	m_visuals(visuals),
 	m_tileVisuals(visuals.tileMatrixRegion, params.tiles->matrixWidth, params.tiles->matrixHeight),
 	m_paddleVisuals(visuals.paddleSize.x, visuals.paddleSize.y),
-	m_ballVisuals(visuals.ballSize)
+	m_ballVisuals(visuals.ballRadius),
+	m_levelEndHandler(handler)
 {
 	setupEntityX();
 	createTiles();
@@ -33,7 +37,13 @@ Level::Level(const LevelParams & params, const LevelVisuals & visuals)
 
 void Level::setupEntityX()
 {
+	systems.add<TileSystem>(m_params.tiles->count());
+	systems.add<CollisionSystem>();
+	systems.add<PaddleSystem>(m_paddleDriver);
+	systems.add<BallSystem>();
 	systems.configure();
+
+	this->events.subscribe<LevelEndEvent>(m_levelEndHandler);
 }
 
 void Level::createTiles()

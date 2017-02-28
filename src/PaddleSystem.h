@@ -1,6 +1,6 @@
 #pragma once
 
-class PlayerSystem
+class PaddleSystem
 {
 	
 };

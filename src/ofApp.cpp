@@ -30,17 +30,22 @@ void ofApp::setup(){
 	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
 	visuals.paddleTexture = paddle.getTexture();
 	visuals.ballTexture = ball.getTexture();
-	visuals.ballSize = ball.getWidth() * 10;
+	visuals.ballRadius = (ball.getWidth() / 2.0f) * 10.0f;
 	visuals.paddleSize = glm::vec2(paddle.getWidth() * 10, paddle.getHeight() * 10);
 	visuals.levelRegion = ofRectangle(0, 0, 1100, 768);
 
-	level = make_unique<Level>(params, visuals);
+	std::vector<Level::LevelParams> paramsVec;
+	paramsVec.push_back(params);
+
+	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
+
+	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd)
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
-	level->update(deltaTime);
+	levels->update(deltaTime);
 }
 
 //--------------------------------------------------------------
@@ -49,7 +54,13 @@ void ofApp::draw(){
 		ofNoFill();
 		ofDrawRectangle(0, 0, 1100, 500);
 	ofPopStyle();
-	level->draw();
+	levels->draw();
+}
+
+void ofApp::onGameEnd()
+{
+	// credits or close..
+	ofExit();
 }
 
 //--------------------------------------------------------------

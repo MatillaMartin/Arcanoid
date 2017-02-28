@@ -34,3 +34,8 @@ TileMatrix::TileMatrix(const ofImage & descriptor)
 		}
 	}
 }
+
+unsigned int TileMatrix::count()
+{
+	return matrixWidth * matrixHeight;
+}
