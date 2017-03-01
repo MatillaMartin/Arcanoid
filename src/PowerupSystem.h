@@ -2,14 +2,10 @@
 
 #include "ofxEntityX.h"
 
-class BallSystem : public System<BallSystem>
+class PowerupSystem : public System<PowerupSystem>
 {
 public:
-	BallSystem();
-
 	// Inherited via System
 	virtual void update(EntityManager & entities, EventManager & events, TimeDelta dt) override;
-
-private:
 
 };

@@ -9,6 +9,7 @@ public:
 
 	void update(double delta);
 	void draw();
+	void input(char input);
 
 private:
 	std::vector<Level::LevelParams> m_levels;

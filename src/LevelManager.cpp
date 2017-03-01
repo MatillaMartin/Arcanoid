@@ -26,6 +26,11 @@ void LevelManager::draw()
 	m_currentLevel->draw();
 }
 
+void LevelManager::input(char input)
+{
+	m_currentLevel->input(input);
+}
+
 void LevelManager::onLevelEnd()
 {
 	nextLevel();
@@ -36,7 +41,8 @@ void LevelManager::nextLevel()
 	m_currentLevelIt++;
 	if(m_currentLevelIt != m_levels.end())
 	{
-		m_currentLevel = make_unique<Level>(&m_currentLevelIt, m_visuals);
+		std::function<void()> onLevelEnd = std::bind(&LevelManager::onLevelEnd, this);
+		m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd);
 	}
 	else
 	{

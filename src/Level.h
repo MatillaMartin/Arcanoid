@@ -21,6 +21,8 @@ public:
 		std::shared_ptr<TileMatrix> tiles;
 		unsigned int time;
 		glm::vec2 paddlePosition;
+		float paddleSpeed;
+		float paddleFriction;
 	};
 
 	class LevelVisuals
@@ -40,11 +42,12 @@ public:
 		ofTexture ballTexture;
 	};
 
-	Level(const LevelParams & params, const LevelVisuals & visuals, LevelEndHandler * handler);
-
+	Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd);
 
 	void update(double delta);
 	void draw();
+
+	void input(char input);
 
 	LevelParams m_params;
 	LevelVisuals m_visuals;
@@ -56,7 +59,7 @@ public:
 	Entity m_paddle;
 	Entity m_ball;
 
-	LevelEndHandler * m_levelEndHandler;
+	LevelEndHandler m_levelEndHandler;
 
 private:
 	void setupEntityX();

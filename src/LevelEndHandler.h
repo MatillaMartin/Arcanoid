@@ -5,6 +5,7 @@
 
 class LevelEndHandler : public Receiver<LevelEndEvent>
 {
+public:
 	LevelEndHandler(std::function<void()> onLevelEnd)
 		:
 		c_onLevelEnd(onLevelEnd)
@@ -22,6 +23,7 @@ class LevelEndHandler : public Receiver<LevelEndEvent>
 		}
 	}
 
+private:
 	// callback
 	std::function<void()> c_onLevelEnd;
 };

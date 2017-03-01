@@ -202,9 +202,6 @@
     <ClCompile Include="src\TileVisualComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="src\PaddleController.cpp">
-      <Filter>src\Paddle</Filter>
-    </ClCompile>
     <ClCompile Include="src\PaddleVisualComponent.cpp">
       <Filter>src\Paddle</Filter>
     </ClCompile>
@@ -226,8 +223,27 @@
     <ClCompile Include="src\LevelManager.cpp">
       <Filter>src\LevelManager</Filter>
     </ClCompile>
-    <ClCompile Include="src\PaddleDriver.cpp">
+    <ClCompile Include="src\PaddleSystem.cpp">
+      <Filter>src\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaddleControllerComponent.cpp">
       <Filter>src\Paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputSystem.cpp">
+      <Filter>src\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PlayerInputComponent.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VelocityComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PowerupSystem.cpp" />
+    <ClCompile Include="src\StickComponent.cpp">
+      <Filter>src\Powerup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BallSystem.cpp">
+      <Filter>src\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -542,9 +558,6 @@
     <ClInclude Include="src\TileVisualComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\PaddleController.h">
-      <Filter>src\Paddle</Filter>
-    </ClInclude>
     <ClInclude Include="src\PaddleVisualComponent.h">
       <Filter>src\Paddle</Filter>
     </ClInclude>
@@ -578,8 +591,26 @@
     <ClInclude Include="src\LevelManager.h">
       <Filter>src\LevelManager</Filter>
     </ClInclude>
-    <ClInclude Include="src\PaddleDriver.h">
+    <ClInclude Include="src\PaddleControllerComponent.h">
       <Filter>src\Paddle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\InputSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserCommand.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayerInputComponent.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VelocityComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PowerupSystem.h">
+      <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StickComponent.h">
+      <Filter>src\Powerup</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

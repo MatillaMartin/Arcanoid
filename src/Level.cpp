@@ -11,23 +11,29 @@
 #include "BoxCollisionComponent.h"
 #include "CircleCollisionComponent.h"
 
+#include "PaddleControllerComponent.h"
+
 #include "TileSystem.h"
 #include "CollisionSystem.h"
 #include "PaddleSystem.h"
 #include "BallSystem.h"
+#include "InputSystem.h"
+#include "PowerupSystem.h"
+
+#include "PlayerInputComponent.h"
 
 #include "Events.h"
 
 #include "ofGraphics.h"
 
-Level::Level(const LevelParams & params, const LevelVisuals & visuals, LevelEndHandler * handler, PaddleDriver * driver)
+Level::Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd)
 	:
 	m_params(params),
 	m_visuals(visuals),
 	m_tileVisuals(visuals.tileMatrixRegion, params.tiles->matrixWidth, params.tiles->matrixHeight),
 	m_paddleVisuals(visuals.paddleSize.x, visuals.paddleSize.y),
 	m_ballVisuals(visuals.ballRadius),
-	m_levelEndHandler(handler)
+	m_levelEndHandler(onLevelEnd)
 {
 	setupEntityX();
 	createTiles();
@@ -37,10 +43,12 @@ Level::Level(const LevelParams & params, const LevelVisuals & visuals, LevelEndH
 
 void Level::setupEntityX()
 {
+	systems.add<InputSystem>();
 	systems.add<TileSystem>(m_params.tiles->count());
 	systems.add<CollisionSystem>();
-	systems.add<PaddleSystem>(m_paddleDriver);
+	systems.add<PaddleSystem>();
 	systems.add<BallSystem>();
+	systems.add<PowerupSystem>();
 	systems.configure();
 
 	this->events.subscribe<LevelEndEvent>(m_levelEndHandler);
@@ -106,6 +114,12 @@ void Level::createPaddle()
 	m_paddle.assign<PositionComponent>(paddlePosition);
 	m_paddle.assign<BoxCollisionComponent>(m_paddleVisuals.paddleSize);
 	m_paddle.assign<PaddleVisualComponent>(m_paddleVisuals.paddleSize);
+	m_paddle.assign<PlayerInputComponent>('a', 'd', 0, 0, ' ');
+
+	PaddleControllerComponent::PaddleParams params;
+	params.speed = m_params.paddleSpeed;
+	params.friction = m_params.paddleFriction;
+	m_paddle.assign<PaddleControllerComponent>();
 }
 
 void Level::createBall()
@@ -124,10 +138,12 @@ void Level::createBall()
 
 void Level::update(double delta)
 {
-	//systems.update<CollisionSystem>(delta);
-	//systems.update<BoundsSystem>(delta);
-	//systems.update<MovementSystem>(delta);
-	//systems.update<DebugSystem>(delta);
+	systems.update<InputSystem>(delta);
+	systems.update<CollisionSystem>(delta);
+	systems.update<TileSystem>(delta);
+	systems.update<PaddleSystem>(delta);
+	systems.update<BallSystem>(delta);
+	systems.update<PowerupSystem>(delta);
 }
 
 void Level::draw()
@@ -155,4 +171,9 @@ void Level::draw()
 	m_ballVisuals.ballShader.setUniformTexture("ballTexture", m_visuals.ballTexture, 0);
 	m_ballVisuals.ballQuad.draw();
 	m_ballVisuals.ballShader.end();
+}
+
+void Level::input(char input)
+{
+	systems.system<InputSystem>()->onInput(input);
 }

@@ -24,22 +24,24 @@ void ofApp::setup(){
 	params.paddlePosition = glm::vec2(0.5, 0.9);
 
 	Level::LevelVisuals visuals;
+	visuals.levelRegion = ofRectangle(0, 0, 1100, 768);
+	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
+
 	visuals.tileTextures[TileTexture::BASIC] = basicTile.getTexture();
 	visuals.tileTextures[TileTexture::STRONG_0] = strongTile_0.getTexture();
 	visuals.tileTextures[TileTexture::STRONG_1] = strongTile_1.getTexture();
-	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
+
 	visuals.paddleTexture = paddle.getTexture();
 	visuals.ballTexture = ball.getTexture();
-	visuals.ballRadius = (ball.getWidth() / 2.0f) * 10.0f;
 	visuals.paddleSize = glm::vec2(paddle.getWidth() * 10, paddle.getHeight() * 10);
-	visuals.levelRegion = ofRectangle(0, 0, 1100, 768);
+	visuals.ballRadius = (ball.getWidth() / 2.0f) * 10.0f;
 
 	std::vector<Level::LevelParams> paramsVec;
 	paramsVec.push_back(params);
 
 	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
 
-	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd)
+	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd);
 }
 
 //--------------------------------------------------------------
@@ -65,7 +67,7 @@ void ofApp::onGameEnd()
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	levels->input(key);
 }
 
 //--------------------------------------------------------------
