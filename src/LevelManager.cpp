@@ -5,10 +5,10 @@ LevelManager::LevelManager(const std::vector<Level::LevelParams> & levels, Level
 	m_visuals(visuals),
 	c_onGameEnd(onGameEnd),
 	m_levels(levels),
-	m_currentLevelIt(m_levels.begin()-1)
+	m_currentLevelIt(m_levels.begin())
 {
 	// load first level
-	nextLevel();
+	startLevel();
 
 	assert(m_currentLevel);
 }
@@ -41,8 +41,7 @@ void LevelManager::nextLevel()
 	m_currentLevelIt++;
 	if(m_currentLevelIt != m_levels.end())
 	{
-		std::function<void()> onLevelEnd = std::bind(&LevelManager::onLevelEnd, this);
-		m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd);
+		startLevel();
 	}
 	else
 	{
@@ -56,4 +55,10 @@ void LevelManager::nextLevel()
 			ofLogError("LevelManager") << "Game end callback not set";
 		}
 	}
+}
+
+void LevelManager::startLevel()
+{
+	std::function<void()> onLevelEnd = std::bind(&LevelManager::onLevelEnd, this);
+	m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd);
 }

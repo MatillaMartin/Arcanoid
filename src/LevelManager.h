@@ -19,6 +19,8 @@ private:
 
 	void onLevelEnd();
 	void nextLevel();
+	void startLevel();
+
 
 	std::function<void()> c_onGameEnd;
 

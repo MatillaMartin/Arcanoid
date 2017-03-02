@@ -16,9 +16,6 @@
     <ClCompile Include="src\TileMatrix.cpp">
       <Filter>src\Level</Filter>
     </ClCompile>
-    <ClCompile Include="src\PositionComponent.cpp">
-      <Filter>src\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2d.cpp">
       <Filter>addons\ofxBox2d\src</Filter>
     </ClCompile>
@@ -199,9 +196,6 @@
     <ClCompile Include="src\BoxCollisionComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileVisualComponent.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
     <ClCompile Include="src\PaddleVisualComponent.cpp">
       <Filter>src\Paddle</Filter>
     </ClCompile>
@@ -244,6 +238,12 @@
     </ClCompile>
     <ClCompile Include="src\BallSystem.cpp">
       <Filter>src\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsComponent.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileVisualComponent.cpp">
+      <Filter>src\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -347,9 +347,6 @@
     </ClInclude>
     <ClInclude Include="src\HitInfo.h">
       <Filter>src\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PositionComponent.h">
-      <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2d.h">
       <Filter>addons\ofxBox2d\src</Filter>
@@ -555,9 +552,6 @@
     <ClInclude Include="src\BoxCollisionComponent.h">
       <Filter>src\Components</Filter>
     </ClInclude>
-    <ClInclude Include="src\TileVisualComponent.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
     <ClInclude Include="src\PaddleVisualComponent.h">
       <Filter>src\Paddle</Filter>
     </ClInclude>
@@ -611,6 +605,12 @@
     </ClInclude>
     <ClInclude Include="src\StickComponent.h">
       <Filter>src\Powerup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicsComponent.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileVisualComponent.h">
+      <Filter>src\Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

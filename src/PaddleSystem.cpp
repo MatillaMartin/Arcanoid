@@ -1,6 +1,6 @@
 #include "PaddleSystem.h"
 
-#include "VelocityComponent.h"
+#include "PhysicsComponent.h"
 #include "PaddleControllerComponent.h"
 
 PaddleSystem::PaddleSystem()
@@ -8,7 +8,7 @@ PaddleSystem::PaddleSystem()
 
 void PaddleSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
 {
-	entities.each<VelocityComponent, PaddleControllerComponent>([](Entity & e, VelocityComponent & velocity, PaddleControllerComponent & controller)
+	entities.each<PhysicsComponent, PaddleControllerComponent>([](Entity & e, PhysicsComponent & physics, PaddleControllerComponent & controller)
 	{
 		UserCommand command;
 		while (controller.getCommand(command))
@@ -16,10 +16,10 @@ void PaddleSystem::update(EntityManager & entities, EventManager & events, TimeD
 			switch (command)
 			{
 			case UserCommand::LEFT:
-				velocity.velocity.x = -controller.params.speed;
+				physics.velocity.x = -controller.params.speed;
 				break;
 			case UserCommand::RIGHT:
-				velocity.velocity.x = controller.params.speed;
+				physics.velocity.x = controller.params.speed;
 				break;
 			case UserCommand::USE:
 				// INTERESTING

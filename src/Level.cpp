@@ -1,7 +1,7 @@
 #include "Level.h"
 #include "TileMatrix.h"
 
-#include "PositionComponent.h"
+#include "PhysicsComponent.h"
 #include "LifeComponent.h"
 
 #include "TileVisualComponent.h"
@@ -80,7 +80,7 @@ void Level::createTiles()
 
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
-		entity.assign<PositionComponent>(tilePosition);
+		entity.assign<PhysicsComponent>(tilePosition);
 		entity.assign<BoxCollisionComponent>(m_tileVisuals.tileSize);
 
 		switch (tiletype)
@@ -111,7 +111,7 @@ void Level::createPaddle()
 	// map position to correct position with respect to layout
 	glm::vec2 paddlePosition = m_visuals.levelRegion.map(m_params.paddlePosition);
 	m_paddle = entities.create();
-	m_paddle.assign<PositionComponent>(paddlePosition);
+	m_paddle.assign<PhysicsComponent>(paddlePosition);
 	m_paddle.assign<BoxCollisionComponent>(m_paddleVisuals.paddleSize);
 	m_paddle.assign<PaddleVisualComponent>(m_paddleVisuals.paddleSize);
 	m_paddle.assign<PlayerInputComponent>('a', 'd', 0, 0, ' ');
@@ -125,12 +125,12 @@ void Level::createPaddle()
 void Level::createBall()
 {
 	// find initial location relative to the paddle
-	glm::vec2 ballPosition = m_paddle.component<PositionComponent>()->position;
+	glm::vec2 ballPosition = m_paddle.component<PhysicsComponent>()->position;
 	ballPosition.x += m_paddle.component<PaddleVisualComponent>()->size.x / 2.0f;
 	ballPosition.y -= m_ballVisuals.ballSize;
 
 	m_ball = entities.create();
-	m_ball.assign<PositionComponent>(ballPosition);
+	m_ball.assign<PhysicsComponent>(ballPosition);
 	m_ball.assign<CircleCollisionComponent>(m_ballVisuals.ballSize);
 	m_ball.assign<BallVisualComponent>(m_ballVisuals.ballSize);
 }
@@ -148,26 +148,26 @@ void Level::update(double delta)
 
 void Level::draw()
 {
-	entities.each<PositionComponent, TileVisualComponent>(
-		[this](Entity entity, PositionComponent & position, TileVisualComponent & visual)
+	entities.each<PhysicsComponent, TileVisualComponent>(
+		[this](Entity entity, PhysicsComponent & physics, TileVisualComponent & visual)
 	{
 		ofTexture tex = m_visuals.tileTextures.at(visual.visual);
 
 		m_tileVisuals.tileShader.begin();
-		m_tileVisuals.tileShader.setUniform2f("tileDisplacement", position.position);
+		m_tileVisuals.tileShader.setUniform2f("tileDisplacement", physics.position);
 		m_tileVisuals.tileShader.setUniformTexture("tileTexture", tex, 0);
 			m_tileVisuals.tileQuad.draw();
 		m_tileVisuals.tileShader.end();
 	});
 
 	m_paddleVisuals.paddleShader.begin();
-	m_paddleVisuals.paddleShader.setUniform2f("paddleDisplacement", m_paddle.component<PositionComponent>()->position);
+	m_paddleVisuals.paddleShader.setUniform2f("paddleDisplacement", m_paddle.component<PhysicsComponent>()->position);
 	m_paddleVisuals.paddleShader.setUniformTexture("paddleTexture", m_visuals.paddleTexture, 0);
 	m_paddleVisuals.paddleQuad.draw();
 	m_paddleVisuals.paddleShader.end();
 
 	m_ballVisuals.ballShader.begin();
-	m_ballVisuals.ballShader.setUniform2f("ballDisplacement", m_ball.component<PositionComponent>()->position);
+	m_ballVisuals.ballShader.setUniform2f("ballDisplacement", m_ball.component<PhysicsComponent>()->position);
 	m_ballVisuals.ballShader.setUniformTexture("ballTexture", m_visuals.ballTexture, 0);
 	m_ballVisuals.ballQuad.draw();
 	m_ballVisuals.ballShader.end();
