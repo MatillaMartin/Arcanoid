@@ -190,9 +190,6 @@
     <ClCompile Include="src\CircleCollisionComponent.cpp">
       <Filter>src\Ball</Filter>
     </ClCompile>
-    <ClCompile Include="src\LifeComponent.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
     <ClCompile Include="src\BoxCollisionComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
@@ -243,6 +240,9 @@
       <Filter>src\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\TileVisualComponent.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HitsComponent.cpp">
       <Filter>src\Tile</Filter>
     </ClCompile>
   </ItemGroup>
@@ -546,9 +546,6 @@
     <ClInclude Include="src\CircleCollisionComponent.h">
       <Filter>src\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="src\LifeComponent.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
     <ClInclude Include="src\BoxCollisionComponent.h">
       <Filter>src\Components</Filter>
     </ClInclude>
@@ -610,6 +607,9 @@
       <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\TileVisualComponent.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HitsComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
   </ItemGroup>

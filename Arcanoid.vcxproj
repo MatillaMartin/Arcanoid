@@ -254,7 +254,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\PhysicsComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
     <ClCompile Include="src\Level.cpp" />
-    <ClCompile Include="src\LifeComponent.cpp" />
+    <ClCompile Include="src\HitsComponent.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\PowerupSystem.cpp" />
@@ -353,7 +353,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\TileSystem.h" />
     <ClInclude Include="src\DropComponent.h" />
     <ClInclude Include="src\Level.h" />
-    <ClInclude Include="src\LifeComponent.h" />
+    <ClInclude Include="src\HitsComponent.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\TileMatrix.h" />
     <ClInclude Include="src\TileTexture.h" />
