@@ -1,6 +1,8 @@
 #pragma once
 #include "HitInfo.h"
 #include "ofxEntityX.h"
+#include "TileType.h"
+#include "Textures.h"
 
 class Tile;
 

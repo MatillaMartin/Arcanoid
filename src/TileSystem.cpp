@@ -1,7 +1,6 @@
 #include "TileSystem.h"
 
 #include "HitsComponent.h"
-#include "TileVisualComponent.h"
 #include "BoxCollisionComponent.h"
 #include "Events.h"
 

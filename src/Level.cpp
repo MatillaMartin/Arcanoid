@@ -2,7 +2,7 @@
 #include "TileMatrix.h"
 
 #include "PhysicsComponent.h"
-#include "LifeComponent.h"
+#include "HitsComponent.h"
 
 #include "TileVisualComponent.h"
 #include "PaddleVisualComponent.h"
@@ -91,13 +91,13 @@ void Level::createTiles()
 		case TileMatrix::BASIC:
 		{
 			entity.assign<TileVisualComponent>(TileTexture::BASIC, m_tileVisuals.tileSize);
-			entity.assign<LifeComponent>(1);
+			entity.assign<HitsComponent>(1);
 			break;
 		}
 		case TileMatrix::STRONG:
 		{
 			entity.assign<TileVisualComponent>(TileTexture::STRONG_1, m_tileVisuals.tileSize);
-			entity.assign<LifeComponent>(2);
+			entity.assign<HitsComponent>(2);
 			break;
 		}
 		default:
@@ -146,7 +146,7 @@ void Level::update(double delta)
 	systems.update<PowerupSystem>(delta);
 }
 
-void Level::draw()
+void Level::draw(Renderer * renderer)
 {
 	entities.each<PhysicsComponent, TileVisualComponent>(
 		[this](Entity entity, PhysicsComponent & physics, TileVisualComponent & visual)

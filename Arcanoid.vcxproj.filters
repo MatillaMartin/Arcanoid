@@ -325,6 +325,9 @@
     <Filter Include="src\LevelManager">
       <UniqueIdentifier>{e73ff4fb-0713-4d83-b0df-0e9d6a76af51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Rendering">
+      <UniqueIdentifier>{616f1780-7119-40f1-9d0c-70dbf2bffed5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -561,9 +564,6 @@
     <ClInclude Include="src\BallVisuals.h">
       <Filter>src\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="src\TileTexture.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
     <ClInclude Include="src\BallVisualComponent.h">
       <Filter>src\Ball</Filter>
     </ClInclude>
@@ -610,6 +610,15 @@
       <Filter>src\Tile</Filter>
     </ClInclude>
     <ClInclude Include="src\HitsComponent.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer.h">
+      <Filter>src\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Textures.h">
+      <Filter>src\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileType.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
   </ItemGroup>

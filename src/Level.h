@@ -45,7 +45,7 @@ public:
 	Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd);
 
 	void update(double delta);
-	void draw();
+	void draw(Renderer * renderer);
 
 	void input(char input);
 

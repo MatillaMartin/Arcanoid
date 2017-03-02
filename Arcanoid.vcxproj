@@ -341,9 +341,11 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\InputSystem.h" />
     <ClInclude Include="src\LevelEndHandler.h" />
     <ClInclude Include="src\LevelManager.h" />
+    <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\StickComponent.h" />
     <ClInclude Include="src\PlayerInputComponent.h" />
     <ClInclude Include="src\PowerupSystem.h" />
+    <ClInclude Include="src\TileType.h" />
     <ClInclude Include="src\UserCommand.h" />
     <ClInclude Include="src\PaddleControllerComponent.h" />
     <ClInclude Include="src\PaddleVisuals.h" />
@@ -356,7 +358,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\HitsComponent.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\TileMatrix.h" />
-    <ClInclude Include="src\TileTexture.h" />
+    <ClInclude Include="src\Textures.h" />
     <ClInclude Include="src\TileVisualComponent.h" />
     <ClInclude Include="src\TileVisuals.h" />
     <ClInclude Include="src\VelocityComponent.h" />
