@@ -3,10 +3,12 @@
 #include "ofMain.h"
 
 #include "LevelManager.h"
+#include "GameTextures.h"
 
 class ofApp : public ofBaseApp{
 
 	public:
+		ofApp();
 		void setup();
 		void update();
 		void draw();
@@ -25,12 +27,17 @@ class ofApp : public ofBaseApp{
 
 private:
 		void onGameEnd();
-		ofImage levelDescriptor;
-		ofImage basicTile;
-		ofImage strongTile_0;
-		ofImage strongTile_1;
-		ofImage paddle;
-		ofImage ball;
 
+		GameTextures textures;
+
+		std::unique_ptr<Renderer> renderer;
 		std::unique_ptr<LevelManager> levels;
+
+		ofImage levelDescriptor;
+
+		glm::vec2 screenResolution;
+		glm::vec2 levelResolution;
+		ofFbo levelRender;
+
+		float m_levelAspect;
 };

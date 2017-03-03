@@ -18,12 +18,12 @@ void LevelManager::update(double delta)
 	m_currentLevel->update(delta);
 }
 
-void LevelManager::draw()
+void LevelManager::draw(Renderer * renderer)
 {
 	// draw current level identifications etc.
 
 	// draw level itself
-	m_currentLevel->draw();
+	m_currentLevel->draw(renderer);
 }
 
 void LevelManager::input(char input)

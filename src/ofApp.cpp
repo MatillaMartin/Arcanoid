@@ -1,6 +1,14 @@
 #include "ofApp.h"
 
 #include "TileMatrix.h"
+#include "SpriteRenderer.h"
+#include "TileType.h"
+
+ofApp::ofApp()
+	:
+	m_levelAspect(1)
+{
+}
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -11,36 +19,39 @@ void ofApp::setup(){
 
 	ofLogVerbose("ofApp") << "Starting application";
 
+	screenResolution.x = ofGetWidth();
+	screenResolution.y = ofGetHeight();
+
+	levelResolution.y = screenResolution.y;
+	levelResolution.x = levelResolution.y * m_levelAspect;
+
+	levelRender.allocate(levelResolution.x, levelResolution.y, GL_RGBA);
+
+	renderer = make_unique<SpriteRenderer>(&textures, levelResolution);
+
 	levelDescriptor.load("level0.png");
-	basicTile.load("basicTile.png");
-	strongTile_0.load("strongTile_0.png");
-	strongTile_1.load("strongTile_1.png");
-	paddle.load("paddle.png");
-	ball.load("ball.png");
 
 	Level::LevelParams params;
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
 	params.paddlePosition = glm::vec2(0.5, 0.9);
-
-	Level::LevelVisuals visuals;
-	visuals.levelRegion = ofRectangle(0, 0, 1100, 768);
-	visuals.tileMatrixRegion = ofRectangle(0, 0, 1100, 500);
-
-	visuals.tileTextures[TileTexture::BASIC] = basicTile.getTexture();
-	visuals.tileTextures[TileTexture::STRONG_0] = strongTile_0.getTexture();
-	visuals.tileTextures[TileTexture::STRONG_1] = strongTile_1.getTexture();
-
-	visuals.paddleTexture = paddle.getTexture();
-	visuals.ballTexture = ball.getTexture();
-	visuals.paddleSize = glm::vec2(paddle.getWidth() * 10, paddle.getHeight() * 10);
-	visuals.ballRadius = (ball.getWidth() / 2.0f) * 10.0f;
-
 	std::vector<Level::LevelParams> paramsVec;
 	paramsVec.push_back(params);
 
-	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
+	glm::vec2 normResolution = levelResolution / levelResolution.y;
 
+	Level::LevelVisuals visuals;
+	visuals.levelRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
+	visuals.tileMatrixRegion = ofRectangle(0, 0, 1, 0.5);
+
+	// fixed size
+	visuals.paddleSize = glm::vec2(0.1, 0.01);
+	visuals.ballSize = glm::vec2(0.01, 0.01);
+
+	visuals.tileMap[TileType::BASIC] = { TileTexture::BASIC_0 };
+	visuals.tileMap[TileType::STRONG] = { TileTexture::STRONG_0, TileTexture::STRONG_1};
+
+	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
 	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd);
 }
 
@@ -56,7 +67,7 @@ void ofApp::draw(){
 		ofNoFill();
 		ofDrawRectangle(0, 0, 1100, 500);
 	ofPopStyle();
-	levels->draw();
+	levels->draw(renderer.get());
 }
 
 void ofApp::onGameEnd()

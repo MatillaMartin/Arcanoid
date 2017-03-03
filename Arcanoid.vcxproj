@@ -238,18 +238,19 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
     <ClCompile Include="src\BallSystem.cpp" />
-    <ClCompile Include="src\BallVisualComponent.cpp" />
-    <ClCompile Include="src\BallVisuals.cpp" />
+    <ClCompile Include="src\BallTextureComponent.cpp" />
     <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
     <ClCompile Include="src\CollisionSystem.cpp" />
+    <ClCompile Include="src\GameTextures.cpp" />
     <ClCompile Include="src\InputSystem.cpp" />
     <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\PaddleControllerComponent.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
-    <ClCompile Include="src\PaddleVisualComponent.cpp" />
-    <ClCompile Include="src\PaddleVisuals.cpp" />
+    <ClCompile Include="src\PaddleTextureComponent.cpp" />
     <ClCompile Include="src\PlayerInputComponent.cpp" />
     <ClCompile Include="src\PhysicsComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
@@ -260,8 +261,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\PowerupSystem.cpp" />
     <ClCompile Include="src\TileMatrix.cpp" />
     <ClCompile Include="src\TileSystem.cpp" />
-    <ClCompile Include="src\TileVisualComponent.cpp" />
-    <ClCompile Include="src\TileVisuals.cpp" />
+    <ClCompile Include="src\TileTextureComponent.cpp" />
     <ClCompile Include="src\VelocityComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -331,26 +331,26 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
     <ClInclude Include="src\BallSystem.h" />
-    <ClInclude Include="src\BallVisualComponent.h" />
-    <ClInclude Include="src\BallVisuals.h" />
+    <ClInclude Include="src\BallTextureComponent.h" />
     <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />
     <ClInclude Include="src\CollisionSystem.h" />
     <ClInclude Include="src\Events.h" />
+    <ClInclude Include="src\GameTextures.h" />
     <ClInclude Include="src\HitInfo.h" />
     <ClInclude Include="src\InputSystem.h" />
     <ClInclude Include="src\LevelEndHandler.h" />
     <ClInclude Include="src\LevelManager.h" />
     <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\StickComponent.h" />
     <ClInclude Include="src\PlayerInputComponent.h" />
     <ClInclude Include="src\PowerupSystem.h" />
     <ClInclude Include="src\TileType.h" />
     <ClInclude Include="src\UserCommand.h" />
     <ClInclude Include="src\PaddleControllerComponent.h" />
-    <ClInclude Include="src\PaddleVisuals.h" />
     <ClInclude Include="src\PaddleSystem.h" />
-    <ClInclude Include="src\PaddleVisualComponent.h" />
+    <ClInclude Include="src\PaddleTextureComponent.h" />
     <ClInclude Include="src\PhysicsComponent.h" />
     <ClInclude Include="src\TileSystem.h" />
     <ClInclude Include="src\DropComponent.h" />
@@ -359,8 +359,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\TileMatrix.h" />
     <ClInclude Include="src\Textures.h" />
-    <ClInclude Include="src\TileVisualComponent.h" />
-    <ClInclude Include="src\TileVisuals.h" />
+    <ClInclude Include="src\TileTextureComponent.h" />
     <ClInclude Include="src\VelocityComponent.h" />
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +375,8 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\data\shader\SpriteShader.frag" />
+    <None Include="bin\data\shader\SpriteShader.vert" />
     <None Include="bin\data\shader\TileShader.frag" />
     <None Include="bin\data\shader\TileShader.vert" />
   </ItemGroup>

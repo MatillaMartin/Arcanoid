@@ -3,12 +3,9 @@
 
 #include "ofxEntityX.h"
 
-#include "TileTexture.h"
-#include "TileVisuals.h"
-#include "PaddleVisuals.h"
-#include "BallVisuals.h"
-
 #include "LevelEndHandler.h"
+#include "Renderer.h"
+#include "TileType.h"
 
 class TileMatrix;
 
@@ -34,12 +31,10 @@ public:
 
 		// relative sizes (tiles already defined by TileMatrix)
 		glm::vec2 paddleSize;
-		float ballRadius;
+		glm::vec2 ballSize;
 
-		// textures
-		map<TileTexture, ofTexture> tileTextures;
-		ofTexture paddleTexture;
-		ofTexture ballTexture;
+		// map defining tile transformations
+		std::map<TileType, std::vector<TileTexture>> tileMap;
 	};
 
 	Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd);
@@ -52,9 +47,6 @@ public:
 	LevelParams m_params;
 	LevelVisuals m_visuals;
 
-	TileVisuals m_tileVisuals;
-	PaddleVisuals m_paddleVisuals;
-	BallVisuals m_ballVisuals;
 	// no need to look for them if we already have them
 	Entity m_paddle;
 	Entity m_ball;

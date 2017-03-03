@@ -5,8 +5,13 @@
 class PhysicsComponent : public Component<PhysicsComponent>
 {
 public:
-	PhysicsComponent(const glm::vec2 & position = glm::vec2());
+
+	PhysicsComponent(	const glm::vec2 & position = glm::vec2(),
+						const glm::vec2 & velocity = glm::vec2(), 
+						const glm::vec2 & size = glm::vec2()
+	);
 
 	glm::vec2 position;
 	glm::vec2 velocity;
+	glm::vec2 size;
 };

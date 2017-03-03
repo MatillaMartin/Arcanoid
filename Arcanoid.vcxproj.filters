@@ -187,27 +187,6 @@
     <ClCompile Include="src\TileSystem.cpp">
       <Filter>src\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="src\CircleCollisionComponent.cpp">
-      <Filter>src\Ball</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BoxCollisionComponent.cpp">
-      <Filter>src\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PaddleVisualComponent.cpp">
-      <Filter>src\Paddle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PaddleVisuals.cpp">
-      <Filter>src\Paddle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TileVisuals.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BallVisuals.cpp">
-      <Filter>src\Ball</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BallVisualComponent.cpp">
-      <Filter>src\Ball</Filter>
-    </ClCompile>
     <ClCompile Include="src\CollisionSystem.cpp">
       <Filter>src\Systems</Filter>
     </ClCompile>
@@ -229,7 +208,6 @@
     <ClCompile Include="src\VelocityComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\PowerupSystem.cpp" />
     <ClCompile Include="src\StickComponent.cpp">
       <Filter>src\Powerup</Filter>
     </ClCompile>
@@ -239,11 +217,35 @@
     <ClCompile Include="src\PhysicsComponent.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileVisualComponent.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
     <ClCompile Include="src\HitsComponent.cpp">
       <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileTextureComponent.cpp">
+      <Filter>src\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaddleTextureComponent.cpp">
+      <Filter>src\Paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BallTextureComponent.cpp">
+      <Filter>src\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameTextures.cpp">
+      <Filter>src\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>src\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CircleCollisionComponent.cpp">
+      <Filter>src\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BoxCollisionComponent.cpp">
+      <Filter>src\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PowerupSystem.cpp">
+      <Filter>src\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpriteRenderer.cpp">
+      <Filter>src\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +329,9 @@
     </Filter>
     <Filter Include="src\Rendering">
       <UniqueIdentifier>{616f1780-7119-40f1-9d0c-70dbf2bffed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Collision">
+      <UniqueIdentifier>{6fbde73e-ae62-4679-8c46-3f16df38bf76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -546,27 +551,6 @@
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h">
       <Filter>addons\ofxEntityX\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\CircleCollisionComponent.h">
-      <Filter>src\Ball</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BoxCollisionComponent.h">
-      <Filter>src\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PaddleVisualComponent.h">
-      <Filter>src\Paddle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PaddleVisuals.h">
-      <Filter>src\Paddle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TileVisuals.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BallVisuals.h">
-      <Filter>src\Ball</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BallVisualComponent.h">
-      <Filter>src\Ball</Filter>
-    </ClInclude>
     <ClInclude Include="src\PaddleSystem.h">
       <Filter>src\Systems</Filter>
     </ClInclude>
@@ -606,9 +590,6 @@
     <ClInclude Include="src\PhysicsComponent.h">
       <Filter>src\Components</Filter>
     </ClInclude>
-    <ClInclude Include="src\TileVisualComponent.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
     <ClInclude Include="src\HitsComponent.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
@@ -621,6 +602,27 @@
     <ClInclude Include="src\TileType.h">
       <Filter>src\Tile</Filter>
     </ClInclude>
+    <ClInclude Include="src\TileTextureComponent.h">
+      <Filter>src\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaddleTextureComponent.h">
+      <Filter>src\Paddle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BallTextureComponent.h">
+      <Filter>src\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameTextures.h">
+      <Filter>src\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpriteRenderer.h">
+      <Filter>src\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CircleCollisionComponent.h">
+      <Filter>src\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoxCollisionComponent.h">
+      <Filter>src\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
@@ -631,6 +633,12 @@
     </None>
     <None Include="bin\data\shader\TileShader.vert">
       <Filter>src\Tile</Filter>
+    </None>
+    <None Include="bin\data\shader\SpriteShader.frag">
+      <Filter>src\Rendering</Filter>
+    </None>
+    <None Include="bin\data\shader\SpriteShader.vert">
+      <Filter>src\Rendering</Filter>
     </None>
   </ItemGroup>
 </Project>

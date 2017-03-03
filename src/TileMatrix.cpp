@@ -3,19 +3,19 @@
 
 TileMatrix::TileMatrix(const ofImage & descriptor)
 	:
-	matrixWidth(descriptor.getWidth()),
-	matrixHeight(descriptor.getHeight())
+	nCols(descriptor.getWidth()),
+	nRows(descriptor.getHeight())
 {
 	const static ofColor emptyColor = ofColor::black;
 	const static ofColor basicColor = ofColor::white;
 	const static ofColor strongColor = ofColor::blue;
 
-	unsigned int size = matrixWidth*matrixHeight;
+	unsigned int size = nCols*nRows;
 	matrix.reserve(size);
 
-	for (unsigned int y = 0; y < matrixHeight; y++)
+	for (unsigned int y = 0; y < nRows; y++)
 	{
-		for (unsigned int x = 0; x < matrixWidth; x++)
+		for (unsigned int x = 0; x < nCols; x++)
 		{
 			ofColor color = descriptor.getColor(x, y);
 
@@ -37,5 +37,5 @@ TileMatrix::TileMatrix(const ofImage & descriptor)
 
 unsigned int TileMatrix::count()
 {
-	return matrixWidth * matrixHeight;
+	return nCols * nRows;
 }

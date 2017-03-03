@@ -10,8 +10,8 @@ public:
 	TileMatrix(const ofImage & descriptor);
 
 	vector<TileType> matrix;
-	unsigned int matrixWidth;
-	unsigned int matrixHeight;
+	unsigned int nCols;
+	unsigned int nRows;
 
 	unsigned int count();
 

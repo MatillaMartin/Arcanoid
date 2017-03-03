@@ -1,7 +1,8 @@
 #include "PhysicsComponent.h"
 
-PhysicsComponent::PhysicsComponent(const glm::vec2 & position)
+PhysicsComponent::PhysicsComponent(	const glm::vec2 & position, const glm::vec2 & velocity, const glm::vec2 & size)
 	:
-	position(position)
-{
-}
+	position(position),
+	velocity(velocity),
+	size(size)
+{}

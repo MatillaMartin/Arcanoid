@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Level.h"
+#include "Renderer.h"
 
 class LevelManager
 {
@@ -8,7 +9,7 @@ public:
 	LevelManager(const std::vector<Level::LevelParams> & levels, Level::LevelVisuals levelVisuals, std::function<void()> onGameEnd);
 
 	void update(double delta);
-	void draw();
+	void draw(Renderer * renderer);
 	void input(char input);
 
 private:
