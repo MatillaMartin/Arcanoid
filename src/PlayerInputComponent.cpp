@@ -10,7 +10,7 @@ PlayerInputComponent::PlayerInputComponent(char left, char right, char up, char 
 {
 }
 
-bool PlayerInputComponent::getCommand(char input, UserCommand & command)
+bool PlayerInputComponent::parse(char input, UserCommand & command)
 {
 	if (input == m_left)
 	{

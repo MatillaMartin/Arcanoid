@@ -246,6 +246,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\InputSystem.cpp" />
     <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\PaddleControllerComponent.cpp" />
+    <ClCompile Include="src\PhysicsSystem.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
@@ -261,7 +262,6 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\TileMatrix.cpp" />
     <ClCompile Include="src\TileSystem.cpp" />
     <ClCompile Include="src\TileTextureComponent.cpp" />
-    <ClCompile Include="src\VelocityComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxBox2d\libs\Box2D\Box2D.h" />
@@ -340,6 +340,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\InputSystem.h" />
     <ClInclude Include="src\LevelEndHandler.h" />
     <ClInclude Include="src\LevelManager.h" />
+    <ClInclude Include="src\PhysicsSystem.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\StickComponent.h" />
@@ -359,7 +360,6 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\TileMatrix.h" />
     <ClInclude Include="src\Textures.h" />
     <ClInclude Include="src\TileTextureComponent.h" />
-    <ClInclude Include="src\VelocityComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

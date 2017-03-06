@@ -14,14 +14,16 @@ TileSystem::TileSystem(const std::map<TileType, std::vector<TileTexture>> & tile
 
 void TileSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
 {
-	if (m_destroyCount == m_tileCount)
-	{
-		events.emit<LevelEndEvent>();
-	}
 }
 
-// on collide update the texture given the map!
+// on block destroyed check if the level is over
+//if (m_destroyCount == m_tileCount)
+//{
+//	events.emit<LevelEndEvent>();
+//}
 
+
+// on collide update the texture given the map!
 //if (m_tileMap.find(tile.type) != m_tileMap.end())
 //{
 //	auto & vec = m_tileMap.at(tile.type);

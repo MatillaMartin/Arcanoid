@@ -205,9 +205,6 @@
     <ClCompile Include="src\PlayerInputComponent.cpp">
       <Filter>src\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\VelocityComponent.cpp">
-      <Filter>src\Components</Filter>
-    </ClCompile>
     <ClCompile Include="src\StickComponent.cpp">
       <Filter>src\Powerup</Filter>
     </ClCompile>
@@ -244,6 +241,7 @@
     <ClCompile Include="src\SpriteRenderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\PhysicsSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -575,9 +573,6 @@
     <ClInclude Include="src\PlayerInputComponent.h">
       <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\VelocityComponent.h">
-      <Filter>src\Components</Filter>
-    </ClInclude>
     <ClInclude Include="src\PowerupSystem.h">
       <Filter>src\Systems</Filter>
     </ClInclude>
@@ -619,6 +614,9 @@
     </ClInclude>
     <ClInclude Include="src\BoxCollisionComponent.h">
       <Filter>src\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicsSystem.h">
+      <Filter>src\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

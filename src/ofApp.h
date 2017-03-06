@@ -4,6 +4,7 @@
 
 #include "LevelManager.h"
 #include "GameTextures.h"
+#include "Keyboard.h"
 
 class ofApp : public ofBaseApp{
 
@@ -29,6 +30,7 @@ private:
 		void onGameEnd();
 
 		GameTextures textures;
+		Keyboard keyboard;
 
 		std::unique_ptr<Renderer> renderer;
 		std::unique_ptr<LevelManager> levels;

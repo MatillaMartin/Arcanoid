@@ -19,7 +19,7 @@ public:
 		unsigned int time;
 		glm::vec2 paddlePosition;
 		float paddleSpeed;
-		float paddleFriction;
+		float paddleFrictionCoeff;
 	};
 
 	class LevelVisuals

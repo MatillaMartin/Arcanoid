@@ -34,6 +34,9 @@ void ofApp::setup(){
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
 	params.paddlePosition = glm::vec2(0.5, 0.9);
+	params.paddleSpeed = 1.0f;
+	params.paddleFrictionCoeff = 2.0f;
+
 	std::vector<Level::LevelParams> paramsVec;
 	paramsVec.push_back(params);
 
@@ -56,6 +59,15 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	for (auto key : keyboard.getKeys())
+	{
+		if (key)
+		{
+			TODO
+
+		}
+	}
+
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
 	levels->update(deltaTime);
 }
@@ -74,12 +86,12 @@ void ofApp::onGameEnd()
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	levels->input(key);
+	keyboard.onKeyPress(key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+	keyboard.onKeyRelease(key);
 }
 
 //--------------------------------------------------------------

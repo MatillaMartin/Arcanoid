@@ -11,7 +11,6 @@ public:
 	struct PaddleParams
 	{
 		float speed;
-		float friction;
 	};
 
 	PaddleControllerComponent(const PaddleParams & params = PaddleParams());

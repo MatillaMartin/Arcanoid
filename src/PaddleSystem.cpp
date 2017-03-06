@@ -8,7 +8,7 @@ PaddleSystem::PaddleSystem()
 
 void PaddleSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
 {
-	entities.each<PhysicsComponent, PaddleControllerComponent>([](Entity & e, PhysicsComponent & physics, PaddleControllerComponent & controller)
+	entities.each<PhysicsComponent, PaddleControllerComponent>([dt](Entity & e, PhysicsComponent & physics, PaddleControllerComponent & controller)
 	{
 		UserCommand command;
 		while (controller.getCommand(command))

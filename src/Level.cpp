@@ -19,6 +19,7 @@
 #include "BallSystem.h"
 #include "InputSystem.h"
 #include "PowerupSystem.h"
+#include "PhysicsSystem.h"
 
 #include "PlayerInputComponent.h"
 
@@ -41,11 +42,12 @@ Level::Level(const LevelParams & params, const LevelVisuals & visuals, std::func
 void Level::setupEntityX()
 {
 	systems.add<InputSystem>();
-	systems.add<TileSystem>(m_visuals.tileMap ,m_params.tiles->count());
+	systems.add<TileSystem>(m_visuals.tileMap, m_params.tiles->count());
 	systems.add<CollisionSystem>();
 	systems.add<PaddleSystem>();
 	systems.add<BallSystem>();
 	systems.add<PowerupSystem>();
+	systems.add<PhysicsSystem>();
 	systems.configure();
 
 	this->events.subscribe<LevelEndEvent>(m_levelEndHandler);
@@ -76,7 +78,7 @@ void Level::createTiles()
 		
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
-		entity.assign<PhysicsComponent>(tilePosition, glm::vec2(), tileSize);
+		entity.assign<PhysicsComponent>(tilePosition, tileSize);
 		entity.assign<BoxCollisionComponent>();
 
 		switch (tiletype)
@@ -106,16 +108,16 @@ void Level::createPaddle()
 {
 	// map position to correct position with respect to layout
 	glm::vec2 paddlePosition = m_visuals.levelRegion.map(m_params.paddlePosition);
+
 	m_paddle = entities.create();
-	m_paddle.assign<PhysicsComponent>(paddlePosition, glm::vec2(), m_visuals.paddleSize);
+	m_paddle.assign<PhysicsComponent>(paddlePosition, m_visuals.paddleSize, glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
 	m_paddle.assign<BoxCollisionComponent>();
 	m_paddle.assign<PaddleTextureComponent>(PaddleTexture::PADDLE);
 	m_paddle.assign<PlayerInputComponent>('a', 'd', 0, 0, ' ');
 
 	PaddleControllerComponent::PaddleParams params;
 	params.speed = m_params.paddleSpeed;
-	params.friction = m_params.paddleFriction;
-	m_paddle.assign<PaddleControllerComponent>();
+	m_paddle.assign<PaddleControllerComponent>(params);
 }
 
 void Level::createBall()
@@ -127,7 +129,7 @@ void Level::createBall()
 	ballPosition.y -= m_visuals.ballSize.y;
 
 	m_ball = entities.create();
-	m_ball.assign<PhysicsComponent>(ballPosition, glm::vec2(), m_visuals.ballSize);
+	m_ball.assign<PhysicsComponent>(ballPosition, m_visuals.ballSize);
 	m_ball.assign<CircleCollisionComponent>();
 	m_ball.assign<BallTextureComponent>(BallTexture::BALL);
 }
@@ -136,11 +138,12 @@ void Level::createBall()
 void Level::update(double delta)
 {
 	systems.update<InputSystem>(delta);
-	systems.update<CollisionSystem>(delta);
 	systems.update<TileSystem>(delta);
 	systems.update<PaddleSystem>(delta);
 	systems.update<BallSystem>(delta);
 	systems.update<PowerupSystem>(delta);
+	systems.update<CollisionSystem>(delta);
+	systems.update<PhysicsSystem>(delta);
 }
 
 void Level::draw(Renderer * renderer)

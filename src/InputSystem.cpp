@@ -18,11 +18,11 @@ void InputSystem::update(EntityManager & entities, EventManager & events, TimeDe
 	{
 		char input = m_input.front();
 		m_input.pop();
-		entities.each<PlayerInputComponent, PaddleControllerComponent>([input](Entity entity, PlayerInputComponent & player, PaddleControllerComponent & paddle)
+		entities.each<PlayerInputComponent, PaddleControllerComponent>([input](Entity & entity, PlayerInputComponent & player, PaddleControllerComponent & paddle)
 		{
 			UserCommand command;
 			// forwarad command to paddle if the player input has a command for that input
-			if (player.getCommand(input, command))
+			if (player.parse(input, command))
 			{
 				paddle.setCommand(command);
 			}
