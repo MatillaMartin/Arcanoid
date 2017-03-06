@@ -23,35 +23,33 @@ void ofApp::setup(){
 
 	levelResolution.y = screenResolution.y;
 	levelResolution.x = levelResolution.y * m_levelAspect;
+	glm::vec2 normResolution = levelResolution / levelResolution.y;
 
 	levelRender.allocate(levelResolution.x, levelResolution.y, GL_RGBA);
 
 	renderer = make_unique<SpriteRenderer>(&textures, levelResolution);
 
-	levelDescriptor.load("level0.png");
 
+	// Level Visuals
+	Level::LevelVisuals visuals;
+	visuals.levelRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
+	visuals.tileMatrixRegion = ofRectangle(0, 0, 1, 0.5);
+	visuals.paddleSize = glm::vec2(0.1, 0.01);
+	visuals.ballSize = glm::vec2(0.01, 0.01);
+	visuals.tileMap[TileType::BASIC] = { TileTexture::BASIC_0 };
+	visuals.tileMap[TileType::STRONG] = { TileTexture::STRONG_0, TileTexture::STRONG_1 };
+
+	// Level descriptor and parameters
+	levelDescriptor.load("level0.png");
 	Level::LevelParams params;
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
 	params.paddlePosition = glm::vec2(0.5, 0.9);
-	params.paddleSpeed = 1.0f;
-	params.paddleFrictionCoeff = 2.0f;
+	params.paddleSpeed = 4.0f;
+	params.paddleFrictionCoeff = 40.0f;
 
 	std::vector<Level::LevelParams> paramsVec;
 	paramsVec.push_back(params);
-
-	glm::vec2 normResolution = levelResolution / levelResolution.y;
-
-	Level::LevelVisuals visuals;
-	visuals.levelRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
-	visuals.tileMatrixRegion = ofRectangle(0, 0, 1, 0.5);
-
-	// fixed size
-	visuals.paddleSize = glm::vec2(0.1, 0.01);
-	visuals.ballSize = glm::vec2(0.01, 0.01);
-
-	visuals.tileMap[TileType::BASIC] = { TextureId::BASIC_0 };
-	visuals.tileMap[TileType::STRONG] = { TextureId::STRONG_0, TextureId::STRONG_1};
 
 	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
 	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd);
@@ -59,14 +57,13 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	//for (auto key : keyboard.getKeys())
-	//{
-	//	if (key)
-	//	{
-	//		TODO
-
-	//	}
-	//}
+	for (auto key : keyboard.getKeys())
+	{
+		if (key.second)
+		{
+			levels->input(key.first);
+		}
+	}
 
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
 	levels->update(deltaTime);
@@ -80,18 +77,8 @@ void ofApp::draw(){
 
 void ofApp::onGameEnd()
 {
-	// credits or close..
+	// credits or close.. or go back to menu
 	ofExit();
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-	keyboard.onKeyPress(key);
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-	keyboard.onKeyRelease(key);
 }
 
 //--------------------------------------------------------------

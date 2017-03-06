@@ -1,23 +1,23 @@
 #include "Keyboard.h"
+#include "ofEvent.h"
 
 Keyboard::Keyboard()
-	:
-	m_keys(255)
 {
-	//std::fill_n(m_keys, 255, false);
+	ofAddListener(ofEvents().keyPressed, this, &Keyboard::onKeyPress);
+	ofAddListener(ofEvents().keyReleased, this, &Keyboard::onKeyRelease);
 }
 
-void Keyboard::onKeyPress(char key)
+void Keyboard::onKeyPress(ofKeyEventArgs & key)
 {
-	m_keys[key] = true;
+	m_keys[(char)key.key] = true;
 }
 
-void Keyboard::onKeyRelease(char key)
+void Keyboard::onKeyRelease(ofKeyEventArgs & key)
 {
-	m_keys[key] = false;
+	m_keys[(char)key.key] = false;
 }
 
-const std::vector<bool> Keyboard::getKeys()
+const std::map<char, bool> & Keyboard::getKeys()
 {
 	return m_keys;
 }

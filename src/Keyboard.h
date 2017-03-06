@@ -1,15 +1,16 @@
 #pragma once
 
 #include <vector>
-
+#include "ofEvents.h"
 class Keyboard
 {
 public:
 	Keyboard();
-	void onKeyPress(char key);
-	void onKeyRelease(char key);
+	const std::map<char, bool> & getKeys();
 
-	const std::vector<bool> getKeys();
+private:
+	void onKeyPress(ofKeyEventArgs & key);
+	void onKeyRelease(ofKeyEventArgs & key);
 
-	std::vector<bool> m_keys;
+	std::map<char, bool> m_keys;
 };

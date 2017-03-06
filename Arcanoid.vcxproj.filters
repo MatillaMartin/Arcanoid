@@ -259,6 +259,9 @@
     <ClCompile Include="src\TypeComponent.cpp">
       <Filter>src\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\PhysicsSystem.cpp">
+      <Filter>src\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
