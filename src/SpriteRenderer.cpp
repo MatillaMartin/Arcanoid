@@ -1,4 +1,5 @@
 #include "SpriteRenderer.h"
+#include "ofGraphics.h"
 
 SpriteRenderer::SpriteRenderer(GameTextures * textures, const glm::vec2 & resolution)
 	:
@@ -51,5 +52,9 @@ void SpriteRenderer::drawBall(const glm::vec2 & position, const glm::vec2 & size
 void SpriteRenderer::drawPaddle(const glm::vec2 & position, const glm::vec2 & size, PaddleTexture tex)
 {
 	drawSprite(position, size, m_textures->getTexture(tex));
+}
 
+void SpriteRenderer::drawBackground(LevelTexture tex)
+{
+	drawSprite(glm::vec2(0,0), glm::vec2(1,1), m_textures->getTexture(tex));
 }

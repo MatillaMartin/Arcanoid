@@ -12,7 +12,6 @@ ofApp::ofApp()
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	ofDisableArbTex();
 	ofLogToConsole();
 	ofSetLogLevel(ofLogLevel::OF_LOG_VERBOSE);
 	ofSetFrameRate(60.0f);
@@ -63,10 +62,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofPushStyle();
-		ofNoFill();
-		ofDrawRectangle(0, 0, 1100, 500);
-	ofPopStyle();
+	ofClear(0);
 	levels->draw(renderer.get());
 }
 

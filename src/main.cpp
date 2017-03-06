@@ -3,6 +3,7 @@
 
 //========================================================================
 int main( ){
+	ofDisableArbTex();
 
 	ofGLWindowSettings settings;
 	settings.setGLVersion(3, 2);

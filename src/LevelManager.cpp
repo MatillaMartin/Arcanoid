@@ -21,6 +21,7 @@ void LevelManager::update(double delta)
 void LevelManager::draw(Renderer * renderer)
 {
 	// draw current level identifications etc.
+	renderer->drawBackground(LevelTexture::LEVEL_0);
 
 	// draw level itself
 	m_currentLevel->draw(renderer);

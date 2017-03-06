@@ -11,6 +11,8 @@ GameTextures::GameTextures()
 	
 	paddle[PaddleTexture::PADDLE].load("paddle.png");
 	ball[BallTexture::BALL].load("ball.png");
+
+	level[LevelTexture::LEVEL_0].load("level_background.png");
 }
 
 const ofTexture & GameTextures::getTexture(TileTexture texture)
@@ -36,6 +38,15 @@ const ofTexture & GameTextures::getTexture(BallTexture texture)
 	if (ball.find(texture) != ball.end())
 	{
 		return ball.at(texture).getTexture();
+	}
+	return notFound.getTexture();
+}
+
+const ofTexture & GameTextures::getTexture(LevelTexture texture)
+{
+	if (level.find(texture) != level.end())
+	{
+		return level.at(texture).getTexture();
 	}
 	return notFound.getTexture();
 }

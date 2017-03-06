@@ -232,9 +232,6 @@
     <ClCompile Include="src\GameTextures.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer.cpp">
-      <Filter>src\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="src\CircleCollisionComponent.cpp">
       <Filter>src\Collision</Filter>
     </ClCompile>

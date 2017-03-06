@@ -246,7 +246,6 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\InputSystem.cpp" />
     <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\PaddleControllerComponent.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
