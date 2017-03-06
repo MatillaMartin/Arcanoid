@@ -242,6 +242,9 @@
       <Filter>src\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\PhysicsSystem.cpp" />
+    <ClCompile Include="src\Keyboard.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -617,6 +620,9 @@
     </ClInclude>
     <ClInclude Include="src\PhysicsSystem.h">
       <Filter>src\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Keyboard.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

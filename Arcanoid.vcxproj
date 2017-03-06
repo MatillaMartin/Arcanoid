@@ -244,6 +244,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\CollisionSystem.cpp" />
     <ClCompile Include="src\GameTextures.cpp" />
     <ClCompile Include="src\InputSystem.cpp" />
+    <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\PaddleControllerComponent.cpp" />
     <ClCompile Include="src\PhysicsSystem.cpp" />
@@ -338,6 +339,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\GameTextures.h" />
     <ClInclude Include="src\HitInfo.h" />
     <ClInclude Include="src\InputSystem.h" />
+    <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\LevelEndHandler.h" />
     <ClInclude Include="src\LevelManager.h" />
     <ClInclude Include="src\PhysicsSystem.h" />
