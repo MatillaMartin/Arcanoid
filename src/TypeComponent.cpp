@@ -1,0 +1,2 @@
+#include "TypeComponent.h"
+

@@ -7,11 +7,12 @@ class MainMenu : public ofxEntityX
 {
 public:
 	MainMenu(std::function<void()> onPlay);
-	void update();
+	void update(float delta);
 	void draw();
 
 private:
 	void setupEntityX();
+	void setupMenu();
 
 	PlayEventHandler m_playEventHandler;
 };

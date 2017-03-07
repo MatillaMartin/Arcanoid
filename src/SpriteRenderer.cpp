@@ -39,22 +39,7 @@ void SpriteRenderer::drawSprite(const glm::vec2 & position, const glm::vec2 & si
 	m_shader.end();
 }
 
-void SpriteRenderer::drawTile(const glm::vec2 & position, const glm::vec2 & size, TileTexture tex)
+void SpriteRenderer::drawSprite(const glm::vec2 & position, const glm::vec2 & size, TextureId tex)
 {
 	drawSprite(position, size, m_textures->getTexture(tex));
-}
-
-void SpriteRenderer::drawBall(const glm::vec2 & position, const glm::vec2 & size, BallTexture tex)
-{
-	drawSprite(position, size, m_textures->getTexture(tex));
-}
-
-void SpriteRenderer::drawPaddle(const glm::vec2 & position, const glm::vec2 & size, PaddleTexture tex)
-{
-	drawSprite(position, size, m_textures->getTexture(tex));
-}
-
-void SpriteRenderer::drawBackground(LevelTexture tex)
-{
-	drawSprite(glm::vec2(0,0), glm::vec2(1,1), m_textures->getTexture(tex));
 }

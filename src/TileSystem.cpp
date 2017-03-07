@@ -4,7 +4,7 @@
 #include "BoxCollisionComponent.h"
 #include "LevelEvents.h"
 
-TileSystem::TileSystem(const std::map<TileType, std::vector<TileTexture>> & tileMap, unsigned int tileCount)
+TileSystem::TileSystem(const std::map<TileType, std::vector<TextureId>> & tileMap, unsigned int tileCount)
 	:
 	m_tileCount(tileCount),
 	m_destroyCount(0),

@@ -1,9 +1,8 @@
 #pragma once
 
-enum TileTexture { NONE, BASIC_0, STRONG_1, STRONG_0 };
-
-enum BallTexture { BALL };
-
-enum PaddleTexture { PADDLE };
-
-enum LevelTexture { LEVEL_0 };
+enum TextureId {	NONE, 
+					BASIC_0, STRONG_1, STRONG_0, 
+					BALL, 
+					PADDLE, 
+					LEVEL_0, 
+					PLAY, PLAY_SEL, CREDITS, CREDITS_SEL, EXIT, EXIT_SEL };

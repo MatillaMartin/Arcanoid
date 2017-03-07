@@ -2,7 +2,7 @@
 
 #include "ofxEntityX.h";
 
-enum MenuItem { NONE, PLAY, CREDITS, EXIT };
+enum MenuItem { MENU_NONE, MENU_PLAY, MENU_CREDITS, MENU_EXIT };
 
 class UseEvent
 {

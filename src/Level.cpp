@@ -4,14 +4,15 @@
 #include "PhysicsComponent.h"
 #include "HitsComponent.h"
 
-#include "TileTextureComponent.h"
-#include "PaddleTextureComponent.h"
-#include "BallTextureComponent.h"
+#include "SpriteComponent.h"
+#include "TypeComponent.h"
 
 #include "BoxCollisionComponent.h"
 #include "CircleCollisionComponent.h"
 
 #include "PaddleControllerComponent.h"
+#include "CommandQueueComponent.h"
+#include "KeyboardInputComponent.h"
 
 #include "TileSystem.h"
 #include "CollisionSystem.h"
@@ -21,8 +22,6 @@
 #include "PowerupSystem.h"
 #include "PhysicsSystem.h"
 
-#include "CommandQueueComponent.h"
-#include "KeyboardInputComponent.h"
 
 #include "LevelEvents.h"
 
@@ -89,13 +88,15 @@ void Level::createTiles()
 			break;
 		case TileMatrix::BASIC:
 		{
-			entity.assign<TileTextureComponent>(TileType::BASIC, TileTexture::BASIC_0);
+			entity.assign<SpriteComponent>(TextureId::BASIC_0);
+			entity.assign<TypeComponent<TileType>>(TileType::BASIC);
 			entity.assign<HitsComponent>(1);
 			break;
 		}
 		case TileMatrix::STRONG:
 		{
-			entity.assign<TileTextureComponent>(TileType::STRONG, TileTexture::STRONG_1);
+			entity.assign<SpriteComponent>(TextureId::STRONG_1);
+			entity.assign<TypeComponent<TileType>>(TileType::STRONG);
 			entity.assign<HitsComponent>(2);
 			break;
 		}
@@ -115,7 +116,7 @@ void Level::createPaddle()
 	m_paddle = entities.create();
 	m_paddle.assign<PhysicsComponent>(paddlePosition, m_visuals.paddleSize, glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
 	m_paddle.assign<BoxCollisionComponent>();
-	m_paddle.assign<PaddleTextureComponent>(PaddleTexture::PADDLE);
+	m_paddle.assign<SpriteComponent>(TextureId::PADDLE);
 	m_paddle.assign<KeyboardInputComponent>('a', 'd', 0, 0, ' ');
 	m_paddle.assign<CommandQueueComponent>();
 	m_paddle.assign<PaddleControllerComponent>(params);
@@ -132,7 +133,7 @@ void Level::createBall()
 	m_ball = entities.create();
 	m_ball.assign<PhysicsComponent>(ballPosition, m_visuals.ballSize);
 	m_ball.assign<CircleCollisionComponent>();
-	m_ball.assign<BallTextureComponent>(BallTexture::BALL);
+	m_ball.assign<SpriteComponent>(TextureId::BALL);
 }
 
 
@@ -149,19 +150,12 @@ void Level::update(double delta)
 
 void Level::draw(Renderer * renderer)
 {
-	entities.each<PhysicsComponent, TileTextureComponent>(
-		[renderer](Entity entity, PhysicsComponent & physics, TileTextureComponent & visual)
+	// draw all sprites
+	entities.each<PhysicsComponent, SpriteComponent>(
+		[renderer](Entity entity, PhysicsComponent & physics, SpriteComponent & visual)
 	{
-		renderer->drawTile(physics.position, physics.size, visual.texture);
+		renderer->drawSprite(physics.position, physics.size, visual.texture);
 	});
-
-	auto paddlePhysics = m_paddle.component<PhysicsComponent>();
-	auto paddleTexture = m_paddle.component<PaddleTextureComponent>();
-	renderer->drawPaddle(paddlePhysics->position, paddlePhysics->size, paddleTexture->texture);
-
-	auto ballPhysics = m_ball.component<PhysicsComponent>();
-	auto ballTexture = m_ball.component<BallTextureComponent>();
-	renderer->drawBall(ballPhysics->position, ballPhysics->size, ballTexture->texture);
 }
 
 void Level::input(char input)

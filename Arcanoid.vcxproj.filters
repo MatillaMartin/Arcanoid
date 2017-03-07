@@ -8,13 +8,13 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Level.cpp">
-      <Filter>src\Level</Filter>
+      <Filter>src\Game\Level</Filter>
     </ClCompile>
     <ClCompile Include="src\DropComponent.cpp">
-      <Filter>src\Components</Filter>
+      <Filter>src\Game\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\TileMatrix.cpp">
-      <Filter>src\Level</Filter>
+      <Filter>src\Game\Level</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2d.cpp">
       <Filter>addons\ofxBox2d\src</Filter>
@@ -185,88 +185,84 @@
       <Filter>addons\ofxEntityX\src</Filter>
     </ClCompile>
     <ClCompile Include="src\TileSystem.cpp">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\CollisionSystem.cpp">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\LevelManager.cpp">
-      <Filter>src\LevelManager</Filter>
+      <Filter>src\Game\LevelManager</Filter>
     </ClCompile>
     <ClCompile Include="src\PaddleSystem.cpp">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\PaddleControllerComponent.cpp">
-      <Filter>src\Paddle</Filter>
+      <Filter>src\Game\Paddle</Filter>
     </ClCompile>
     <ClCompile Include="src\InputSystem.cpp">
-      <Filter>src\Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PlayerInputComponent.cpp">
-      <Filter>src\Core</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\StickComponent.cpp">
-      <Filter>src\Powerup</Filter>
+      <Filter>src\Game\Powerup</Filter>
     </ClCompile>
     <ClCompile Include="src\BallSystem.cpp">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\PhysicsComponent.cpp">
-      <Filter>src\Components</Filter>
+      <Filter>src\Game\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\HitsComponent.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TileTextureComponent.cpp">
-      <Filter>src\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PaddleTextureComponent.cpp">
-      <Filter>src\Paddle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\BallTextureComponent.cpp">
-      <Filter>src\Ball</Filter>
+      <Filter>src\Game\Tile</Filter>
     </ClCompile>
     <ClCompile Include="src\GameTextures.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\CircleCollisionComponent.cpp">
-      <Filter>src\Collision</Filter>
+      <Filter>src\Game\Collision</Filter>
     </ClCompile>
     <ClCompile Include="src\BoxCollisionComponent.cpp">
-      <Filter>src\Collision</Filter>
+      <Filter>src\Game\Collision</Filter>
     </ClCompile>
     <ClCompile Include="src\PowerupSystem.cpp">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\SpriteRenderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\PhysicsSystem.cpp" />
     <ClCompile Include="src\Keyboard.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SelectComponent.cpp">
+      <Filter>src\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SelectSystem.cpp">
+      <Filter>src\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CommandQueueComponent.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyboardInputComponent.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UseComponent.cpp">
+      <Filter>src\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MainMenu.cpp">
+      <Filter>src\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsSystem.cpp">
+      <Filter>src\Game\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpriteComponent.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TypeComponent.cpp">
+      <Filter>src\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Ball">
-      <UniqueIdentifier>{185cdd10-613a-4453-b787-67f1857ca3ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Powerup">
-      <UniqueIdentifier>{903c4020-b144-4bec-bbcc-c3e3bcbba447}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Level">
-      <UniqueIdentifier>{7672bd5f-9b4b-4c77-801c-4c0961ca20f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Tile">
-      <UniqueIdentifier>{40c01864-95b6-44d7-942a-67fc0a27b5c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Systems">
-      <UniqueIdentifier>{b751f368-abd3-4d2c-93ec-270ceb8f7ce5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Core">
-      <UniqueIdentifier>{25f68240-be9e-4ab5-b45c-76cf1de41d93}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{bbaedacc-7dbd-40e0-af0e-8376b235ad99}</UniqueIdentifier>
@@ -313,23 +309,47 @@
     <Filter Include="addons\ofxEntityX\src">
       <UniqueIdentifier>{cc4eb0c8-fa40-4925-ba8d-ab1c71c4d535}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Components">
-      <UniqueIdentifier>{22535c06-ce00-485d-98e9-8aad0918d78b}</UniqueIdentifier>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{f69a8b14-45a0-4003-b6b9-55cdf2b6efb8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Paddle">
+    <Filter Include="src\Game\Tile">
+      <UniqueIdentifier>{40c01864-95b6-44d7-942a-67fc0a27b5c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Paddle">
       <UniqueIdentifier>{cca2756d-bf59-4ab7-bab6-56a9ed5605b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Events">
+    <Filter Include="src\Game\Powerup">
+      <UniqueIdentifier>{903c4020-b144-4bec-bbcc-c3e3bcbba447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Systems">
+      <UniqueIdentifier>{b751f368-abd3-4d2c-93ec-270ceb8f7ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\LevelManager">
+      <UniqueIdentifier>{e73ff4fb-0713-4d83-b0df-0e9d6a76af51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Ball">
+      <UniqueIdentifier>{185cdd10-613a-4453-b787-67f1857ca3ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Collision">
+      <UniqueIdentifier>{6fbde73e-ae62-4679-8c46-3f16df38bf76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Components">
+      <UniqueIdentifier>{22535c06-ce00-485d-98e9-8aad0918d78b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Events">
       <UniqueIdentifier>{3c44e5ae-164c-4062-8307-c19505175c7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\LevelManager">
-      <UniqueIdentifier>{e73ff4fb-0713-4d83-b0df-0e9d6a76af51}</UniqueIdentifier>
+    <Filter Include="src\Game\Level">
+      <UniqueIdentifier>{7672bd5f-9b4b-4c77-801c-4c0961ca20f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Menus">
+      <UniqueIdentifier>{0928687c-7056-445e-9e28-13d127238362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{25f68240-be9e-4ab5-b45c-76cf1de41d93}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Rendering">
       <UniqueIdentifier>{616f1780-7119-40f1-9d0c-70dbf2bffed5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Collision">
-      <UniqueIdentifier>{6fbde73e-ae62-4679-8c46-3f16df38bf76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -337,22 +357,19 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Level.h">
-      <Filter>src\Level</Filter>
+      <Filter>src\Game\Level</Filter>
     </ClInclude>
     <ClInclude Include="src\DropComponent.h">
-      <Filter>src\Components</Filter>
+      <Filter>src\Game\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\TileMatrix.h">
-      <Filter>src\Level</Filter>
+      <Filter>src\Game\Level</Filter>
     </ClInclude>
     <ClInclude Include="src\BallSystem.h">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\TileSystem.h">
-      <Filter>src\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HitInfo.h">
-      <Filter>src\Core</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2d.h">
       <Filter>addons\ofxBox2d\src</Filter>
@@ -550,61 +567,43 @@
       <Filter>addons\ofxEntityX\src</Filter>
     </ClInclude>
     <ClInclude Include="src\PaddleSystem.h">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\CollisionSystem.h">
-      <Filter>src\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events.h">
-      <Filter>src\Events</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\LevelEndHandler.h">
-      <Filter>src\Level</Filter>
+      <Filter>src\Game\Level</Filter>
     </ClInclude>
     <ClInclude Include="src\LevelManager.h">
-      <Filter>src\LevelManager</Filter>
+      <Filter>src\Game\LevelManager</Filter>
     </ClInclude>
     <ClInclude Include="src\PaddleControllerComponent.h">
-      <Filter>src\Paddle</Filter>
+      <Filter>src\Game\Paddle</Filter>
     </ClInclude>
     <ClInclude Include="src\InputSystem.h">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\UserCommand.h">
       <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\PlayerInputComponent.h">
-      <Filter>src\Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\PowerupSystem.h">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\StickComponent.h">
-      <Filter>src\Powerup</Filter>
+      <Filter>src\Game\Powerup</Filter>
     </ClInclude>
     <ClInclude Include="src\PhysicsComponent.h">
-      <Filter>src\Components</Filter>
+      <Filter>src\Game\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\HitsComponent.h">
-      <Filter>src\Tile</Filter>
+      <Filter>src\Game\Tile</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer.h">
       <Filter>src\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\Textures.h">
       <Filter>src\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TileType.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TileTextureComponent.h">
-      <Filter>src\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PaddleTextureComponent.h">
-      <Filter>src\Paddle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\BallTextureComponent.h">
-      <Filter>src\Ball</Filter>
     </ClInclude>
     <ClInclude Include="src\GameTextures.h">
       <Filter>src\Rendering</Filter>
@@ -613,16 +612,58 @@
       <Filter>src\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\CircleCollisionComponent.h">
-      <Filter>src\Collision</Filter>
+      <Filter>src\Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="src\BoxCollisionComponent.h">
-      <Filter>src\Collision</Filter>
+      <Filter>src\Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="src\PhysicsSystem.h">
-      <Filter>src\Systems</Filter>
+      <Filter>src\Game\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\Keyboard.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MainMenu.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SelectComponent.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LevelEvents.h">
+      <Filter>src\Game\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MenuEvents.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SelectSystem.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CommandQueueComponent.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KeyboardInputComponent.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HitInfo.h">
+      <Filter>src\Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UseComponent.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayEventHandler.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpriteComponent.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TypeComponent.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileType.h">
+      <Filter>src\Game\Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -630,10 +671,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\data\shader\TileShader.frag">
-      <Filter>src\Tile</Filter>
+      <Filter>src\Game\Tile</Filter>
     </None>
     <None Include="bin\data\shader\TileShader.vert">
-      <Filter>src\Tile</Filter>
+      <Filter>src\Game\Tile</Filter>
     </None>
     <None Include="bin\data\shader\SpriteShader.frag">
       <Filter>src\Rendering</Filter>

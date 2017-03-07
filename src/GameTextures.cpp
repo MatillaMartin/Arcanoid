@@ -4,49 +4,30 @@ GameTextures::GameTextures()
 {
 	notFound.allocate(1, 1, ofImageType::OF_IMAGE_COLOR_ALPHA);
 
-	tiles[TileTexture::NONE].allocate(1, 1, ofImageType::OF_IMAGE_COLOR_ALPHA);
-	tiles[TileTexture::BASIC_0].load("basicTile.png");
-	tiles[TileTexture::STRONG_0].load("strongTile_0.png");
-	tiles[TileTexture::STRONG_1].load("strongTile_1.png");
+	textures[NONE].allocate(1, 1, ofImageType::OF_IMAGE_COLOR_ALPHA);
+	textures[BASIC_0].load("basicTile.png");
+	textures[STRONG_0].load("strongTile_0.png");
+	textures[STRONG_1].load("strongTile_1.png");
 	
-	paddle[PaddleTexture::PADDLE].load("paddle.png");
-	ball[BallTexture::BALL].load("ball.png");
+	textures[PADDLE].load("paddle.png");
+	textures[BALL].load("ball.png");
 
-	level[LevelTexture::LEVEL_0].load("level_background.png");
+	textures[LEVEL_0].load("level_background.png");
+
+	textures[NONE].allocate(1, 1, ofImageType::OF_IMAGE_COLOR_ALPHA);
+	textures[PLAY].load("play.png");
+	textures[PLAY_SEL].load("play_sel.png");
+	textures[CREDITS].load("credits.png");
+	textures[CREDITS_SEL].load("credits_sel.png");
+	textures[EXIT].load("exit.png");
+	textures[EXIT_SEL].load("exit_sel.png");
 }
 
-const ofTexture & GameTextures::getTexture(TileTexture texture)
+const ofTexture & GameTextures::getTexture(TextureId texture)
 {
-	if(tiles.find(texture) != tiles.end())
+	if(textures.find(texture) != textures.end())
 	{
-		return tiles.at(texture).getTexture();
-	}
-	return notFound.getTexture();
-}
-
-const ofTexture & GameTextures::getTexture(PaddleTexture texture)
-{
-	if (paddle.find(texture) != paddle.end())
-	{
-		return paddle.at(texture).getTexture();
-	}
-	return notFound.getTexture();
-}
-
-const ofTexture & GameTextures::getTexture(BallTexture texture)
-{
-	if (ball.find(texture) != ball.end())
-	{
-		return ball.at(texture).getTexture();
-	}
-	return notFound.getTexture();
-}
-
-const ofTexture & GameTextures::getTexture(LevelTexture texture)
-{
-	if (level.find(texture) != level.end())
-	{
-		return level.at(texture).getTexture();
+		return textures.at(texture).getTexture();
 	}
 	return notFound.getTexture();
 }

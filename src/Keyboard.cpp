@@ -4,7 +4,7 @@ Keyboard::Keyboard()
 	:
 	m_keys(255)
 {
-	std::fill_n(m_keys, 255, false);
+	//std::fill_n(m_keys, 255, false);
 }
 
 void Keyboard::onKeyPress(char key)

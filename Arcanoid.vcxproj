@@ -238,21 +238,23 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
     <ClCompile Include="src\BallSystem.cpp" />
-    <ClCompile Include="src\BallTextureComponent.cpp" />
     <ClCompile Include="src\BoxCollisionComponent.cpp" />
     <ClCompile Include="src\CircleCollisionComponent.cpp" />
     <ClCompile Include="src\CollisionSystem.cpp" />
+    <ClCompile Include="src\CommandQueueComponent.cpp" />
     <ClCompile Include="src\GameTextures.cpp" />
     <ClCompile Include="src\InputSystem.cpp" />
     <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\LevelManager.cpp" />
+    <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\PaddleControllerComponent.cpp" />
     <ClCompile Include="src\PhysicsSystem.cpp" />
+    <ClCompile Include="src\SelectComponent.cpp" />
+    <ClCompile Include="src\SelectSystem.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
-    <ClCompile Include="src\PaddleTextureComponent.cpp" />
-    <ClCompile Include="src\PlayerInputComponent.cpp" />
+    <ClCompile Include="src\KeyboardInputComponent.cpp" />
     <ClCompile Include="src\PhysicsComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
     <ClCompile Include="src\Level.cpp" />
@@ -262,7 +264,9 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\PowerupSystem.cpp" />
     <ClCompile Include="src\TileMatrix.cpp" />
     <ClCompile Include="src\TileSystem.cpp" />
-    <ClCompile Include="src\TileTextureComponent.cpp" />
+    <ClCompile Include="src\SpriteComponent.cpp" />
+    <ClCompile Include="src\TypeComponent.cpp" />
+    <ClCompile Include="src\UseComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxBox2d\libs\Box2D\Box2D.h" />
@@ -331,28 +335,35 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
     <ClInclude Include="src\BallSystem.h" />
-    <ClInclude Include="src\BallTextureComponent.h" />
     <ClInclude Include="src\BoxCollisionComponent.h" />
     <ClInclude Include="src\CircleCollisionComponent.h" />
+    <ClInclude Include="src\CommandQueueComponent.h" />
+    <ClInclude Include="src\MenuEvents.h" />
+    <ClInclude Include="src\PlayEventHandler.h" />
+    <ClInclude Include="src\SelectComponent.h" />
+    <ClInclude Include="src\SelectSystem.h" />
     <ClInclude Include="src\CollisionSystem.h" />
-    <ClInclude Include="src\Events.h" />
+    <ClInclude Include="src\LevelEvents.h" />
     <ClInclude Include="src\GameTextures.h" />
     <ClInclude Include="src\HitInfo.h" />
     <ClInclude Include="src\InputSystem.h" />
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\LevelEndHandler.h" />
     <ClInclude Include="src\LevelManager.h" />
+    <ClInclude Include="src\MainMenu.h" />
+    <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\PhysicsSystem.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\StickComponent.h" />
-    <ClInclude Include="src\PlayerInputComponent.h" />
+    <ClInclude Include="src\KeyboardInputComponent.h" />
     <ClInclude Include="src\PowerupSystem.h" />
     <ClInclude Include="src\TileType.h" />
+    <ClInclude Include="src\TypeComponent.h" />
+    <ClInclude Include="src\UseComponent.h" />
     <ClInclude Include="src\UserCommand.h" />
     <ClInclude Include="src\PaddleControllerComponent.h" />
     <ClInclude Include="src\PaddleSystem.h" />
-    <ClInclude Include="src\PaddleTextureComponent.h" />
     <ClInclude Include="src\PhysicsComponent.h" />
     <ClInclude Include="src\TileSystem.h" />
     <ClInclude Include="src\DropComponent.h" />
@@ -361,7 +372,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\TileMatrix.h" />
     <ClInclude Include="src\Textures.h" />
-    <ClInclude Include="src\TileTextureComponent.h" />
+    <ClInclude Include="src\SpriteComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

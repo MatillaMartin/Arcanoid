@@ -5,7 +5,7 @@
 #include <queue>
 
 
-class CommandQueueComponent : public System<CommandQueueComponent>
+class CommandQueueComponent : public Component<CommandQueueComponent>
 {
 public:
 

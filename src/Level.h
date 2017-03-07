@@ -34,7 +34,7 @@ public:
 		glm::vec2 ballSize;
 
 		// map defining tile transformations
-		std::map<TileType, std::vector<TileTexture>> tileMap;
+		std::map<TileType, std::vector<TextureId>> tileMap;
 	};
 
 	Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd);

@@ -2,7 +2,7 @@
 
 #include "ofxEntityX.h"
 #include "ofLog.h"
-
+#include "MenuEvents.h"
 
 class PlayEventHandler : public Receiver<PlayEventHandler>
 {
@@ -12,7 +12,7 @@ public:
 		c_onPlay(onPlay)
 	{}
 
-	void receive(const PlayEventHandler &e)
+	void receive(const PlayEvent &e)
 	{
 		if (c_onPlay)
 		{
