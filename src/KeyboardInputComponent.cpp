@@ -1,6 +1,6 @@
-#include "PlayerInputComponent.h"
+#include "KeyboardInputComponent.h"
 
-PlayerInputComponent::PlayerInputComponent(char left, char right, char up, char down, char use)
+KeyboardInputComponent::KeyboardInputComponent(char left, char right, char up, char down, char use)
 	:
 	m_left(left),
 	m_right(right),
@@ -10,7 +10,7 @@ PlayerInputComponent::PlayerInputComponent(char left, char right, char up, char 
 {
 }
 
-bool PlayerInputComponent::parse(char input, UserCommand & command)
+bool KeyboardInputComponent::parse(char input, UserCommand & command)
 {
 	if (input == m_left)
 	{

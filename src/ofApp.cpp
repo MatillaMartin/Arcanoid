@@ -59,14 +59,14 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	for (auto key : keyboard.getKeys())
-	{
-		if (key)
-		{
-			TODO
+	//for (auto key : keyboard.getKeys())
+	//{
+	//	if (key)
+	//	{
+	//		TODO
 
-		}
-	}
+	//	}
+	//}
 
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
 	levels->update(deltaTime);

@@ -2,7 +2,7 @@
 
 #include "HitsComponent.h"
 #include "BoxCollisionComponent.h"
-#include "Events.h"
+#include "LevelEvents.h"
 
 TileSystem::TileSystem(const std::map<TileType, std::vector<TileTexture>> & tileMap, unsigned int tileCount)
 	:

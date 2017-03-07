@@ -21,9 +21,10 @@
 #include "PowerupSystem.h"
 #include "PhysicsSystem.h"
 
-#include "PlayerInputComponent.h"
+#include "CommandQueueComponent.h"
+#include "KeyboardInputComponent.h"
 
-#include "Events.h"
+#include "LevelEvents.h"
 
 #include "ofGraphics.h"
 
@@ -108,15 +109,15 @@ void Level::createPaddle()
 {
 	// map position to correct position with respect to layout
 	glm::vec2 paddlePosition = m_visuals.levelRegion.map(m_params.paddlePosition);
+	PaddleControllerComponent::PaddleParams params;
+	params.speed = m_params.paddleSpeed;
 
 	m_paddle = entities.create();
 	m_paddle.assign<PhysicsComponent>(paddlePosition, m_visuals.paddleSize, glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
 	m_paddle.assign<BoxCollisionComponent>();
 	m_paddle.assign<PaddleTextureComponent>(PaddleTexture::PADDLE);
-	m_paddle.assign<PlayerInputComponent>('a', 'd', 0, 0, ' ');
-
-	PaddleControllerComponent::PaddleParams params;
-	params.speed = m_params.paddleSpeed;
+	m_paddle.assign<KeyboardInputComponent>('a', 'd', 0, 0, ' ');
+	m_paddle.assign<CommandQueueComponent>();
 	m_paddle.assign<PaddleControllerComponent>(params);
 }
 

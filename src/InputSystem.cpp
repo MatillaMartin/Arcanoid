@@ -1,7 +1,7 @@
 #include "InputSystem.h"
 
-#include "PlayerInputComponent.h"
-#include "PaddleControllerComponent.h"
+#include "KeyboardInputComponent.h"
+#include "CommandQueueComponent.h"
 
 InputSystem::InputSystem()
 {
@@ -18,16 +18,14 @@ void InputSystem::update(EntityManager & entities, EventManager & events, TimeDe
 	{
 		char input = m_input.front();
 		m_input.pop();
-		entities.each<PlayerInputComponent, PaddleControllerComponent>([input](Entity & entity, PlayerInputComponent & player, PaddleControllerComponent & paddle)
+		entities.each<KeyboardInputComponent, CommandQueueComponent>([input](Entity & entity, KeyboardInputComponent & keyboard, CommandQueueComponent & commands)
 		{
 			UserCommand command;
-			// forwarad command to paddle if the player input has a command for that input
-			if (player.parse(input, command))
+			// forward command to queue if keyboard input component has a command for that input
+			if (keyboard.parse(input, command))
 			{
-				paddle.setCommand(command);
+				commands.setCommand(command);
 			}
 		});
-
-		// if there are more entities that require user input then update them too (menu?)
 	}
 }

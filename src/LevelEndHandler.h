@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Events.h"
+#include "LevelEvents.h"
 #include "ofxEntityX.h"
 
 class LevelEndHandler : public Receiver<LevelEndEvent>

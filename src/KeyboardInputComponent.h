@@ -3,10 +3,10 @@
 #include "ofxEntityX.h"
 #include "UserCommand.h"
 
-class PlayerInputComponent : public Component<PlayerInputComponent>
+class KeyboardInputComponent : public Component<KeyboardInputComponent>
 {
 public:
-	PlayerInputComponent(char left, char right, char up, char down, char use);
+	KeyboardInputComponent(char left, char right, char up, char down, char use);
 
 	bool parse(char input, UserCommand & command);
 
@@ -16,4 +16,5 @@ private:
 	char m_up; 
 	char m_down;
 	char m_use;
+
 };
