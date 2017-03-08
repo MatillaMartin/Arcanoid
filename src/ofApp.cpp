@@ -6,7 +6,8 @@
 
 ofApp::ofApp()
 	:
-	m_levelAspect(1)
+	m_levelAspect(1),
+	m_screen(nullptr)
 {
 }
 
@@ -28,6 +29,24 @@ void ofApp::setup(){
 	levelRender.allocate(levelResolution.x, levelResolution.y, GL_RGBA);
 
 	renderer = make_unique<SpriteRenderer>(&textures, levelResolution);
+
+
+	// Main Menu
+	MainMenu::Visuals mainMenuVisuals;
+	mainMenuVisuals.menuRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
+	mainMenuVisuals.playRegion = ofRectangle(0.2, 0.1, 0.6, 0.2);
+	mainMenuVisuals.creditsRegion = ofRectangle(0.2, 0.4, 0.6, 0.2);
+	mainMenuVisuals.exitRegion = ofRectangle(0.2, 0.7, 0.6, 0.2);
+	mainMenuVisuals.menuItemMap[MenuItem::MENU_PLAY] = { TextureId::PLAY, TextureId::PLAY_SEL };
+	mainMenuVisuals.menuItemMap[MenuItem::MENU_CREDITS] = { TextureId::CREDITS, TextureId::CREDITS_SEL };
+	mainMenuVisuals.menuItemMap[MenuItem::MENU_EXIT] = { TextureId::EXIT, TextureId::EXIT_SEL };
+	mainMenuVisuals.menuItemMap[MenuItem::MENU_NONE] = { TextureId::NONE, TextureId::NONE };
+
+	MainMenu::Callbacks mainMenuCallbacks;
+	mainMenuCallbacks.onPlay = std::bind(&ofApp::onPlay, this);
+	mainMenuCallbacks.onCredits = std::bind(&ofApp::onCredits, this);
+	mainMenuCallbacks.onExit = std::bind(&ofApp::onExit, this);
+	menu = make_unique<MainMenu>(mainMenuVisuals, mainMenuCallbacks);
 
 
 	// Level Visuals
@@ -53,6 +72,9 @@ void ofApp::setup(){
 
 	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
 	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd);
+
+	// first screen is the main menu
+	m_screen = menu.get();
 }
 
 //--------------------------------------------------------------
@@ -80,6 +102,27 @@ void ofApp::onGameEnd()
 	// credits or close.. or go back to menu
 	ofExit();
 }
+
+void ofApp::onPlay()
+{
+	// load first level
+	levels->load(0);
+	// change the current screen to the level manager
+	m_screen = levels.get();
+}
+
+void ofApp::onCredits()
+{
+	// credits
+	//m_screen = credits.get();
+}
+
+void ofApp::onExit()
+{
+	// call OF exit
+	ofExit();
+}
+
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
@@ -120,6 +163,7 @@ void ofApp::windowResized(int w, int h){
 void ofApp::gotMessage(ofMessage msg){
 
 }
+
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 

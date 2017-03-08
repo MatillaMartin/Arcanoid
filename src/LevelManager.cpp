@@ -7,6 +7,7 @@ LevelManager::LevelManager(const std::vector<Level::Params> & levels, Level::Vis
 	m_levels(levels),
 	m_currentLevelIt(m_levels.begin())
 {
+	assert(!m_levels.empty());
 	// load first level
 	startLevel();
 
@@ -37,12 +38,31 @@ void LevelManager::onLevelEnd()
 	nextLevel();
 }
 
+void LevelManager::load(unsigned int level)
+{
+	if (level < m_levels.size())
+	{
+		m_currentLevelIt = m_levels.begin() + level;
+		startLevel();
+	}
+	else
+	{
+		ofLogError("LevelManager") << "Level " << level << " does not exist";
+	}
+}
+
 void LevelManager::nextLevel()
 {
 	m_currentLevelIt++;
-	if(m_currentLevelIt != m_levels.end())
+	startLevel();
+}
+
+void LevelManager::startLevel()
+{
+	if (m_currentLevelIt != m_levels.end())
 	{
-		startLevel();
+		std::function<void()> onLevelEnd = std::bind(&LevelManager::onLevelEnd, this);
+		m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd);
 	}
 	else
 	{
@@ -56,10 +76,4 @@ void LevelManager::nextLevel()
 			ofLogError("LevelManager") << "Game end callback not set";
 		}
 	}
-}
-
-void LevelManager::startLevel()
-{
-	std::function<void()> onLevelEnd = std::bind(&LevelManager::onLevelEnd, this);
-	m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd);
 }

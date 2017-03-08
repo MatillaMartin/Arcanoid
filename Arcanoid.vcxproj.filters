@@ -626,9 +626,6 @@
     <ClInclude Include="src\Keyboard.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Menu.h">
-      <Filter>src\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="src\MainMenu.h">
       <Filter>src\Menus</Filter>
     </ClInclude>
@@ -656,9 +653,6 @@
     <ClInclude Include="src\UseComponent.h">
       <Filter>src\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="src\PlayEventHandler.h">
-      <Filter>src\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="src\SpriteComponent.h">
       <Filter>src\Core</Filter>
     </ClInclude>
@@ -667,6 +661,12 @@
     </ClInclude>
     <ClInclude Include="src\TileType.h">
       <Filter>src\Game\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screen.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EventHandler.h">
+      <Filter>src\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

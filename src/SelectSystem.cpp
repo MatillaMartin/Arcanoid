@@ -49,7 +49,7 @@ void SelectSystem::nextItem(SelectComponent & select, EventManager & events)
 		select.m_selected++;
 	}
 
-	events.emit<SelectEvent>(select.m_selected);
+	events.emit<SelectEvent>(*select.m_selected);
 }
 
 void SelectSystem::previousItem(SelectComponent & select, EventManager & events)
@@ -63,7 +63,7 @@ void SelectSystem::previousItem(SelectComponent & select, EventManager & events)
 		select.m_selected--;
 	}
 
-	events.emit<SelectEvent>(select.m_selected);
+	events.emit<SelectEvent>(*select.m_selected);
 }
 
 void SelectSystem::useItem(SelectComponent & select, EventManager & events)

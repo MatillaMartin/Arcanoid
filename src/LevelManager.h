@@ -1,16 +1,18 @@
 #pragma once
 
+#include "Screen.h"
 #include "Level.h"
-#include "Renderer.h"
 
-class LevelManager
+class LevelManager : public Screen
 {
 public:
 	LevelManager(const std::vector<Level::Params> & levels, Level::Visuals levelVisuals, std::function<void()> onGameEnd);
 
-	void update(double delta);
-	void draw(Renderer * renderer);
-	void input(char input);
+	void update(double delta) override;
+	void draw(Renderer * renderer) override;
+	void input(char input) override;
+
+	void load(unsigned int level);
 
 private:
 	std::vector<Level::Params> m_levels;

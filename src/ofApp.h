@@ -5,6 +5,7 @@
 #include "LevelManager.h"
 #include "GameTextures.h"
 #include "Keyboard.h"
+#include "MainMenu.h"
 
 class ofApp : public ofBaseApp{
 
@@ -25,6 +26,10 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 private:
+		void onPlay();
+		void onCredits();
+		void onExit();
+
 		void onGameEnd();
 
 		GameTextures textures;
@@ -32,6 +37,9 @@ private:
 
 		std::unique_ptr<Renderer> renderer;
 		std::unique_ptr<LevelManager> levels;
+		std::unique_ptr<MainMenu> menu;
+
+		Screen * m_screen;
 
 		ofImage levelDescriptor;
 

@@ -8,19 +8,18 @@
 #include "TypeComponent.h"
 #include "SpriteComponent.h"
 #include "KeyboardInputComponent.h"
+#include "PhysicsComponent.h"
 
 MainMenu::MainMenu(const Visuals & visuals, const Callbacks & callbacks)
 	:
 	m_visuals(visuals),
-	m_playEventHandler(callbacks.onPlay),
-	m_creditsEventHandler(callbacks.onCredits),
-	m_exitEventHandler(callbacks.onExit)
+	m_callbacks(callbacks)
 {
 	setupEntityX();
 	setupMenu();
 }
 
-void MainMenu::update(float delta)
+void MainMenu::update(double delta)
 {
 	systems.update<InputSystem>(delta);
 	systems.update<SelectSystem>(delta);
@@ -28,7 +27,17 @@ void MainMenu::update(float delta)
 
 void MainMenu::draw(Renderer * renderer)
 {
+	// draw all sprites
+	entities.each<PhysicsComponent, SpriteComponent>(
+		[renderer](Entity entity, PhysicsComponent & physics, SpriteComponent & visual)
+	{
+		renderer->drawSprite(physics.position, physics.size, visual.texture);
+	});
+}
 
+void MainMenu::input(char input)
+{
+	systems.system<InputSystem>()->onInput(input);
 }
 
 void MainMenu::setupEntityX()
@@ -38,30 +47,38 @@ void MainMenu::setupEntityX()
 
 	systems.configure();
 
-	this->events.subscribe<UseEvent>(this);
-	this->events.subscribe<SelectEvent>(this);
+	this->events.subscribe<UseEvent>(*this);
+	this->events.subscribe<SelectEvent>(*this);
 }
 
 void MainMenu::setupMenu()
 {
 	std::vector<Entity> menuEntities;
 
+	// compute regions
+	ofRectangle playRegion = m_visuals.menuRegion.map(m_visuals.playRegion);
+	ofRectangle creditsRegion = m_visuals.menuRegion.map(m_visuals.creditsRegion);
+	ofRectangle exitRegion = m_visuals.menuRegion.map(m_visuals.exitRegion);
+
 	// setup play
 	Entity play = entities.create();
 	play.assign<TypeComponent<MenuItem>>(MenuItem::MENU_PLAY);
 	play.assign<SpriteComponent>(TextureId::PLAY);
+	play.assign<PhysicsComponent>(playRegion.getPosition(), glm::vec2(playRegion.getWidth(), playRegion.getHeight()));
 	menuEntities.push_back(play);
 	
 	// setup credits
 	Entity credits = entities.create();
 	play.assign<TypeComponent<MenuItem>>(MenuItem::MENU_CREDITS);
 	play.assign<SpriteComponent>(TextureId::CREDITS);
+	play.assign<PhysicsComponent>(creditsRegion.getPosition(), glm::vec2(creditsRegion.getWidth(), creditsRegion.getHeight()));
 	menuEntities.push_back(credits);
 
 	// setup exit
 	Entity quit = entities.create();
 	play.assign<TypeComponent<MenuItem>>(MenuItem::MENU_EXIT);
 	play.assign<SpriteComponent>(TextureId::EXIT);
+	play.assign<PhysicsComponent>(exitRegion.getPosition(), glm::vec2(exitRegion.getWidth(), exitRegion.getHeight()));
 	menuEntities.push_back(quit);
 
 	// setup selector

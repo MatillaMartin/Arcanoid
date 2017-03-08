@@ -4,6 +4,7 @@
 #include "EventHandler.h"
 #include "Screen.h"
 #include "ofRectangle.h"
+#include "MenuEvents.h"
 
 class MainMenu : public ofxEntityX, public Screen, public Receiver<UseEvent>, public Receiver<SelectEvent>
 {
@@ -28,8 +29,9 @@ public:
 	};
 
 	MainMenu(const Visuals & visuals, const Callbacks & callbacks);
-	void update(float delta) override;
+	void update(double delta) override;
 	void draw(Renderer * renderer) override;
+	void input(char input) override;
 
 	void receive(const UseEvent & e);
 	void receive(const SelectEvent & e);
