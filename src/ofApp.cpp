@@ -36,8 +36,8 @@ void ofApp::setup(){
 	visuals.tileMatrixRegion = ofRectangle(0, 0, 1, 0.5);
 	visuals.paddleSize = glm::vec2(0.1, 0.01);
 	visuals.ballSize = glm::vec2(0.01, 0.01);
-	visuals.tileMap[TileType::BASIC] = { TileTexture::BASIC_0 };
-	visuals.tileMap[TileType::STRONG] = { TileTexture::STRONG_0, TileTexture::STRONG_1 };
+	visuals.tileMap[TileType::BASIC] = { TextureId::BASIC_0 };
+	visuals.tileMap[TileType::STRONG] = { TextureId::STRONG_0, TextureId::STRONG_1 };
 
 	// Level descriptor and parameters
 	levelDescriptor.load("level0.png");
