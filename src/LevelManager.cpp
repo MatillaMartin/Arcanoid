@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-LevelManager::LevelManager(const std::vector<Level::LevelParams> & levels, Level::LevelVisuals visuals, std::function<void()> onGameEnd)
+LevelManager::LevelManager(const std::vector<Level::Params> & levels, Level::Visuals visuals, std::function<void()> onGameEnd)
 	:
 	m_visuals(visuals),
 	c_onGameEnd(onGameEnd),

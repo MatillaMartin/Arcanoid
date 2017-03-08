@@ -6,15 +6,15 @@
 class LevelManager
 {
 public:
-	LevelManager(const std::vector<Level::LevelParams> & levels, Level::LevelVisuals levelVisuals, std::function<void()> onGameEnd);
+	LevelManager(const std::vector<Level::Params> & levels, Level::Visuals levelVisuals, std::function<void()> onGameEnd);
 
 	void update(double delta);
 	void draw(Renderer * renderer);
 	void input(char input);
 
 private:
-	std::vector<Level::LevelParams> m_levels;
-	Level::LevelVisuals m_visuals;
+	std::vector<Level::Params> m_levels;
+	Level::Visuals m_visuals;
 
 	unique_ptr<Level> m_currentLevel;
 
@@ -25,5 +25,5 @@ private:
 
 	std::function<void()> c_onGameEnd;
 
-	std::vector<Level::LevelParams>::iterator m_currentLevelIt;
+	std::vector<Level::Params>::iterator m_currentLevelIt;
 };

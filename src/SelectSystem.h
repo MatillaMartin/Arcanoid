@@ -13,7 +13,7 @@ public:
 
 private:
 
-	void nextItem(SelectComponent & select);
-	void previousItem(SelectComponent & select);
+	void nextItem(SelectComponent & select, EventManager & events);
+	void previousItem(SelectComponent & select, EventManager & events);
 	void useItem(SelectComponent & select, EventManager & events);
 };

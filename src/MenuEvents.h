@@ -26,6 +26,6 @@ public:
 	Entity entity;
 };
 
-class PlayEvent
-{
-};
+struct PlayEvent {};
+struct CreditsEvent {};
+struct ExitEvent {};

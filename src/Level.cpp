@@ -27,7 +27,7 @@
 
 #include "ofGraphics.h"
 
-Level::Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd)
+Level::Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd)
 	:
 	m_params(params),
 	m_visuals(visuals),

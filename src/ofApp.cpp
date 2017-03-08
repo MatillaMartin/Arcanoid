@@ -31,7 +31,7 @@ void ofApp::setup(){
 
 
 	// Level Visuals
-	Level::LevelVisuals visuals;
+	Level::Visuals visuals;
 	visuals.levelRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
 	visuals.tileMatrixRegion = ofRectangle(0, 0, 1, 0.5);
 	visuals.paddleSize = glm::vec2(0.1, 0.01);
@@ -41,14 +41,14 @@ void ofApp::setup(){
 
 	// Level descriptor and parameters
 	levelDescriptor.load("level0.png");
-	Level::LevelParams params;
+	Level::Params params;
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
 	params.paddlePosition = glm::vec2(0.5, 0.9);
 	params.paddleSpeed = 4.0f;
 	params.paddleFrictionCoeff = 40.0f;
 
-	std::vector<Level::LevelParams> paramsVec;
+	std::vector<Level::Params> paramsVec;
 	paramsVec.push_back(params);
 
 	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);

@@ -1,7 +1,8 @@
 #include "SelectSystem.h"
 #include "SelectComponent.h"
 #include "CommandQueueComponent.h"
-#include "UseComponent.h"
+#include "TypeComponent.h"
+#include "MenuEvents.h"
 
 SelectSystem::SelectSystem()
 {
@@ -22,10 +23,10 @@ void SelectSystem::update(EntityManager & entities, EventManager & events, TimeD
 			case RIGHT:
 				break;
 			case UP:
-				previousItem(select);
+				previousItem(select, events);
 				break;
 			case DOWN:
-				nextItem(select);
+				nextItem(select, events);
 				break;
 			case USE:
 				useItem(select, events);
@@ -37,7 +38,7 @@ void SelectSystem::update(EntityManager & entities, EventManager & events, TimeD
 	});
 }
 
-void SelectSystem::nextItem(SelectComponent & select)
+void SelectSystem::nextItem(SelectComponent & select, EventManager & events)
 {
 	if (select.m_selected == select.m_entityList.end())
 	{
@@ -47,9 +48,11 @@ void SelectSystem::nextItem(SelectComponent & select)
 	{
 		select.m_selected++;
 	}
+
+	events.emit<SelectEvent>(select.m_selected);
 }
 
-void SelectSystem::previousItem(SelectComponent & select)
+void SelectSystem::previousItem(SelectComponent & select, EventManager & events)
 {
 	if (select.m_selected == select.m_entityList.begin())
 	{
@@ -59,11 +62,13 @@ void SelectSystem::previousItem(SelectComponent & select)
 	{
 		select.m_selected--;
 	}
+
+	events.emit<SelectEvent>(select.m_selected);
 }
 
 void SelectSystem::useItem(SelectComponent & select, EventManager & events)
 {
-	auto use = select.m_selected->component<UseComponent>();
+	auto type = select.m_selected->component<TypeComponent<MenuItem>>();
 	// throw use event
-	events.emit<UseEvent>(use->item);
+	events.emit<UseEvent>(type->type);
 }

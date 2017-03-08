@@ -12,7 +12,7 @@ class TileMatrix;
 class Level : public ofxEntityX
 {
 public:
-	class LevelParams
+	class Params
 	{
 	public:
 		std::shared_ptr<TileMatrix> tiles;
@@ -22,7 +22,7 @@ public:
 		float paddleFrictionCoeff;
 	};
 
-	class LevelVisuals
+	class Visuals
 	{
 	public:
 		// layouts
@@ -37,15 +37,15 @@ public:
 		std::map<TileType, std::vector<TextureId>> tileMap;
 	};
 
-	Level(const LevelParams & params, const LevelVisuals & visuals, std::function<void()> onLevelEnd);
+	Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd);
 
 	void update(double delta);
 	void draw(Renderer * renderer);
 
 	void input(char input);
 
-	LevelParams m_params;
-	LevelVisuals m_visuals;
+	Params m_params;
+	Visuals m_visuals;
 
 	// no need to look for them if we already have them
 	Entity m_paddle;
