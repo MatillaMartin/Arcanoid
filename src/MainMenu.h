@@ -6,7 +6,7 @@
 #include "ofRectangle.h"
 #include "MenuEvents.h"
 
-class MainMenu : public ofxEntityX, public Screen, public Receiver<UseEvent>, public Receiver<SelectEvent>
+class MainMenu : public ofxEntityX, public Screen, public Receiver<MainMenu>
 {
 public:
 	struct Visuals

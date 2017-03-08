@@ -2,6 +2,7 @@
 
 SelectComponent::SelectComponent(std::vector<Entity>& entityList)
 	:
+	m_entityList(entityList),
 	m_selected(entityList.begin())
 {
 	assert(!m_entityList.empty());	

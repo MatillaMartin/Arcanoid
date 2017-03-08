@@ -662,10 +662,10 @@
     <ClInclude Include="src\TileType.h">
       <Filter>src\Game\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="src\Screen.h">
-      <Filter>src\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="src\EventHandler.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screen.h">
       <Filter>src\Core</Filter>
     </ClInclude>
   </ItemGroup>

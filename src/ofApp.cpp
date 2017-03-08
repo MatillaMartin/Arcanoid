@@ -83,18 +83,18 @@ void ofApp::update(){
 	{
 		if (key.second)
 		{
-			levels->input(key.first);
+			m_screen->input(key.first);
 		}
 	}
 
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
-	levels->update(deltaTime);
+	m_screen->update(deltaTime);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofClear(0);
-	levels->draw(renderer.get());
+	m_screen->draw(renderer.get());
 }
 
 void ofApp::onGameEnd()
