@@ -65,7 +65,7 @@ void MainMenu::setupMenu()
 	// setup play
 	Entity play = entities.create();
 	play.assign<TypeComponent<MenuItem>>(MenuItem::MENU_PLAY);
-	play.assign<SpriteComponent>(TextureId::PLAY);
+	play.assign<SpriteComponent>(TextureId::PLAY_SEL); // start with play selected
 	play.assign<PhysicsComponent>(glm::vec2(playRegion.getX(), playRegion.getY()), glm::vec2(playRegion.getWidth(), playRegion.getHeight()));
 	menuEntities.push_back(play);
 	

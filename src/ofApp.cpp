@@ -65,6 +65,7 @@ void ofApp::setup(){
 
 	// Level descriptor and parameters
 	levelDescriptor.load("level0.png");
+	//levelDescriptor.load("level1.png");
 	Level::Params params;
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
