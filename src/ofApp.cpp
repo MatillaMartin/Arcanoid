@@ -7,7 +7,8 @@
 ofApp::ofApp()
 	:
 	m_levelAspect(1),
-	m_screen(nullptr)
+	m_screen(nullptr),
+	keyboard({ 'w', 'a', 's', 'd', ' ' })
 {
 }
 
@@ -16,6 +17,7 @@ void ofApp::setup(){
 	ofLogToConsole();
 	ofSetLogLevel(ofLogLevel::OF_LOG_VERBOSE);
 	ofSetFrameRate(60.0f);
+	ofSetBackgroundAuto(true);
 
 	ofLogVerbose("ofApp") << "Starting application";
 
@@ -32,6 +34,9 @@ void ofApp::setup(){
 
 
 	// Main Menu
+	MainMenu::Params mainMenuParams;
+	mainMenuParams.selectDelay = 0.2;
+
 	MainMenu::Visuals mainMenuVisuals;
 	mainMenuVisuals.menuRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
 	mainMenuVisuals.playRegion = ofRectangle(0.2, 0.1, 0.6, 0.2);
@@ -46,7 +51,7 @@ void ofApp::setup(){
 	mainMenuCallbacks.onPlay = std::bind(&ofApp::onPlay, this);
 	mainMenuCallbacks.onCredits = std::bind(&ofApp::onCredits, this);
 	mainMenuCallbacks.onExit = std::bind(&ofApp::onExit, this);
-	menu = make_unique<MainMenu>(mainMenuVisuals, mainMenuCallbacks);
+	menu = make_unique<MainMenu>(mainMenuParams, mainMenuVisuals, mainMenuCallbacks);
 
 
 	// Level Visuals
@@ -86,6 +91,7 @@ void ofApp::update(){
 			m_screen->input(key.first);
 		}
 	}
+	ofLogVerbose("ofApp") << "Keypress: " << keyboard.getKeys().size();
 
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
 	m_screen->update(deltaTime);
@@ -93,7 +99,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofClear(0);
+	ofClear(255);
 	m_screen->draw(renderer.get());
 }
 

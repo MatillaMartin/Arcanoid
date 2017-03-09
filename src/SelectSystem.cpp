@@ -11,11 +11,26 @@ SelectSystem::SelectSystem()
 void SelectSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
 {
 	// iterate over SelectionComponent
-	entities.each<SelectComponent, CommandQueueComponent>([this, &events](Entity & entity, SelectComponent & select, CommandQueueComponent & queue)
+	entities.each<SelectComponent, CommandQueueComponent>([this, &events, dt](Entity & entity, SelectComponent & select, CommandQueueComponent & queue)
 	{
+		// update selection delay
+		select.delayTimer += dt;
+
+		// get command if any
 		UserCommand command;
 		if (queue.getCommand(command))
 		{
+			// if its not time to use the command then return
+			if (select.delayTimer < select.selectDelay)
+			{
+				// refresh the command queue list
+				queue.clear();
+				return;
+			}
+
+			// else reset the timer and select
+			select.delayTimer = 0.0;
+
 			switch (command)
 			{
 			case LEFT:
@@ -40,35 +55,32 @@ void SelectSystem::update(EntityManager & entities, EventManager & events, TimeD
 
 void SelectSystem::nextItem(SelectComponent & select, EventManager & events)
 {
-	if (select.m_selected == select.m_entityList.end())
+	select.selected++;
+	if (select.selected == select.entityList.end())
 	{
-		select.m_selected = select.m_entityList.begin();
-	}
-	else
-	{
-		select.m_selected++;
+		select.selected = select.entityList.begin();
 	}
 
-	events.emit<SelectEvent>(*select.m_selected);
+	events.emit<SelectEvent>(*select.selected);
 }
 
 void SelectSystem::previousItem(SelectComponent & select, EventManager & events)
 {
-	if (select.m_selected == select.m_entityList.begin())
+	if (select.selected == select.entityList.begin())
 	{
-		select.m_selected = std::prev(select.m_entityList.end());
+		select.selected = std::prev(select.entityList.end());
 	}
 	else
 	{
-		select.m_selected--;
+		select.selected--;
 	}
 
-	events.emit<SelectEvent>(*select.m_selected);
+	events.emit<SelectEvent>(*select.selected);
 }
 
 void SelectSystem::useItem(SelectComponent & select, EventManager & events)
 {
-	auto type = select.m_selected->component<TypeComponent<MenuItem>>();
+	auto type = select.selected->component<TypeComponent<MenuItem>>();
 	// throw use event
 	events.emit<UseEvent>(type->type);
 }

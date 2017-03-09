@@ -1,12 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <set>
 #include "ofEvents.h"
+
 class Keyboard
 {
 public:
-	Keyboard();
+	Keyboard(const std::set<char> & filter);
 	const std::map<char, bool> & getKeys();
+
+	void setFilter(const std::set<char> & filter);
 
 private:
 	void onKeyPress(ofKeyEventArgs & key);

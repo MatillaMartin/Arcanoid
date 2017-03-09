@@ -9,6 +9,11 @@
 class MainMenu : public ofxEntityX, public Screen, public Receiver<MainMenu>
 {
 public:
+	struct Params
+	{
+		// in seconds
+		double selectDelay;
+	};
 	struct Visuals
 	{
 		// layouts
@@ -28,7 +33,7 @@ public:
 		std::function<void()> onExit;
 	};
 
-	MainMenu(const Visuals & visuals, const Callbacks & callbacks);
+	MainMenu(const Params & params, const Visuals & visuals, const Callbacks & callbacks);
 	void update(double delta) override;
 	void draw(Renderer * renderer) override;
 	void input(char input) override;
@@ -44,4 +49,5 @@ private:
 
 	Visuals m_visuals;
 	Callbacks m_callbacks;
+	Params m_params;
 };

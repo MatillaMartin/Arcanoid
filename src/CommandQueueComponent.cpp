@@ -16,3 +16,8 @@ bool CommandQueueComponent::getCommand(UserCommand & command)
 	}
 	return false;
 }
+
+void CommandQueueComponent::clear()
+{
+	m_commands = {}; // clear using emtpy initializer list
+}

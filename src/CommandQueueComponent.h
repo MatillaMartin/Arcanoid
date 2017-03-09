@@ -11,6 +11,7 @@ public:
 
 	void setCommand(UserCommand command);
 	bool getCommand(UserCommand & command);
+	void clear();
 
 private:
 	std::queue<UserCommand> m_commands;

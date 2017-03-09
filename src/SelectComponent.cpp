@@ -1,9 +1,11 @@
 #include "SelectComponent.h"
 
-SelectComponent::SelectComponent(std::vector<Entity>& entityList)
+SelectComponent::SelectComponent(std::vector<Entity>& entityList, double selectDelay)
 	:
-	m_entityList(entityList),
-	m_selected(entityList.begin())
+	entityList(entityList),
+	selected(this->entityList.begin()),
+	selectDelay(selectDelay),
+	delayTimer(0.0)
 {
-	assert(!m_entityList.empty());	
+	assert(!entityList.empty());	
 }

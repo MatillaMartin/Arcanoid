@@ -8,10 +8,12 @@
 #include "TypeComponent.h"
 #include "SpriteComponent.h"
 #include "KeyboardInputComponent.h"
+#include "CommandQueueComponent.h"
 #include "PhysicsComponent.h"
 
-MainMenu::MainMenu(const Visuals & visuals, const Callbacks & callbacks)
+MainMenu::MainMenu(const Params & params, const Visuals & visuals, const Callbacks & callbacks)
 	:
+	m_params(params),
 	m_visuals(visuals),
 	m_callbacks(callbacks)
 {
@@ -83,8 +85,9 @@ void MainMenu::setupMenu()
 
 	// setup selector
 	Entity selector = entities.create();
-	selector.assign<SelectComponent>(menuEntities);
+	selector.assign<SelectComponent>(menuEntities, m_params.selectDelay);
 	selector.assign<KeyboardInputComponent>('a', 'd', 'w', 's', ' ');
+	selector.assign<CommandQueueComponent>();
 }
 
 void MainMenu::receive(const UseEvent & e)
