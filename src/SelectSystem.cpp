@@ -5,6 +5,8 @@
 #include "MenuEvents.h"
 
 SelectSystem::SelectSystem()
+	:
+	bContinuous(false)
 {
 }
 
@@ -20,17 +22,27 @@ void SelectSystem::update(EntityManager & entities, EventManager & events, TimeD
 		UserCommand command;
 		if (queue.getCommand(command))
 		{
-			// if its not time to use the command then return
-			if (select.delayTimer < select.selectDelay)
+			// if there has not been a pause between commands check delay
+			if (bContinuous)
 			{
-				// refresh the command queue list
-				queue.clear();
-				return;
+				// if its not time to use the command then return
+				if (select.delayTimer < select.selectDelay)
+				{
+					// refresh the command queue list
+					queue.clear();
+					return;
+				}
+			}
+			else
+			{
+				bContinuous = true;
 			}
 
-			// else reset the timer and select
+			// reset the timer and select
 			select.delayTimer = 0.0;
 
+
+			// proceed to apply command
 			switch (command)
 			{
 			case LEFT:
@@ -49,6 +61,10 @@ void SelectSystem::update(EntityManager & entities, EventManager & events, TimeD
 			default:
 				break;
 			}
+		}
+		else
+		{
+			bContinuous = false;
 		}
 	});
 }

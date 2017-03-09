@@ -12,6 +12,9 @@ public:
 	virtual void update(EntityManager & entities, EventManager & events, TimeDelta dt) override;
 
 private:
+	bool bContinuous;
+
+	bool checkDelay();
 
 	void nextItem(SelectComponent & select, EventManager & events);
 	void previousItem(SelectComponent & select, EventManager & events);
