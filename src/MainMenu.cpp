@@ -10,6 +10,7 @@
 #include "KeyboardInputComponent.h"
 #include "CommandQueueComponent.h"
 #include "PhysicsComponent.h"
+#include "PositionComponent.h"
 
 MainMenu::MainMenu(const Params & params, const Visuals & visuals, const Callbacks & callbacks)
 	:
@@ -30,10 +31,10 @@ void MainMenu::update(double delta)
 void MainMenu::draw(Renderer * renderer)
 {
 	// draw all sprites
-	entities.each<PhysicsComponent, SpriteComponent>(
-		[renderer](Entity entity, PhysicsComponent & physics, SpriteComponent & visual)
+	entities.each<PositionComponent, SpriteComponent>(
+		[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
 	{
-		renderer->drawSprite(physics.position, physics.size, visual.texture);
+		renderer->drawSprite(position.position, position.size, visual.texture);
 	});
 }
 
@@ -49,8 +50,8 @@ void MainMenu::setupEntityX()
 
 	systems.configure();
 
-	this->events.subscribe<UseEvent>(*this);
-	this->events.subscribe<SelectEvent>(*this);
+	this->events.subscribe<UseMenuEvent>(*this);
+	this->events.subscribe<SelectMenuEvent>(*this);
 }
 
 void MainMenu::setupMenu()
@@ -90,7 +91,7 @@ void MainMenu::setupMenu()
 	selector.assign<CommandQueueComponent>();
 }
 
-void MainMenu::receive(const UseEvent & e)
+void MainMenu::receive(const UseMenuEvent & e)
 {
 	switch (e.item)
 	{
@@ -132,7 +133,7 @@ void MainMenu::receive(const UseEvent & e)
 	}
 }
 
-void MainMenu::receive(const SelectEvent & e)
+void MainMenu::receive(const SelectMenuEvent & e)
 {
 	// couple selection events to visual effects
 	onSelectVisualBehaviour(e.entity);

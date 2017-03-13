@@ -77,7 +77,7 @@ void SelectSystem::nextItem(SelectComponent & select, EventManager & events)
 		select.selected = select.entityList.begin();
 	}
 
-	events.emit<SelectEvent>(*select.selected);
+	events.emit<SelectMenuEvent>(*select.selected);
 }
 
 void SelectSystem::previousItem(SelectComponent & select, EventManager & events)
@@ -91,12 +91,12 @@ void SelectSystem::previousItem(SelectComponent & select, EventManager & events)
 		select.selected--;
 	}
 
-	events.emit<SelectEvent>(*select.selected);
+	events.emit<SelectMenuEvent>(*select.selected);
 }
 
 void SelectSystem::useItem(SelectComponent & select, EventManager & events)
 {
 	auto type = select.selected->component<TypeComponent<MenuItem>>();
 	// throw use event
-	events.emit<UseEvent>(type->type);
+	events.emit<UseMenuEvent>(type->type);
 }

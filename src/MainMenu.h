@@ -38,8 +38,8 @@ public:
 	void draw(Renderer * renderer) override;
 	void input(char input) override;
 
-	void receive(const UseEvent & e);
-	void receive(const SelectEvent & e);
+	void receive(const UseMenuEvent & e);
+	void receive(const SelectMenuEvent & e);
 
 private:
 	void setupEntityX();

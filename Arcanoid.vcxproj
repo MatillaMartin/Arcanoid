@@ -248,6 +248,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\PaddleControllerComponent.cpp" />
+    <ClCompile Include="src\PhysicsComponent.cpp" />
     <ClCompile Include="src\PhysicsSystem.cpp" />
     <ClCompile Include="src\SelectComponent.cpp" />
     <ClCompile Include="src\SelectSystem.cpp" />
@@ -255,7 +256,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
     <ClCompile Include="src\KeyboardInputComponent.cpp" />
-    <ClCompile Include="src\PhysicsComponent.cpp" />
+    <ClCompile Include="src\PositionComponent.cpp" />
     <ClCompile Include="src\DropComponent.cpp" />
     <ClCompile Include="src\Level.cpp" />
     <ClCompile Include="src\HitsComponent.cpp" />
@@ -364,7 +365,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\UserCommand.h" />
     <ClInclude Include="src\PaddleControllerComponent.h" />
     <ClInclude Include="src\PaddleSystem.h" />
-    <ClInclude Include="src\PhysicsComponent.h" />
+    <ClInclude Include="src\PositionComponent.h" />
     <ClInclude Include="src\TileSystem.h" />
     <ClInclude Include="src\DropComponent.h" />
     <ClInclude Include="src\Level.h" />
@@ -373,6 +374,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\TileMatrix.h" />
     <ClInclude Include="src\Textures.h" />
     <ClInclude Include="src\SpriteComponent.h" />
+    <ClInclude Include="src\PhysicsComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

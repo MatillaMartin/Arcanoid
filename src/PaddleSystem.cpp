@@ -4,13 +4,14 @@
 #include "PaddleControllerComponent.h"
 #include "UserCommand.h"
 #include "CommandQueueComponent.h"
+#include "LevelEvents.h"
 
 PaddleSystem::PaddleSystem()
 {}
 
 void PaddleSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
 {
-	entities.each<PhysicsComponent, CommandQueueComponent, PaddleControllerComponent>([dt](Entity & e, PhysicsComponent & physics, CommandQueueComponent & commands, PaddleControllerComponent & controller)
+	entities.each<PhysicsComponent, CommandQueueComponent, PaddleControllerComponent>([dt, &events](Entity & e, PhysicsComponent & physics, CommandQueueComponent & commands, PaddleControllerComponent & controller)
 	{
 		UserCommand command;
 		while (commands.getCommand(command))
@@ -24,7 +25,7 @@ void PaddleSystem::update(EntityManager & entities, EventManager & events, TimeD
 				physics.velocity.x = controller.params.speed;
 				break;
 			case UserCommand::USE:
-				// INTERESTING
+				events.emit<UseEvent>(e);
 				break;
 			default:
 				break;

@@ -202,14 +202,8 @@
     <ClCompile Include="src\InputSystem.cpp">
       <Filter>src\Game\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="src\StickComponent.cpp">
-      <Filter>src\Game\Powerup</Filter>
-    </ClCompile>
     <ClCompile Include="src\BallSystem.cpp">
       <Filter>src\Game\Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PhysicsComponent.cpp">
-      <Filter>src\Game\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\HitsComponent.cpp">
       <Filter>src\Game\Tile</Filter>
@@ -261,6 +255,15 @@
     </ClCompile>
     <ClCompile Include="src\PhysicsSystem.cpp">
       <Filter>src\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PositionComponent.cpp">
+      <Filter>src\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsComponent.cpp">
+      <Filter>src\Game\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StickComponent.cpp">
+      <Filter>src\Game\Powerup</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -593,12 +596,6 @@
     <ClInclude Include="src\PowerupSystem.h">
       <Filter>src\Game\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="src\StickComponent.h">
-      <Filter>src\Game\Powerup</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PhysicsComponent.h">
-      <Filter>src\Game\Components</Filter>
-    </ClInclude>
     <ClInclude Include="src\HitsComponent.h">
       <Filter>src\Game\Tile</Filter>
     </ClInclude>
@@ -667,6 +664,15 @@
     </ClInclude>
     <ClInclude Include="src\Screen.h">
       <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PositionComponent.h">
+      <Filter>src\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicsComponent.h">
+      <Filter>src\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StickComponent.h">
+      <Filter>src\Game\Powerup</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 #include "TileMatrix.h"
 
 #include "PhysicsComponent.h"
+#include "PositionComponent.h"
 #include "HitsComponent.h"
 
 #include "SpriteComponent.h"
@@ -22,6 +23,7 @@
 #include "PowerupSystem.h"
 #include "PhysicsSystem.h"
 
+#include "StickComponent.h"
 
 #include "LevelEvents.h"
 
@@ -78,7 +80,7 @@ void Level::createTiles()
 		
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
-		entity.assign<PhysicsComponent>(tilePosition, tileSize);
+		entity.assign<PositionComponent>(tilePosition, tileSize);
 		entity.assign<BoxCollisionComponent>();
 
 		switch (tiletype)
@@ -114,7 +116,8 @@ void Level::createPaddle()
 	params.speed = m_params.paddleSpeed;
 
 	m_paddle = entities.create();
-	m_paddle.assign<PhysicsComponent>(paddlePosition, m_visuals.paddleSize, glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
+	m_paddle.assign<PositionComponent>(paddlePosition, m_visuals.paddleSize);
+	m_paddle.assign<PhysicsComponent>(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
 	m_paddle.assign<BoxCollisionComponent>();
 	m_paddle.assign<SpriteComponent>(TextureId::PADDLE);
 	m_paddle.assign<KeyboardInputComponent>('a', 'd', 0, 0, ' ');
@@ -125,13 +128,14 @@ void Level::createPaddle()
 void Level::createBall()
 {
 	// find initial location relative to the paddle
-	ComponentHandle<PhysicsComponent> paddle = m_paddle.component<PhysicsComponent>();
+	ComponentHandle<PositionComponent> paddle = m_paddle.component<PositionComponent>();
 	glm::vec2 ballPosition = paddle->position;
 	ballPosition.x += paddle->size.x / 2.0f;
 	ballPosition.y -= m_visuals.ballSize.y;
 
 	m_ball = entities.create();
-	m_ball.assign<PhysicsComponent>(ballPosition, m_visuals.ballSize);
+	m_ball.assign<PositionComponent>(ballPosition, m_visuals.ballSize);
+	m_ball.assign<PhysicsComponent>();
 	m_ball.assign<CircleCollisionComponent>();
 	m_ball.assign<SpriteComponent>(TextureId::BALL);
 }
@@ -151,14 +155,19 @@ void Level::update(double delta)
 void Level::draw(Renderer * renderer)
 {
 	// draw all sprites
-	entities.each<PhysicsComponent, SpriteComponent>(
-		[renderer](Entity entity, PhysicsComponent & physics, SpriteComponent & visual)
+	entities.each<PositionComponent, SpriteComponent>(
+		[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
 	{
-		renderer->drawSprite(physics.position, physics.size, visual.texture);
+		renderer->drawSprite(position.position, position.size, visual.texture);
 	});
 }
 
 void Level::input(char input)
 {
 	systems.system<InputSystem>()->onInput(input);
+}
+
+void Level::onLevelStart()
+{
+	m_ball.assign<StickComponent>(m_ball, m_params.paddleStickTime, m_params.paddleSpeed);
 }

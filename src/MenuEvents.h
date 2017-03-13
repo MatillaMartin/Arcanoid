@@ -4,10 +4,10 @@
 
 enum MenuItem { MENU_NONE, MENU_PLAY, MENU_CREDITS, MENU_EXIT };
 
-class UseEvent
+class UseMenuEvent
 {
 public:
-	UseEvent(MenuItem item = MENU_NONE)
+	UseMenuEvent(MenuItem item = MENU_NONE)
 		:
 		item(item)
 	{}
@@ -15,10 +15,10 @@ public:
 	MenuItem item;
 };
 
-class SelectEvent
+class SelectMenuEvent
 {
 public:
-	SelectEvent(Entity entity = Entity())
+	SelectMenuEvent(Entity entity = Entity())
 		:
 		entity(entity)
 	{}

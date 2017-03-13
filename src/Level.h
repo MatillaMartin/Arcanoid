@@ -20,6 +20,7 @@ public:
 		glm::vec2 paddlePosition;
 		float paddleSpeed;
 		float paddleFrictionCoeff;
+		float paddleStickTime;
 	};
 
 	class Visuals
@@ -52,6 +53,8 @@ public:
 	Entity m_ball;
 
 	LevelEndHandler m_levelEndHandler;
+
+	void onLevelStart();
 
 private:
 	void setupEntityX();

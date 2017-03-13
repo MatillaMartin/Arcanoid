@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofxEntityX.h"
-#include "PhysicsComponent.h"
 
 class PhysicsSystem : public System<PhysicsSystem>
 {

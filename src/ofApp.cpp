@@ -72,6 +72,7 @@ void ofApp::setup(){
 	params.paddlePosition = glm::vec2(0.5, 0.9);
 	params.paddleSpeed = 4.0f;
 	params.paddleFrictionCoeff = 40.0f;
+	params.paddleStickTime = 3.0f;
 
 	std::vector<Level::Params> paramsVec;
 	paramsVec.push_back(params);
@@ -92,7 +93,6 @@ void ofApp::update(){
 			m_screen->input(key.first);
 		}
 	}
-	ofLogVerbose("ofApp") << "Keypress: " << keyboard.getKeys().size();
 
 	double deltaTime = MIN (ofGetLastFrameTime(), 1.0 / ofGetFrameRate());
 	m_screen->update(deltaTime);

@@ -2,10 +2,13 @@
 
 #include "ofxEntityX.h"
 
-class StickComponent : public Component<StickComponent >
+class StickComponent : public Component<StickComponent>
 {
 public:
-	StickComponent(float stickTime);
+	StickComponent(Entity who, float maxStickTime, float releaseSpeed);
 
-	float stickTime;
+	Entity who;
+	float maxStickTime;
+	float currentStickTime;
+	float releaseSpeed;
 };

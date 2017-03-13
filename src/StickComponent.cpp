@@ -1,7 +1,9 @@
 #include "StickComponent.h"
 
-StickComponent::StickComponent(float stickTime)
+StickComponent::StickComponent(Entity who, float maxStickTime, float releaseSpeed)
 	:
-	stickTime(stickTime)
-{
-}
+	who(who),
+	maxStickTime(maxStickTime),
+	currentStickTime(0.0f),
+	releaseSpeed(releaseSpeed)
+{}
