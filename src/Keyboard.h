@@ -11,6 +11,7 @@ public:
 	const std::map<char, bool> & getKeys();
 
 	void setFilter(const std::set<char> & filter);
+	void clear();
 
 private:
 	void onKeyPress(ofKeyEventArgs & key);

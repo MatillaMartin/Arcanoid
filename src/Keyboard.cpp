@@ -55,3 +55,11 @@ void Keyboard::setFilter(const std::set<char> & filter)
 	// update our filter
 	m_keys = keys;
 }
+
+void Keyboard::clear()
+{
+	for (auto & key : m_keys)
+	{
+		key.second = false;
+	}
+}

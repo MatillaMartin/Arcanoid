@@ -20,7 +20,7 @@
 #include "PaddleSystem.h"
 #include "BallSystem.h"
 #include "InputSystem.h"
-#include "PowerupSystem.h"
+#include "PowerSystem.h"
 #include "PhysicsSystem.h"
 
 #include "StickComponent.h"
@@ -39,6 +39,8 @@ Level::Level(const Params & params, const Visuals & visuals, std::function<void(
 	createTiles();
 	createPaddle();
 	createBall();
+	
+	onLevelStart();
 }
 
 void Level::setupEntityX()
@@ -48,7 +50,7 @@ void Level::setupEntityX()
 	systems.add<CollisionSystem>();
 	systems.add<PaddleSystem>();
 	systems.add<BallSystem>();
-	systems.add<PowerupSystem>();
+	systems.add<PowerSystem>();
 	systems.add<PhysicsSystem>();
 	systems.configure();
 
@@ -147,7 +149,7 @@ void Level::update(double delta)
 	systems.update<TileSystem>(delta);
 	systems.update<PaddleSystem>(delta);
 	systems.update<BallSystem>(delta);
-	systems.update<PowerupSystem>(delta);
+	systems.update<PowerSystem>(delta);
 	systems.update<CollisionSystem>(delta);
 	systems.update<PhysicsSystem>(delta);
 }
@@ -169,5 +171,7 @@ void Level::input(char input)
 
 void Level::onLevelStart()
 {
-	m_ball.assign<StickComponent>(m_ball, m_params.paddleStickTime, m_params.paddleSpeed);
+	events.subscribe<UseStickEvent>(m_powerEvents.m_stickHandler);
+	m_paddle.assign<TypeComponent<PowerType>>(PowerType::STICK);
+	m_paddle.assign<StickComponent>(m_ball, m_params.paddleStickTime, m_params.ballSpeed);
 }

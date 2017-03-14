@@ -3,11 +3,11 @@
 #include "ofxEntityX.h"
 #include "StickComponent.h"
 #include "LevelEvents.h"
+#include "PowerEvents.h"
 
-class PowerupSystem :	public System<PowerupSystem>
+class PowerSystem : public System<PowerSystem>
 {
 public:
-	void configure(EventManager & eventManager);
 
 	// Inherited via System
 	virtual void update(EntityManager & entities, EventManager & events, TimeDelta dt) override;

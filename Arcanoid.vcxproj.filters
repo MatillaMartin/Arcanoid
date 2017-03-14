@@ -217,9 +217,6 @@
     <ClCompile Include="src\BoxCollisionComponent.cpp">
       <Filter>src\Game\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="src\PowerupSystem.cpp">
-      <Filter>src\Game\Systems</Filter>
-    </ClCompile>
     <ClCompile Include="src\SpriteRenderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
@@ -262,8 +259,17 @@
     <ClCompile Include="src\PhysicsComponent.cpp">
       <Filter>src\Game\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\ShootComponent.cpp">
+      <Filter>src\Game\Power</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PowerSystem.cpp">
+      <Filter>src\Game\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StickPower.cpp">
+      <Filter>src\Game\Power\Stick</Filter>
+    </ClCompile>
     <ClCompile Include="src\StickComponent.cpp">
-      <Filter>src\Game\Powerup</Filter>
+      <Filter>src\Game\Power\Stick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -324,9 +330,6 @@
     <Filter Include="src\Game\Paddle">
       <UniqueIdentifier>{cca2756d-bf59-4ab7-bab6-56a9ed5605b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game\Powerup">
-      <UniqueIdentifier>{903c4020-b144-4bec-bbcc-c3e3bcbba447}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Game\Systems">
       <UniqueIdentifier>{b751f368-abd3-4d2c-93ec-270ceb8f7ce5}</UniqueIdentifier>
     </Filter>
@@ -356,6 +359,12 @@
     </Filter>
     <Filter Include="src\Rendering">
       <UniqueIdentifier>{616f1780-7119-40f1-9d0c-70dbf2bffed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Power">
+      <UniqueIdentifier>{903c4020-b144-4bec-bbcc-c3e3bcbba447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Power\Stick">
+      <UniqueIdentifier>{ebcd9931-d470-4d7d-8ccc-dbc9a06f7983}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -593,9 +602,6 @@
     <ClInclude Include="src\UserCommand.h">
       <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\PowerupSystem.h">
-      <Filter>src\Game\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="src\HitsComponent.h">
       <Filter>src\Game\Tile</Filter>
     </ClInclude>
@@ -671,8 +677,20 @@
     <ClInclude Include="src\PhysicsComponent.h">
       <Filter>src\Game\Components</Filter>
     </ClInclude>
+    <ClInclude Include="src\ShootComponent.h">
+      <Filter>src\Game\Power</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PowerEvents.h">
+      <Filter>src\Game\Power</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PowerSystem.h">
+      <Filter>src\Game\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StickPower.h">
+      <Filter>src\Game\Power\Stick</Filter>
+    </ClInclude>
     <ClInclude Include="src\StickComponent.h">
-      <Filter>src\Game\Powerup</Filter>
+      <Filter>src\Game\Power\Stick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

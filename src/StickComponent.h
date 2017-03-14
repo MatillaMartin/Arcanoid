@@ -5,9 +5,12 @@
 class StickComponent : public Component<StickComponent>
 {
 public:
-	StickComponent(Entity who, float maxStickTime, float releaseSpeed);
+	class StickableComponent : public Component<StickableComponent> {};
 
-	Entity who;
+
+	StickComponent(Entity stickable, float maxStickTime, float releaseSpeed);
+
+	Entity stickable;
 	float maxStickTime;
 	float currentStickTime;
 	float releaseSpeed;

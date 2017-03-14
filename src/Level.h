@@ -6,6 +6,7 @@
 #include "LevelEndHandler.h"
 #include "Renderer.h"
 #include "TileType.h"
+#include "StickPower.h"
 
 class TileMatrix;
 
@@ -21,6 +22,7 @@ public:
 		float paddleSpeed;
 		float paddleFrictionCoeff;
 		float paddleStickTime;
+		float ballSpeed;
 	};
 
 	class Visuals
@@ -53,6 +55,12 @@ public:
 	Entity m_ball;
 
 	LevelEndHandler m_levelEndHandler;
+
+	struct PowerEvents
+	{
+		UseStickEventHandler m_stickHandler;
+		//UseShootEventHandler m_shootHandler;
+	} m_powerEvents;
 
 	void onLevelStart();
 

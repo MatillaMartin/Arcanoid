@@ -10,10 +10,10 @@ struct LevelEndEvent
 {
 };
 
-class UseEvent
+class PaddleUseEvent
 {
 public:
-	UseEvent(Entity instigator) : instigator(instigator) {}
+	PaddleUseEvent(Entity instigator) : instigator(instigator) {}
 
 	Entity instigator;
 };

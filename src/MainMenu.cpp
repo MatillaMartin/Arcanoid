@@ -9,7 +9,6 @@
 #include "SpriteComponent.h"
 #include "KeyboardInputComponent.h"
 #include "CommandQueueComponent.h"
-#include "PhysicsComponent.h"
 #include "PositionComponent.h"
 
 MainMenu::MainMenu(const Params & params, const Visuals & visuals, const Callbacks & callbacks)
@@ -67,21 +66,21 @@ void MainMenu::setupMenu()
 	Entity play = entities.create();
 	play.assign<TypeComponent<MenuItem>>(MenuItem::MENU_PLAY);
 	play.assign<SpriteComponent>(TextureId::PLAY_SEL); // start with play selected
-	play.assign<PhysicsComponent>(glm::vec2(playRegion.getX(), playRegion.getY()), glm::vec2(playRegion.getWidth(), playRegion.getHeight()));
+	play.assign<PositionComponent>(glm::vec2(playRegion.getX(), playRegion.getY()), glm::vec2(playRegion.getWidth(), playRegion.getHeight()));
 	menuEntities.push_back(play);
 	
 	// setup credits
 	Entity credits = entities.create();
 	credits.assign<TypeComponent<MenuItem>>(MenuItem::MENU_CREDITS);
 	credits.assign<SpriteComponent>(TextureId::CREDITS);
-	credits.assign<PhysicsComponent>(glm::vec2(creditsRegion.getX(), creditsRegion.getY()), glm::vec2(creditsRegion.getWidth(), creditsRegion.getHeight()));
+	credits.assign<PositionComponent>(glm::vec2(creditsRegion.getX(), creditsRegion.getY()), glm::vec2(creditsRegion.getWidth(), creditsRegion.getHeight()));
 	menuEntities.push_back(credits);
 
 	// setup exit
 	Entity quit = entities.create();
 	quit.assign<TypeComponent<MenuItem>>(MenuItem::MENU_EXIT);
 	quit.assign<SpriteComponent>(TextureId::EXIT);
-	quit.assign<PhysicsComponent>(glm::vec2(exitRegion.getX(), exitRegion.getY()), glm::vec2(exitRegion.getWidth(), exitRegion.getHeight()));
+	quit.assign<PositionComponent>(glm::vec2(exitRegion.getX(), exitRegion.getY()), glm::vec2(exitRegion.getWidth(), exitRegion.getHeight()));
 	menuEntities.push_back(quit);
 
 	// setup selector
@@ -95,10 +94,10 @@ void MainMenu::receive(const UseMenuEvent & e)
 {
 	switch (e.item)
 	{
-	case MENU_NONE:
+	case MenuItem::MENU_NONE:
 		// nothing here, edge case that there is nothing selected
 		break;
-	case MENU_PLAY:
+	case MenuItem::MENU_PLAY:
 		if (m_callbacks.onPlay)
 		{
 			m_callbacks.onPlay();
@@ -108,7 +107,7 @@ void MainMenu::receive(const UseMenuEvent & e)
 			ofLogError("MainMenu") << "onPlay callback not set";
 		}
 		break;
-	case MENU_CREDITS:
+	case MenuItem::MENU_CREDITS:
 		if (m_callbacks.onCredits)
 		{
 			m_callbacks.onCredits();
@@ -118,7 +117,7 @@ void MainMenu::receive(const UseMenuEvent & e)
 			ofLogError("MainMenu") << "onCredits callback not set";
 		}
 		break;
-	case MENU_EXIT:
+	case MenuItem::MENU_EXIT:
 		if (m_callbacks.onExit)
 		{
 			m_callbacks.onExit();

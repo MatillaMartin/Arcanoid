@@ -10,4 +10,7 @@ public:
 	// Inherited via System
 	virtual void update(EntityManager & entities, EventManager & events, TimeDelta dt) override;
 
+private:
+	void onPaddleUse(Entity paddle, EventManager & events);
+
 };

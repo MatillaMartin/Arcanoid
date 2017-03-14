@@ -73,6 +73,7 @@ void ofApp::setup(){
 	params.paddleSpeed = 4.0f;
 	params.paddleFrictionCoeff = 40.0f;
 	params.paddleStickTime = 3.0f;
+	params.ballSpeed = 0.8f;
 
 	std::vector<Level::Params> paramsVec;
 	paramsVec.push_back(params);
@@ -112,6 +113,7 @@ void ofApp::onGameEnd()
 
 void ofApp::onPlay()
 {
+	keyboard.clear();
 	// load first level
 	levels->load(0);
 	// change the current screen to the level manager

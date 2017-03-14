@@ -252,6 +252,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\PhysicsSystem.cpp" />
     <ClCompile Include="src\SelectComponent.cpp" />
     <ClCompile Include="src\SelectSystem.cpp" />
+    <ClCompile Include="src\ShootComponent.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
@@ -262,7 +263,8 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\HitsComponent.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="src\PowerupSystem.cpp" />
+    <ClCompile Include="src\PowerSystem.cpp" />
+    <ClCompile Include="src\StickPower.cpp" />
     <ClCompile Include="src\TileMatrix.cpp" />
     <ClCompile Include="src\TileSystem.cpp" />
     <ClCompile Include="src\SpriteComponent.cpp" />
@@ -341,6 +343,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\CommandQueueComponent.h" />
     <ClInclude Include="src\MenuEvents.h" />
     <ClInclude Include="src\EventHandler.h" />
+    <ClInclude Include="src\PowerEvents.h" />
     <ClInclude Include="src\SelectComponent.h" />
     <ClInclude Include="src\SelectSystem.h" />
     <ClInclude Include="src\CollisionSystem.h" />
@@ -355,10 +358,12 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\Screen.h" />
     <ClInclude Include="src\PhysicsSystem.h" />
     <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\ShootComponent.h" />
     <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\StickComponent.h" />
     <ClInclude Include="src\KeyboardInputComponent.h" />
-    <ClInclude Include="src\PowerupSystem.h" />
+    <ClInclude Include="src\PowerSystem.h" />
+    <ClInclude Include="src\StickPower.h" />
     <ClInclude Include="src\TileType.h" />
     <ClInclude Include="src\TypeComponent.h" />
     <ClInclude Include="src\UseComponent.h" />
