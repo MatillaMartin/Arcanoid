@@ -214,9 +214,6 @@
     <ClCompile Include="src\CircleCollisionComponent.cpp">
       <Filter>src\Game\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="src\BoxCollisionComponent.cpp">
-      <Filter>src\Game\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="src\SpriteRenderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
@@ -270,6 +267,9 @@
     </ClCompile>
     <ClCompile Include="src\StickComponent.cpp">
       <Filter>src\Game\Power\Stick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionComponent.cpp">
+      <Filter>src\Game\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -620,9 +620,6 @@
     <ClInclude Include="src\CircleCollisionComponent.h">
       <Filter>src\Game\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="src\BoxCollisionComponent.h">
-      <Filter>src\Game\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="src\PhysicsSystem.h">
       <Filter>src\Game\Systems</Filter>
     </ClInclude>
@@ -691,6 +688,15 @@
     </ClInclude>
     <ClInclude Include="src\StickComponent.h">
       <Filter>src\Game\Power\Stick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionHandler.h">
+      <Filter>src\Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionEvent.h">
+      <Filter>src\Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionComponent.h">
+      <Filter>src\Game\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

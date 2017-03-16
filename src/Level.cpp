@@ -39,7 +39,8 @@ Level::Level(const Params & params, const Visuals & visuals, std::function<void(
 	createTiles();
 	createPaddle();
 	createBall();
-	
+	createBounds();
+
 	onLevelStart();
 }
 
