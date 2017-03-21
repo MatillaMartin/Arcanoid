@@ -35,6 +35,7 @@ CollisionComponent::CollisionComponent(b2World * world, const EdgeCollision & ed
 	CollisionComponent(info)
 {
 	auto edgeShape = make_shared<ofxBox2dEdge>();
+	shape = edgeShape;
 	edgeShape->addVertex(glm::vec3(edge.start.xy, 0.0f));
 	edgeShape->addVertex(glm::vec3(edge.end.xy, 0.0f));
 	edgeShape->create(world);
