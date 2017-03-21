@@ -1,7 +1,6 @@
 #include "TileSystem.h"
 
 #include "HitsComponent.h"
-#include "BoxCollisionComponent.h"
 #include "LevelEvents.h"
 
 TileSystem::TileSystem(const std::map<TileType, std::vector<TextureId>> & tileMap, unsigned int tileCount)

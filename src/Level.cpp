@@ -8,8 +8,7 @@
 #include "SpriteComponent.h"
 #include "TypeComponent.h"
 
-#include "BoxCollisionComponent.h"
-#include "CircleCollisionComponent.h"
+#include "CollisionComponent.h"
 
 #include "PaddleControllerComponent.h"
 #include "CommandQueueComponent.h"
@@ -35,6 +34,7 @@ Level::Level(const Params & params, const Visuals & visuals, std::function<void(
 	m_visuals(visuals),
 	m_levelEndHandler(onLevelEnd)
 {
+	setupBox2d();
 	setupEntityX();
 	createTiles();
 	createPaddle();
@@ -44,11 +44,18 @@ Level::Level(const Params & params, const Visuals & visuals, std::function<void(
 	onLevelStart();
 }
 
+void Level::setupBox2d()
+{
+	m_box2d.init();
+	m_box2d.setGravity(0, 0);
+	m_box2d.setFPS(60.0);
+}
+
 void Level::setupEntityX()
 {
 	systems.add<InputSystem>();
 	systems.add<TileSystem>(m_visuals.tileMap, m_params.tiles->count());
-	systems.add<CollisionSystem>();
+	systems.add<CollisionSystem>(&m_box2d);
 	systems.add<PaddleSystem>();
 	systems.add<BallSystem>();
 	systems.add<PowerSystem>();
@@ -84,7 +91,7 @@ void Level::createTiles()
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition, tileSize);
-		entity.assign<BoxCollisionComponent>();
+		entity.assign<CollisionComponent>(m_box2d.getWorld(), BoxCollision(tilePosition, tileSize), CollisionInfo(false, true));
 
 		switch (tiletype)
 		{
@@ -121,7 +128,7 @@ void Level::createPaddle()
 	m_paddle = entities.create();
 	m_paddle.assign<PositionComponent>(paddlePosition, m_visuals.paddleSize);
 	m_paddle.assign<PhysicsComponent>(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
-	m_paddle.assign<BoxCollisionComponent>();
+	m_paddle.assign<CollisionComponent>(m_box2d.getWorld(), BoxCollision(paddlePosition, m_visuals.paddleSize), CollisionInfo(false, false));
 	m_paddle.assign<SpriteComponent>(TextureId::PADDLE);
 	m_paddle.assign<KeyboardInputComponent>('a', 'd', 0, 0, ' ');
 	m_paddle.assign<CommandQueueComponent>();
@@ -139,8 +146,22 @@ void Level::createBall()
 	m_ball = entities.create();
 	m_ball.assign<PositionComponent>(ballPosition, m_visuals.ballSize);
 	m_ball.assign<PhysicsComponent>();
-	m_ball.assign<CircleCollisionComponent>();
+	m_ball.assign<CollisionComponent>(m_box2d.getWorld(), CircleCollision(ballPosition + m_visuals.paddleSize/2.0f, m_visuals.ballSize.x/2.0f), CollisionInfo(true, false));
 	m_ball.assign<SpriteComponent>(TextureId::BALL);
+}
+
+void Level::createBounds()
+{
+	// also creats lower bound
+	//box2d.createBounds(0, 0, 1, 1);
+	auto leftBound = entities.create();
+	leftBound.assign<CollisionComponent>(m_box2d.getWorld(), EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)), CollisionInfo(false, true));
+	auto rightBound = entities.create();
+	rightBound.assign<CollisionComponent>(m_box2d.getWorld(), EdgeCollision(glm::vec2(0, 1), glm::vec2(1, 1)), CollisionInfo(false, true));
+	auto topBound = entities.create();
+	topBound.assign<CollisionComponent>(m_box2d.getWorld(), EdgeCollision(glm::vec2(0, 0), glm::vec2(1, 0)), CollisionInfo(false, true));
+	//auto bottomBound = entities.create();
+	//topBound.assign<CollisionComponent>(EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)), CollisionInfo(false, true));
 }
 
 

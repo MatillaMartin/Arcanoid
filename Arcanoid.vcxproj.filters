@@ -211,9 +211,6 @@
     <ClCompile Include="src\GameTextures.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\CircleCollisionComponent.cpp">
-      <Filter>src\Game\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="src\SpriteRenderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
@@ -616,9 +613,6 @@
     </ClInclude>
     <ClInclude Include="src\SpriteRenderer.h">
       <Filter>src\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CircleCollisionComponent.h">
-      <Filter>src\Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="src\PhysicsSystem.h">
       <Filter>src\Game\Systems</Filter>

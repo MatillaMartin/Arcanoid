@@ -7,6 +7,7 @@
 #include "Renderer.h"
 #include "TileType.h"
 #include "StickPower.h"
+#include "ofxBox2d.h"
 
 class TileMatrix;
 
@@ -56,6 +57,8 @@ public:
 
 	LevelEndHandler m_levelEndHandler;
 
+	ofxBox2d m_box2d;
+
 	struct PowerEvents
 	{
 		UseStickEventHandler m_stickHandler;
@@ -65,8 +68,10 @@ public:
 	void onLevelStart();
 
 private:
+	void setupBox2d();
 	void setupEntityX();
 	void createTiles();
 	void createPaddle();
 	void createBall();
+	void createBounds();
 };
