@@ -8,19 +8,18 @@ LevelManager::LevelManager(const std::vector<Level::Params> & levels, Level::Vis
 	m_currentLevelIt(m_levels.begin())
 {
 	assert(!m_levels.empty());
-	// load first level
-	startLevel();
-
-	assert(m_currentLevel);
 }
 
 void LevelManager::update(double delta)
 {
+	assert(m_currentLevel);
 	m_currentLevel->update(delta);
 }
 
 void LevelManager::draw(Renderer * renderer)
 {
+	assert(m_currentLevel);
+
 	// draw current level identifications etc.
 	renderer->drawSprite(glm::vec2(0), glm::vec2(1), TextureId::LEVEL_0);
 
@@ -30,6 +29,7 @@ void LevelManager::draw(Renderer * renderer)
 
 void LevelManager::input(char input)
 {
+	assert(m_currentLevel);
 	m_currentLevel->input(input);
 }
 

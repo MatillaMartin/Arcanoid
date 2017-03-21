@@ -44,6 +44,15 @@ Level::Level(const Params & params, const Visuals & visuals, std::function<void(
 	onLevelStart();
 }
 
+Level::~Level()
+{
+	// remove ofxBox2d components before destroying ofxBox2d
+	entities.each<CollisionComponent>([](Entity & e, CollisionComponent & collision) 
+	{
+		e.remove<CollisionComponent>();
+	});
+}
+
 void Level::setupBox2d()
 {
 	m_box2d.init();

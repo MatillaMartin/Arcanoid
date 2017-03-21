@@ -41,7 +41,14 @@ public:
 		std::map<TileType, std::vector<TextureId>> tileMap;
 	};
 
+	struct PowerEvents
+	{
+		UseStickEventHandler m_stickHandler;
+		//UseShootEventHandler m_shootHandler;
+	};
+
 	Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd);
+	~Level();
 
 	void update(double delta);
 	void draw(Renderer * renderer);
@@ -59,11 +66,7 @@ public:
 
 	ofxBox2d m_box2d;
 
-	struct PowerEvents
-	{
-		UseStickEventHandler m_stickHandler;
-		//UseShootEventHandler m_shootHandler;
-	} m_powerEvents;
+	PowerEvents m_powerEvents;
 
 	void onLevelStart();
 
