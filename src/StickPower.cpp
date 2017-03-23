@@ -18,7 +18,7 @@ void UseStickEventHandler::receive(const UseStickEvent & e)
 
 		// normalize to ball speed
 
-		vel.x /= stuckPhy->getVelocity().size();
+		vel /= stuckPhy->getVelocity().size();
 		vel *= e.releaseSpeed;
 
 		stuckPhy->setVelocity(vel);

@@ -26,6 +26,8 @@
 
 #include "ofGraphics.h"
 
+#define PHYSICS_SCALE 32
+
 Level::Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd)
 	:
 	m_params(params),
@@ -53,6 +55,15 @@ Level::~Level()
 
 void Level::setupBox2d()
 {
+	// scale up level
+	m_visuals.levelRegion.scale(PHYSICS_SCALE);
+	m_visuals.tileMatrixRegion = m_visuals.levelRegion.map(m_visuals.tileMatrixRegion);
+	m_visuals.paddleSize = m_visuals.levelRegion.map(m_visuals.paddleSize);
+	m_visuals.ballSize = m_visuals.levelRegion.map(m_visuals.ballSize);
+
+	m_params.ballSpeed *= PHYSICS_SCALE;
+	m_params.paddleSpeed *= PHYSICS_SCALE;
+
 	m_box2d.init();
 	m_box2d.setGravity(0, 0);
 	m_box2d.setFPS(60.0);
@@ -75,9 +86,8 @@ void Level::setupEntityX()
 void Level::createTiles()
 {
 	// determine tile size from region
-	ofRectangle region = m_visuals.levelRegion.map(m_visuals.tileMatrixRegion);
-
-	glm::vec2 tileSize (region.width / m_params.tiles->nCols, region.height / m_params.tiles->nRows);
+	glm::vec2 tileSize (m_visuals.tileMatrixRegion.width / m_params.tiles->nCols, 
+						m_visuals.tileMatrixRegion.height / m_params.tiles->nRows);
 
 	int index = -1;
 	for (TileMatrix::TileType tiletype : m_params.tiles->matrix)
@@ -98,7 +108,7 @@ void Level::createTiles()
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition, tileSize);
-		entity.assign<PhysicsComponent>(PhysicsInfo(), BoxCollision(tilePosition, tileSize), CollisionInfo(false, true), m_box2d.getWorld());
+		entity.assign<PhysicsComponent>(PhysicsInfo(), BoxCollision(tilePosition, tileSize), CollisionInfo(true, true), m_box2d.getWorld());
 
 		switch (tiletype)
 		{
@@ -177,7 +187,7 @@ void Level::createBounds()
 	(
 		PhysicsInfo(),
 		EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)),
-		CollisionInfo(false, true),
+		CollisionInfo(true, true),
 		m_box2d.getWorld()
 	);
 
@@ -186,7 +196,7 @@ void Level::createBounds()
 	(
 		PhysicsInfo(),
 		EdgeCollision(glm::vec2(0, 1), glm::vec2(1, 1)),
-		CollisionInfo(false, true),
+		CollisionInfo(true, true),
 		m_box2d.getWorld()
 	);
 	auto topBound = entities.create();
@@ -194,7 +204,7 @@ void Level::createBounds()
 	(
 		PhysicsInfo(),
 		EdgeCollision(glm::vec2(0, 0), glm::vec2(1, 0)),
-		CollisionInfo(false, true),
+		CollisionInfo(true, true),
 		m_box2d.getWorld()
 	);
 	//auto bottomBound = entities.create();
@@ -215,18 +225,18 @@ void Level::update(double delta)
 
 void Level::draw(Renderer * renderer)
 {
-	// draw all sprites
-	entities.each<PositionComponent, SpriteComponent>(
-		[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
-	{
-		renderer->drawSprite(position.position, position.size, visual.texture);
-	});
-
-	//entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
-	//	[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	//// draw all sprites
+	//entities.each<PositionComponent, SpriteComponent>(
+	//	[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
 	//{
-	//	renderer->drawSprite(physics.collision->getPosition(), position.size, visual.texture);
+	//	renderer->drawSprite(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
 	//});
+
+	entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
+		[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	{
+		renderer->drawSprite(physics.collision->getPosition() / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
+	});
 }
 
 void Level::input(char input)

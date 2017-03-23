@@ -53,7 +53,6 @@ void ofApp::setup(){
 	mainMenuCallbacks.onExit = std::bind(&ofApp::onExit, this);
 	menu = make_unique<MainMenu>(mainMenuParams, mainMenuVisuals, mainMenuCallbacks);
 
-
 	// Level Visuals
 	Level::Visuals visuals;
 	visuals.levelRegion = ofRectangle(0, 0, normResolution.x, normResolution.y);
@@ -73,7 +72,7 @@ void ofApp::setup(){
 	params.paddleSpeed = 4.0f;
 	params.paddleFrictionCoeff = 40.0f;
 	params.paddleStickTime = 3.0f;
-	params.ballSpeed = 0.8f;
+	params.ballSpeed = 0.2f;
 
 	std::vector<Level::Params> paramsVec;
 	paramsVec.push_back(params);
