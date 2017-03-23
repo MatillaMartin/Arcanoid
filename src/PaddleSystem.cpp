@@ -22,11 +22,19 @@ void PaddleSystem::update(EntityManager & entities, EventManager & events, TimeD
 			switch (command)
 			{
 			case UserCommand::LEFT:
-				physics.velocity.x = -controller.params.speed;
+			{
+				auto vel = physics.getVelocity();
+				vel.x = -controller.params.speed;
+				physics.setVelocity(vel);
 				break;
+			}
 			case UserCommand::RIGHT:
-				physics.velocity.x = controller.params.speed;
+			{
+				auto vel = physics.getVelocity();
+				vel.x = controller.params.speed;
+				physics.setVelocity(vel);
 				break;
+			}
 			case UserCommand::USE:
 				// call power event if any
 				onPaddleUse(e, events);
@@ -53,7 +61,7 @@ void PaddleSystem::onPaddleUse(Entity paddle, EventManager & events)
 		break;
 	case PowerType::STICK:
 	{
-		ofLogVerbose("PaddleSystem") << "Paddle use called Stick power";
+		ofLogVerbose("PaddleSystem") << "Paddle use Stick power";
 		auto stick = paddle.component<StickComponent>();
 		events.emit<UseStickEvent>(stick->stickable, paddle, stick->releaseSpeed);
 		paddle.remove<StickComponent>();

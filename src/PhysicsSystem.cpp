@@ -6,8 +6,8 @@ void PhysicsSystem::update(EntityManager & entities, EventManager & events, Time
 {
 	entities.each<PositionComponent, PhysicsComponent>([dt](Entity & entity, PositionComponent & position, PhysicsComponent & physics)
 	{
-		physics.acceleration = -physics.velocity * physics.frictionCoeff;
-		physics.velocity += physics.acceleration * dt;
-		position.position += physics.velocity * dt;
+		physics.setAcceleration( -physics.getVelocity() * physics.getFrictionCoeff() );
+		physics.setVelocity( physics.getVelocity() + physics.getAcceleration() * dt );
+		position.position += physics.getVelocity() * dt;
 	});
 }

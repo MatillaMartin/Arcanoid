@@ -8,8 +8,6 @@
 #include "SpriteComponent.h"
 #include "TypeComponent.h"
 
-#include "CollisionComponent.h"
-
 #include "PaddleControllerComponent.h"
 #include "CommandQueueComponent.h"
 #include "KeyboardInputComponent.h"
@@ -47,9 +45,9 @@ Level::Level(const Params & params, const Visuals & visuals, std::function<void(
 Level::~Level()
 {
 	// remove ofxBox2d components before destroying ofxBox2d
-	entities.each<CollisionComponent>([](Entity & e, CollisionComponent & collision) 
+	entities.each<PhysicsComponent>([](Entity & e, PhysicsComponent & physics)
 	{
-		e.remove<CollisionComponent>();
+		e.remove<PhysicsComponent>();
 	});
 }
 
@@ -100,7 +98,7 @@ void Level::createTiles()
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition, tileSize);
-		entity.assign<CollisionComponent>(m_box2d.getWorld(), BoxCollision(tilePosition, tileSize), CollisionInfo(false, true));
+		entity.assign<PhysicsComponent>(PhysicsInfo(), BoxCollision(tilePosition, tileSize), CollisionInfo(false, true), m_box2d.getWorld());
 
 		switch (tiletype)
 		{
@@ -136,8 +134,14 @@ void Level::createPaddle()
 
 	m_paddle = entities.create();
 	m_paddle.assign<PositionComponent>(paddlePosition, m_visuals.paddleSize);
-	m_paddle.assign<PhysicsComponent>(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f));
-	m_paddle.assign<CollisionComponent>(m_box2d.getWorld(), BoxCollision(paddlePosition, m_visuals.paddleSize), CollisionInfo(false, false));
+	m_paddle.assign<PhysicsComponent>
+	(
+		PhysicsInfo(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f)), 
+		BoxCollision(paddlePosition, m_visuals.paddleSize), 
+		CollisionInfo(false, false), 
+		m_box2d.getWorld()
+	);
+
 	m_paddle.assign<SpriteComponent>(TextureId::PADDLE);
 	m_paddle.assign<KeyboardInputComponent>('a', 'd', 0, 0, ' ');
 	m_paddle.assign<CommandQueueComponent>();
@@ -154,8 +158,13 @@ void Level::createBall()
 
 	m_ball = entities.create();
 	m_ball.assign<PositionComponent>(ballPosition, m_visuals.ballSize);
-	m_ball.assign<PhysicsComponent>();
-	m_ball.assign<CollisionComponent>(m_box2d.getWorld(), CircleCollision(ballPosition + m_visuals.paddleSize/2.0f, m_visuals.ballSize.x/2.0f), CollisionInfo(true, false));
+	m_ball.assign<PhysicsComponent>
+	(
+		PhysicsInfo(),
+		CircleCollision(ballPosition + m_visuals.paddleSize / 2.0f, m_visuals.ballSize.x / 2.0f),
+		CollisionInfo(true, false),
+		m_box2d.getWorld()
+	);
 	m_ball.assign<SpriteComponent>(TextureId::BALL);
 }
 
@@ -164,11 +173,30 @@ void Level::createBounds()
 	// also creats lower bound
 	//box2d.createBounds(0, 0, 1, 1);
 	auto leftBound = entities.create();
-	leftBound.assign<CollisionComponent>(m_box2d.getWorld(), EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)), CollisionInfo(false, true));
+	leftBound.assign<PhysicsComponent>
+	(
+		PhysicsInfo(),
+		EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)),
+		CollisionInfo(false, true),
+		m_box2d.getWorld()
+	);
+
 	auto rightBound = entities.create();
-	rightBound.assign<CollisionComponent>(m_box2d.getWorld(), EdgeCollision(glm::vec2(0, 1), glm::vec2(1, 1)), CollisionInfo(false, true));
+	rightBound.assign<PhysicsComponent>
+	(
+		PhysicsInfo(),
+		EdgeCollision(glm::vec2(0, 1), glm::vec2(1, 1)),
+		CollisionInfo(false, true),
+		m_box2d.getWorld()
+	);
 	auto topBound = entities.create();
-	topBound.assign<CollisionComponent>(m_box2d.getWorld(), EdgeCollision(glm::vec2(0, 0), glm::vec2(1, 0)), CollisionInfo(false, true));
+	topBound.assign<PhysicsComponent>
+	(
+		PhysicsInfo(),
+		EdgeCollision(glm::vec2(0, 0), glm::vec2(1, 0)),
+		CollisionInfo(false, true),
+		m_box2d.getWorld()
+	);
 	//auto bottomBound = entities.create();
 	//topBound.assign<CollisionComponent>(EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)), CollisionInfo(false, true));
 }
@@ -193,6 +221,12 @@ void Level::draw(Renderer * renderer)
 	{
 		renderer->drawSprite(position.position, position.size, visual.texture);
 	});
+
+	//entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
+	//	[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	//{
+	//	renderer->drawSprite(physics.collision->getPosition(), position.size, visual.texture);
+	//});
 }
 
 void Level::input(char input)

@@ -265,9 +265,6 @@
     <ClCompile Include="src\StickComponent.cpp">
       <Filter>src\Game\Power\Stick</Filter>
     </ClCompile>
-    <ClCompile Include="src\CollisionComponent.cpp">
-      <Filter>src\Game\Collision</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -332,9 +329,6 @@
     </Filter>
     <Filter Include="src\Game\LevelManager">
       <UniqueIdentifier>{e73ff4fb-0713-4d83-b0df-0e9d6a76af51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Ball">
-      <UniqueIdentifier>{185cdd10-613a-4453-b787-67f1857ca3ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\Collision">
       <UniqueIdentifier>{6fbde73e-ae62-4679-8c46-3f16df38bf76}</UniqueIdentifier>
@@ -687,9 +681,6 @@
       <Filter>src\Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="src\CollisionEvent.h">
-      <Filter>src\Game\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CollisionComponent.h">
       <Filter>src\Game\Collision</Filter>
     </ClInclude>
   </ItemGroup>

@@ -29,8 +29,8 @@ void PowerSystem::update(EntityManager & entities, EventManager & events, TimeDe
 					auto entPhy = entity.component<PhysicsComponent>();
 					if (entPhy)
 					{
-						physics->frictionCoeff = entPhy->frictionCoeff;
-						physics->velocity = entPhy->velocity;
+						physics->setFrictionCoeff(entPhy->getFrictionCoeff());
+						physics->setVelocity(entPhy->getVelocity());
 					}
 					else
 					{

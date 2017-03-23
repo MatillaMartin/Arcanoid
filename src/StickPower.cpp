@@ -12,14 +12,16 @@ void UseStickEventHandler::receive(const UseStickEvent & e)
 	ComponentHandle<PhysicsComponent> toPhy = to.component<PhysicsComponent>();
 	if (stuckPhy && toPhy)
 	{
-		stuckPhy->frictionCoeff = glm::vec2(0);
-		stuckPhy->velocity.y = -e.releaseSpeed;
+		stuckPhy->setFrictionCoeff(glm::vec2(0));
 		// maybe add some horizontal speed too? adding paddle speed
-		stuckPhy->velocity.x = toPhy->velocity.x;
+		glm::vec2 vel(toPhy->getVelocity().x, -e.releaseSpeed);
 
 		// normalize to ball speed
-		stuckPhy->velocity /= stuckPhy->velocity.size();
-		stuckPhy->velocity *= e.releaseSpeed;
+
+		vel.x /= stuckPhy->getVelocity().size();
+		vel *= e.releaseSpeed;
+
+		stuckPhy->setVelocity(vel);
 	}
 	else
 	{

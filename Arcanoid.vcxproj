@@ -238,7 +238,6 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
     <ClCompile Include="src\BallSystem.cpp" />
-    <ClCompile Include="src\CollisionComponent.cpp" />
     <ClCompile Include="src\CollisionSystem.cpp" />
     <ClCompile Include="src\CommandQueueComponent.cpp" />
     <ClCompile Include="src\GameTextures.cpp" />
@@ -337,7 +336,6 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
     <ClInclude Include="src\BallSystem.h" />
-    <ClInclude Include="src\CollisionComponent.h" />
     <ClInclude Include="src\CollisionEvent.h" />
     <ClInclude Include="src\CollisionHandler.h" />
     <ClInclude Include="src\CommandQueueComponent.h" />
