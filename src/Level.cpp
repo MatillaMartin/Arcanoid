@@ -26,7 +26,7 @@
 
 #include "ofGraphics.h"
 
-#define PHYSICS_SCALE 32
+#define PHYSICS_SCALE 1920
 
 Level::Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd)
 	:
@@ -108,7 +108,12 @@ void Level::createTiles()
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition, tileSize);
-		entity.assign<PhysicsComponent>(PhysicsInfo(), BoxCollision(tilePosition, tileSize), CollisionInfo(true, true), m_box2d.getWorld());
+		entity.assign<PhysicsComponent>(
+			PhysicsInfo(),
+			BoxCollision(tilePosition, tileSize), 
+			CollisionInfo(true, true),
+			m_box2d.getWorld()
+		);
 
 		switch (tiletype)
 		{
@@ -148,7 +153,7 @@ void Level::createPaddle()
 	(
 		PhysicsInfo(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f)), 
 		BoxCollision(paddlePosition, m_visuals.paddleSize), 
-		CollisionInfo(false, false), 
+		CollisionInfo(true, false),
 		m_box2d.getWorld()
 	);
 
@@ -171,7 +176,7 @@ void Level::createBall()
 	m_ball.assign<PhysicsComponent>
 	(
 		PhysicsInfo(),
-		CircleCollision(ballPosition + m_visuals.paddleSize / 2.0f, m_visuals.ballSize.x / 2.0f),
+		CircleCollision(ballPosition, m_visuals.ballSize.x / 2.0f),
 		CollisionInfo(true, false),
 		m_box2d.getWorld()
 	);
@@ -225,18 +230,18 @@ void Level::update(double delta)
 
 void Level::draw(Renderer * renderer)
 {
-	//// draw all sprites
-	//entities.each<PositionComponent, SpriteComponent>(
-	//	[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
-	//{
-	//	renderer->drawSprite(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
-	//});
-
-	entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
-		[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	// draw all sprites
+	entities.each<PositionComponent, SpriteComponent>(
+		[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
 	{
-		renderer->drawSprite(physics.collision->getPosition() / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
+		renderer->drawSprite(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
 	});
+
+	//entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
+	//	[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	//{
+	//	renderer->drawSprite(physics.collision->getPosition() / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
+	//});
 }
 
 void Level::input(char input)

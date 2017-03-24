@@ -8,6 +8,11 @@ void PhysicsSystem::update(EntityManager & entities, EventManager & events, Time
 	{
 		physics.setAcceleration( -physics.getVelocity() * physics.getFrictionCoeff() );
 		physics.setVelocity( physics.getVelocity() + physics.getAcceleration() * dt );
-		position.position += physics.getVelocity() * dt;
+		//position.position += physics.getVelocity() * dt;
+
+		if (physics.collision)
+		{
+			position.position = physics.collision->getPosition();
+		}
 	});
 }

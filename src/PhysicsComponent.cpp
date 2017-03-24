@@ -87,17 +87,20 @@ void PhysicsComponent::setCollision(std::shared_ptr<ofxBox2dBaseShape> shape, co
 {
 	this->collision = shape;
 
-	if (info.bFixed) {
+	float density = 1.0f;
+	float bounce = 0.0f;
+	float friction = 0.0f;
+
+	if (info.bBounce) bounce = 1.0f;
+
+	collision->setPhysics(density, bounce, friction);
+
+	if(info.bFixed)
+	{ 
 		collision->body->SetType(b2BodyType::b2_staticBody);
 	}
-	else {
-		collision->body->SetType(b2BodyType::b2_dynamicBody);
-	}
-
-	if (info.bBounce) {
-		collision->setBounce(1.0f);
-	}
-	else {
-		collision->setBounce(0.0f);
+	else
+	{
+		collision->body->SetType(b2BodyType::b2_kinematicBody);
 	}
 }
