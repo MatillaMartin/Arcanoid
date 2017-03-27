@@ -28,12 +28,12 @@ SpriteRenderer::SpriteRenderer(GameTextures * textures, const glm::vec2 & resolu
 
 void SpriteRenderer::drawSprite(const glm::vec2 & position, const glm::vec2 & size, const ofTexture & texture)
 {
-	glm::vec2 pixelPosition = position * m_resolution;
-	glm::vec2 pixelSize = size * m_resolution;
+	glm::vec2 spritePosition = position * m_resolution;
+	glm::vec2 spriteSize = size * m_resolution;
 
 	m_shader.begin();
-	m_shader.setUniform2f("pos", pixelPosition);
-	m_shader.setUniform2f("size", pixelSize);
+	m_shader.setUniform2f("pos", spritePosition);
+	m_shader.setUniform2f("size", spriteSize);
 	m_shader.setUniformTexture("texture", texture, 0);
 		m_quad.draw();
 	m_shader.end();

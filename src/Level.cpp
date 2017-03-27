@@ -26,7 +26,7 @@
 
 #include "ofGraphics.h"
 
-#define PHYSICS_SCALE 1920
+#define PHYSICS_SCALE 1024
 
 Level::Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd)
 	:
@@ -104,14 +104,15 @@ void Level::createTiles()
 		float row = (index - col) / m_params.tiles->nCols;
 		glm::vec2 tilePosition(col, row);
 		tilePosition *= tileSize;
-		
+		tilePosition += tileSize / 2.0f;
+
 		entityx::Entity entity = entities.create();
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition, tileSize);
 		entity.assign<PhysicsComponent>(
 			PhysicsInfo(),
 			BoxCollision(tilePosition, tileSize), 
-			CollisionInfo(true, true),
+			CollisionInfo(false, b2BodyType::b2_staticBody),
 			m_box2d.getWorld()
 		);
 
@@ -153,7 +154,7 @@ void Level::createPaddle()
 	(
 		PhysicsInfo(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f)), 
 		BoxCollision(paddlePosition, m_visuals.paddleSize), 
-		CollisionInfo(true, false),
+		CollisionInfo(false, b2BodyType::b2_kinematicBody),
 		m_box2d.getWorld()
 	);
 
@@ -167,8 +168,7 @@ void Level::createBall()
 {
 	// find initial location relative to the paddle
 	ComponentHandle<PositionComponent> paddle = m_paddle.component<PositionComponent>();
-	glm::vec2 ballPosition = paddle->position;
-	ballPosition.x += paddle->size.x / 2.0f;
+	glm::vec2 ballPosition = paddle->position; // centered
 	ballPosition.y -= m_visuals.ballSize.y;
 
 	m_ball = entities.create();
@@ -177,7 +177,7 @@ void Level::createBall()
 	(
 		PhysicsInfo(),
 		CircleCollision(ballPosition, m_visuals.ballSize.x / 2.0f),
-		CollisionInfo(true, false),
+		CollisionInfo(true, b2BodyType::b2_dynamicBody),
 		m_box2d.getWorld()
 	);
 	m_ball.assign<SpriteComponent>(TextureId::BALL);
@@ -191,8 +191,8 @@ void Level::createBounds()
 	leftBound.assign<PhysicsComponent>
 	(
 		PhysicsInfo(),
-		EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)),
-		CollisionInfo(true, true),
+		EdgeCollision(glm::vec2(m_visuals.levelRegion.getTopLeft()), glm::vec2(m_visuals.levelRegion.getBottomLeft())),
+		CollisionInfo(false, b2BodyType::b2_staticBody),
 		m_box2d.getWorld()
 	);
 
@@ -200,20 +200,18 @@ void Level::createBounds()
 	rightBound.assign<PhysicsComponent>
 	(
 		PhysicsInfo(),
-		EdgeCollision(glm::vec2(0, 1), glm::vec2(1, 1)),
-		CollisionInfo(true, true),
+		EdgeCollision(glm::vec2(m_visuals.levelRegion.getTopRight()), glm::vec2(m_visuals.levelRegion.getBottomRight())),
+		CollisionInfo(false, b2BodyType::b2_staticBody),
 		m_box2d.getWorld()
 	);
 	auto topBound = entities.create();
 	topBound.assign<PhysicsComponent>
 	(
 		PhysicsInfo(),
-		EdgeCollision(glm::vec2(0, 0), glm::vec2(1, 0)),
-		CollisionInfo(true, true),
+		EdgeCollision(glm::vec2(m_visuals.levelRegion.getTopLeft()), glm::vec2(m_visuals.levelRegion.getTopRight())),
+		CollisionInfo(false, b2BodyType::b2_staticBody),
 		m_box2d.getWorld()
 	);
-	//auto bottomBound = entities.create();
-	//topBound.assign<CollisionComponent>(EdgeCollision(glm::vec2(0, 0), glm::vec2(0, 1)), CollisionInfo(false, true));
 }
 
 
@@ -234,13 +232,13 @@ void Level::draw(Renderer * renderer)
 	entities.each<PositionComponent, SpriteComponent>(
 		[renderer](Entity entity, PositionComponent & position, SpriteComponent & visual)
 	{
-		renderer->drawSprite(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
+		renderer->drawSpriteCentered(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
 	});
 
 	//entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
 	//	[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
 	//{
-	//	renderer->drawSprite(physics.collision->getPosition() / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
+	//	physics.collision->draw();
 	//});
 }
 

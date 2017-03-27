@@ -13,8 +13,8 @@ struct BoxCollision
 
 struct CircleCollision
 {
-	CircleCollision(const glm::vec2 & center, float radius) : center(center), radius(radius) {}
-	glm::vec2 center;
+	CircleCollision(const glm::vec2 & position, float radius) : position(position), radius(radius) {}
+	glm::vec2 position;
 	float radius;
 };
 
@@ -43,10 +43,10 @@ struct PhysicsInfo
 
 struct CollisionInfo
 {
-	CollisionInfo(bool bounce, bool fixed) : bBounce(bounce), bFixed(fixed) {}
+	CollisionInfo(bool bounce, b2BodyType type) : bBounce(bounce), type(type) {}
 
 	bool bBounce;
-	bool bFixed;
+	b2BodyType type;
 };
 
 class PhysicsComponent : public Component<PhysicsComponent>
@@ -68,5 +68,7 @@ public:
 
 private:
 	PhysicsInfo physics;
-	void setCollision(std::shared_ptr<ofxBox2dBaseShape> shape, const CollisionInfo & info);
+
+	void setPhysics(std::shared_ptr<ofxBox2dBaseShape> shape, const CollisionInfo & info);
+	void setBody(CollisionInfo & info);
 };

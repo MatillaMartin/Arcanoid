@@ -15,9 +15,12 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const BoxCollisi
 	PhysicsComponent(physics)
 {
 	auto shape = make_shared<ofxBox2dRect>();
-	shape->setup(world, box.position.x, box.position.y, box.size.x, box.size.y);
+	this->collision = shape;
 
-	setCollision(shape, collision);
+	setPhysics(shape, collision);
+	shape->setup(world, box.position.x, box.position.y, box.size.x, box.size.y);
+	shape->body->SetType(collision.type);
+
 }
 
 PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & collision, b2World * world)
@@ -25,9 +28,11 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleColl
 	PhysicsComponent(physics)
 {
 	auto shape = make_shared<ofxBox2dCircle>();
-	shape->setup(world, circle.center.x, circle.center.y, circle.radius);
+	this->collision = shape;
 
-	setCollision(shape, collision);
+	setPhysics(shape, collision);
+	shape->setup(world, circle.position.x, circle.position.y, circle.radius);
+	shape->body->SetType(collision.type);
 }
 
 PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & collision, b2World * world)
@@ -35,11 +40,14 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const EdgeCollis
 	PhysicsComponent(physics)
 {
 	auto shape = make_shared<ofxBox2dEdge>();
+	this->collision = shape;
+
 	shape->addVertex(glm::vec3(edge.start.xy, 0.0f));
 	shape->addVertex(glm::vec3(edge.end.xy, 0.0f));
-	shape->create(world);
 
-	setCollision(shape, collision);
+	setPhysics(shape, collision);
+	shape->create(world);
+	shape->body->SetType(collision.type);
 }
 
 void PhysicsComponent::setVelocity(const glm::vec2 & vel)
@@ -83,24 +91,19 @@ glm::vec2 PhysicsComponent::getFrictionCoeff()
 	return physics.frictionCoeff;
 }
 
-void PhysicsComponent::setCollision(std::shared_ptr<ofxBox2dBaseShape> shape, const CollisionInfo & info)
+void PhysicsComponent::setPhysics(std::shared_ptr<ofxBox2dBaseShape> shape, const CollisionInfo & info)
 {
-	this->collision = shape;
-
 	float density = 1.0f;
-	float bounce = 0.0f;
+	float bounce = 1.0f;
 	float friction = 0.0f;
 
-	if (info.bBounce) bounce = 1.0f;
+	//if (info.bBounce) bounce = 1.0f;
 
 	collision->setPhysics(density, bounce, friction);
+	collision->setFixedRotation(true);
+}
 
-	if(info.bFixed)
-	{ 
-		collision->body->SetType(b2BodyType::b2_staticBody);
-	}
-	else
-	{
-		collision->body->SetType(b2BodyType::b2_kinematicBody);
-	}
+void PhysicsComponent::setBody(CollisionInfo & info)
+{
+
 }
