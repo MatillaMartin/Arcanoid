@@ -72,7 +72,7 @@ void ofApp::setup(){
 	params.paddleSpeed = 0.04f;
 	params.paddleFrictionCoeff = 40.0f;
 	params.paddleStickTime = 3.0f;
-	params.ballSpeed = 0.005f; // screen fractions per second
+	params.ballSpeed = 0.02f; // screen fractions per second
 
 	std::vector<Level::Params> paramsVec;
 	paramsVec.push_back(params);

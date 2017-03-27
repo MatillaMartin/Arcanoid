@@ -17,8 +17,7 @@ void UseStickEventHandler::receive(const UseStickEvent & e)
 		glm::vec2 vel(toPhy->getVelocity().x, -e.releaseSpeed);
 
 		// normalize to ball speed
-
-		vel /= vel.size();
+		vel = glm::normalize(vel);
 		vel *= e.releaseSpeed;
 
 		stuckPhy->setVelocity(vel);
