@@ -176,7 +176,8 @@ void Level::createBall()
 	m_ball.assign<PhysicsComponent>
 	(
 		PhysicsInfo(),
-		CircleCollision(ballPosition, m_visuals.ballSize.x / 2.0f),
+		//CircleCollision(ballPosition, m_visuals.ballSize.x / 2.0f),
+		BoxCollision(ballPosition, m_visuals.ballSize),
 		CollisionInfo(true, b2BodyType::b2_dynamicBody),
 		m_box2d.getWorld()
 	);

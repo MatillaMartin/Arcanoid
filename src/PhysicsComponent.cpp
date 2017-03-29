@@ -20,7 +20,7 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const BoxCollisi
 	setPhysics(shape, collision);
 	shape->setup(world, box.position.x, box.position.y, box.size.x, box.size.y);
 	shape->body->SetType(collision.type);
-
+	shape->body->SetFixedRotation(true);
 }
 
 PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & collision, b2World * world)
@@ -33,6 +33,7 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleColl
 	setPhysics(shape, collision);
 	shape->setup(world, circle.position.x, circle.position.y, circle.radius);
 	shape->body->SetType(collision.type);
+	shape->body->SetFixedRotation(true);
 }
 
 PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & collision, b2World * world)
@@ -48,6 +49,7 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const EdgeCollis
 	setPhysics(shape, collision);
 	shape->create(world);
 	shape->body->SetType(collision.type);
+	shape->body->SetFixedRotation(true);
 }
 
 void PhysicsComponent::setVelocity(const glm::vec2 & vel)
@@ -100,7 +102,6 @@ void PhysicsComponent::setPhysics(std::shared_ptr<ofxBox2dBaseShape> shape, cons
 	//if (info.bBounce) bounce = 1.0f;
 
 	collision->setPhysics(density, bounce, friction);
-	collision->setFixedRotation(true);
 }
 
 void PhysicsComponent::setBody(CollisionInfo & info)
