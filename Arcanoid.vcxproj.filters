@@ -265,6 +265,15 @@
     <ClCompile Include="src\StickComponent.cpp">
       <Filter>src\Game\Power\Stick</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameSounds.cpp">
+      <Filter>src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoundPlayer.cpp">
+      <Filter>src\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoundSystem.cpp">
+      <Filter>src\Game\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -356,6 +365,12 @@
     </Filter>
     <Filter Include="src\Game\Power\Stick">
       <UniqueIdentifier>{ebcd9931-d470-4d7d-8ccc-dbc9a06f7983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Audio">
+      <UniqueIdentifier>{4e50f82c-b494-4dd8-b4a8-2842aaba857c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Sound">
+      <UniqueIdentifier>{4cdf633b-97c0-417e-b623-67ab7cccacb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -682,6 +697,21 @@
     </ClInclude>
     <ClInclude Include="src\CollisionEvent.h">
       <Filter>src\Game\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameSounds.h">
+      <Filter>src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundPlayer.h">
+      <Filter>src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sounds.h">
+      <Filter>src\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundSystem.h">
+      <Filter>src\Game\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundType.h">
+      <Filter>src\Game\Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

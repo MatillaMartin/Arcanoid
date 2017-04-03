@@ -33,9 +33,13 @@ private:
 		void onGameEnd();
 
 		GameTextures textures;
+		std::unique_ptr<Renderer> renderer;
+
+		GameSounds sounds;
+		SoundPlayer soundPlayer;
+
 		Keyboard keyboard;
 
-		std::unique_ptr<Renderer> renderer;
 		std::unique_ptr<LevelManager> levels;
 		std::unique_ptr<MainMenu> menu;
 

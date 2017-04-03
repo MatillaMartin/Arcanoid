@@ -21,6 +21,8 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const BoxCollisi
 	shape->setup(world, box.position.x, box.position.y, box.size.x, box.size.y);
 	shape->body->SetType(collision.type);
 	shape->body->SetFixedRotation(true);
+
+	shape->body->SetUserData();
 }
 
 PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & collision, b2World * world)

@@ -1,11 +1,12 @@
 #include "LevelManager.h"
 
-LevelManager::LevelManager(const std::vector<Level::Params> & levels, Level::Visuals visuals, std::function<void()> onGameEnd)
+LevelManager::LevelManager(const std::vector<Level::Params> & levels, Level::Visuals visuals, std::function<void()> onGameEnd, SoundPlayer * soundPlayer)
 	:
 	m_visuals(visuals),
 	c_onGameEnd(onGameEnd),
 	m_levels(levels),
-	m_currentLevelIt(m_levels.begin())
+	m_currentLevelIt(m_levels.begin()),
+	m_soundPlayer(soundPlayer)
 {
 	assert(!m_levels.empty());
 }
@@ -62,7 +63,7 @@ void LevelManager::startLevel()
 	if (m_currentLevelIt != m_levels.end())
 	{
 		std::function<void()> onLevelEnd = std::bind(&LevelManager::onLevelEnd, this);
-		m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd);
+		m_currentLevel = make_unique<Level>(*m_currentLevelIt, m_visuals, onLevelEnd, m_soundPlayer);
 	}
 	else
 	{

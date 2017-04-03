@@ -1,3 +1,3 @@
 #pragma once
 
-enum class TileType { BASIC, STRONG };
+enum class TileType { NONE, BASIC, STRONG };

@@ -4,6 +4,6 @@
 
 struct CollisionEvent
 {
-	Entity collides;
-	Entity with;
+	Entity a;
+	Entity b;
 };

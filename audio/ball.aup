@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="ball_data" version="1.3.0" audacityversion="2.1.3" sel0="2.8730124818" sel1="2.8834099879" vpos="0" h="0.0000000000" zoom="189.3482898000" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="GENRE" value="Game"/>
+		<tag name="TRACKNUMBER" value="3"/>
+		<tag name="ALBUM" value="ball"/>
+		<tag name="YEAR" value="2017"/>
+		<tag name="TITLE" value="ball_3"/>
+		<tag name="ARTIST" value="Hennio"/>
+	</tags>
+	<wavetrack name="366597__jittels__golf-ball-bounce" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="48000" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="263421">
+				<waveblock start="0">
+					<simpleblockfile filename="e000006a.au" len="262144" min="-0.922563" max="0.768221" rms="0.012354"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0000b2e.au" len="1277" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="366597__jittels__golf-ball-bounce" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="48000" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="263421">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e2b.au" len="262144" min="-0.909926" max="0.742675" rms="0.011566"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e000066d.au" len="1277" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

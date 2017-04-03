@@ -1,11 +1,11 @@
 #pragma once
 
 #include "ofImage.h"
+#include "TileType.h"
 
 class TileMatrix
 {
 public:
-	enum TileType { EMPTY, BASIC, STRONG };
 
 	TileMatrix(const ofImage & descriptor);
 

@@ -12,6 +12,6 @@ public:
 	const ofTexture & getTexture(TextureId texture);
 
 private:
-	std::map<TextureId, ofImage> textures;
-	ofImage notFound;
+	std::map<TextureId, ofImage> m_textures;
+	ofImage m_notFound;
 };

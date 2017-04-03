@@ -8,7 +8,8 @@ ofApp::ofApp()
 	:
 	m_levelAspect(1),
 	m_screen(nullptr),
-	keyboard({ 'w', 'a', 's', 'd', ' ' })
+	keyboard({ 'w', 'a', 's', 'd', ' ' }),
+	soundPlayer(&sounds)
 {
 }
 
@@ -78,7 +79,7 @@ void ofApp::setup(){
 	paramsVec.push_back(params);
 
 	std::function<void()> onGameEnd = std::bind(&ofApp::onGameEnd, this);
-	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd);
+	levels = make_unique<LevelManager>(paramsVec, visuals, onGameEnd, &soundPlayer);
 
 	// first screen is the main menu
 	m_screen = menu.get();

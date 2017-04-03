@@ -8,6 +8,7 @@
 #include "TileType.h"
 #include "StickPower.h"
 #include "ofxBox2d.h"
+#include "SoundPlayer.h"
 
 class TileMatrix;
 
@@ -47,7 +48,7 @@ public:
 		//UseShootEventHandler m_shootHandler;
 	};
 
-	Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd);
+	Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd, SoundPlayer * soundPlayer);
 	~Level();
 
 	void update(double delta);
@@ -65,7 +66,7 @@ public:
 	LevelEndHandler m_levelEndHandler;
 
 	ofxBox2d m_box2d;
-
+	SoundPlayer * m_soundPlayer;
 	PowerEvents m_powerEvents;
 
 	void onLevelStart();

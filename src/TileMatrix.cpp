@@ -21,7 +21,7 @@ TileMatrix::TileMatrix(const ofImage & descriptor)
 
 			if (color == emptyColor)
 			{
-				matrix.push_back(TileType::EMPTY); continue;
+				matrix.push_back(TileType::NONE); continue;
 			}
 			if (color == basicColor)
 			{

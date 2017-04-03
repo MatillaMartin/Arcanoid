@@ -237,9 +237,11 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dPolygon.cpp" />
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
+    <ClCompile Include="src\SoundSystem.cpp" />
     <ClCompile Include="src\BallSystem.cpp" />
     <ClCompile Include="src\CollisionSystem.cpp" />
     <ClCompile Include="src\CommandQueueComponent.cpp" />
+    <ClCompile Include="src\GameSounds.cpp" />
     <ClCompile Include="src\GameTextures.cpp" />
     <ClCompile Include="src\InputSystem.cpp" />
     <ClCompile Include="src\Keyboard.cpp" />
@@ -251,6 +253,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="src\SelectComponent.cpp" />
     <ClCompile Include="src\SelectSystem.cpp" />
     <ClCompile Include="src\ShootComponent.cpp" />
+    <ClCompile Include="src\SoundPlayer.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\StickComponent.cpp" />
     <ClCompile Include="src\PaddleSystem.cpp" />
@@ -335,10 +338,13 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRender.h" />
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
+    <ClInclude Include="src\SoundSystem.h" />
+    <ClInclude Include="src\SoundType.h" />
     <ClInclude Include="src\BallSystem.h" />
     <ClInclude Include="src\CollisionEvent.h" />
     <ClInclude Include="src\CollisionHandler.h" />
     <ClInclude Include="src\CommandQueueComponent.h" />
+    <ClInclude Include="src\GameSounds.h" />
     <ClInclude Include="src\MenuEvents.h" />
     <ClInclude Include="src\EventHandler.h" />
     <ClInclude Include="src\PowerEvents.h" />
@@ -357,6 +363,8 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="src\PhysicsSystem.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\ShootComponent.h" />
+    <ClInclude Include="src\SoundPlayer.h" />
+    <ClInclude Include="src\Sounds.h" />
     <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\StickComponent.h" />
     <ClInclude Include="src\KeyboardInputComponent.h" />

@@ -19,6 +19,7 @@
 #include "InputSystem.h"
 #include "PowerSystem.h"
 #include "PhysicsSystem.h"
+#include "SoundSystem.h"
 
 #include "StickComponent.h"
 
@@ -28,11 +29,14 @@
 
 #define PHYSICS_SCALE 1024
 
-Level::Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd)
+typedef TypeComponent<TileType> TileTypeComponent;
+
+Level::Level(const Params & params, const Visuals & visuals, std::function<void()> onLevelEnd, SoundPlayer * soundPlayer)
 	:
 	m_params(params),
 	m_visuals(visuals),
-	m_levelEndHandler(onLevelEnd)
+	m_levelEndHandler(onLevelEnd),
+	m_soundPlayer(soundPlayer)
 {
 	setupBox2d();
 	setupEntityX();
@@ -73,11 +77,12 @@ void Level::setupEntityX()
 {
 	systems.add<InputSystem>();
 	systems.add<TileSystem>(m_visuals.tileMap, m_params.tiles->count());
-	systems.add<CollisionSystem>(&m_box2d);
+	systems.add<CollisionSystem>(&m_box2d, &events);
 	systems.add<PaddleSystem>();
 	systems.add<BallSystem>();
 	systems.add<PowerSystem>();
 	systems.add<PhysicsSystem>();
+	systems.add<SoundSystem>(m_soundPlayer);
 	systems.configure();
 
 	this->events.subscribe<LevelEndEvent>(m_levelEndHandler);
@@ -90,11 +95,11 @@ void Level::createTiles()
 						m_visuals.tileMatrixRegion.height / m_params.tiles->nRows);
 
 	int index = -1;
-	for (TileMatrix::TileType tiletype : m_params.tiles->matrix)
+	for (TileType tiletype : m_params.tiles->matrix)
 	{
 		index++;
 
-		if (tiletype == TileMatrix::EMPTY)
+		if (tiletype == TileType::NONE)
 		{
 			continue;
 		}
@@ -115,23 +120,24 @@ void Level::createTiles()
 			CollisionInfo(false, b2BodyType::b2_staticBody),
 			m_box2d.getWorld()
 		);
+		entity.assign<SoundSystem::SoundTypeComponent>(SoundType::TILE);
 
 		switch (tiletype)
 		{
-		case TileMatrix::EMPTY:
+		case TileType::NONE:
 			continue;
 			break;
-		case TileMatrix::BASIC:
+		case TileType::BASIC:
 		{
 			entity.assign<SpriteComponent>(TextureId::BASIC_0);
-			entity.assign<TypeComponent<TileType>>(TileType::BASIC);
+			entity.assign<TileTypeComponent>(TileType::BASIC);
 			entity.assign<HitsComponent>(1);
 			break;
 		}
-		case TileMatrix::STRONG:
+		case TileType::STRONG:
 		{
 			entity.assign<SpriteComponent>(TextureId::STRONG_1);
-			entity.assign<TypeComponent<TileType>>(TileType::STRONG);
+			entity.assign<TileTypeComponent>(TileType::STRONG);
 			entity.assign<HitsComponent>(2);
 			break;
 		}
@@ -162,6 +168,7 @@ void Level::createPaddle()
 	m_paddle.assign<KeyboardInputComponent>('a', 'd', 0, 0, ' ');
 	m_paddle.assign<CommandQueueComponent>();
 	m_paddle.assign<PaddleControllerComponent>(params);
+	m_paddle.assign<SoundSystem::SoundTypeComponent>(SoundType::PADDLE);
 }
 
 void Level::createBall()
@@ -182,6 +189,7 @@ void Level::createBall()
 		m_box2d.getWorld()
 	);
 	m_ball.assign<SpriteComponent>(TextureId::BALL);
+	m_ball.assign<SoundSystem::SoundTypeComponent>(SoundType::BALL);
 }
 
 void Level::createBounds()
@@ -196,6 +204,7 @@ void Level::createBounds()
 		CollisionInfo(false, b2BodyType::b2_staticBody),
 		m_box2d.getWorld()
 	);
+	leftBound.assign<SoundSystem::SoundTypeComponent>(SoundType::BOUND);
 
 	auto rightBound = entities.create();
 	rightBound.assign<PhysicsComponent>
@@ -205,6 +214,8 @@ void Level::createBounds()
 		CollisionInfo(false, b2BodyType::b2_staticBody),
 		m_box2d.getWorld()
 	);
+	rightBound.assign<SoundSystem::SoundTypeComponent>(SoundType::BOUND);
+
 	auto topBound = entities.create();
 	topBound.assign<PhysicsComponent>
 	(
@@ -213,6 +224,7 @@ void Level::createBounds()
 		CollisionInfo(false, b2BodyType::b2_staticBody),
 		m_box2d.getWorld()
 	);
+	topBound.assign<SoundSystem::SoundTypeComponent>(SoundType::BOUND);
 }
 
 
@@ -236,11 +248,15 @@ void Level::draw(Renderer * renderer)
 		renderer->drawSpriteCentered(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
 	});
 
-	//entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
-	//	[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
-	//{
-	//	physics.collision->draw();
-	//});
+	ofPushStyle();
+	ofNoFill();
+	ofSetLineWidth(2.0f);
+	entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
+		[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	{
+		physics.collision->draw();
+	});
+	ofPopStyle();
 }
 
 void Level::input(char input)
