@@ -76,7 +76,7 @@ void Level::setupBox2d()
 void Level::setupEntityX()
 {
 	systems.add<InputSystem>();
-	systems.add<TileSystem>(m_visuals.tileMap, m_params.tiles->count());
+	systems.add<TileSystem>(&events, m_visuals.tileMap, m_params.tiles->count());
 	systems.add<CollisionSystem>(&m_box2d, &events);
 	systems.add<PaddleSystem>();
 	systems.add<BallSystem>();
