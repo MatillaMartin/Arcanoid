@@ -9,6 +9,12 @@ Keyboard::Keyboard(const std::set<char> & filter)
 	ofAddListener(ofEvents().keyReleased, this, &Keyboard::onKeyRelease);
 }
 
+Keyboard::~Keyboard()
+{
+	ofRemoveListener(ofEvents().keyPressed, this, &Keyboard::onKeyPress);
+	ofRemoveListener(ofEvents().keyReleased, this, &Keyboard::onKeyRelease);
+}
+
 void Keyboard::onKeyPress(ofKeyEventArgs & key)
 {
 	auto it = m_keys.find(key.key);

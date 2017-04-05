@@ -4,15 +4,16 @@
 #include "ofxBox2dCircle.h"
 #include "ofxBox2dEdge.h"
 
-PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics)
+PhysicsComponent::PhysicsComponent(Entity entity, const PhysicsInfo & physics)
 	:
-	physics(physics)
+	m_entity(entity),
+	m_physics(physics)
 {
 }
 
-PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const BoxCollision & box, const CollisionInfo & collision, b2World * world)
+PhysicsComponent::PhysicsComponent(Entity entity, const PhysicsInfo & physics, const BoxCollision & box, const CollisionInfo & collision, b2World * world)
 	:
-	PhysicsComponent(physics)
+	PhysicsComponent(entity, physics)
 {
 	auto shape = make_shared<ofxBox2dRect>();
 	this->collision = shape;
@@ -22,12 +23,12 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const BoxCollisi
 	shape->body->SetType(collision.type);
 	shape->body->SetFixedRotation(true);
 
-	shape->body->SetUserData();
+	shape->body->SetUserData(&m_entity);
 }
 
-PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & collision, b2World * world)
+PhysicsComponent::PhysicsComponent(Entity entity, const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & collision, b2World * world)
 	:
-	PhysicsComponent(physics)
+	PhysicsComponent(entity, physics)
 {
 	auto shape = make_shared<ofxBox2dCircle>();
 	this->collision = shape;
@@ -36,11 +37,13 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const CircleColl
 	shape->setup(world, circle.position.x, circle.position.y, circle.radius);
 	shape->body->SetType(collision.type);
 	shape->body->SetFixedRotation(true);
+
+	shape->body->SetUserData(&m_entity);
 }
 
-PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & collision, b2World * world)
+PhysicsComponent::PhysicsComponent(Entity entity, const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & collision, b2World * world)
 	:
-	PhysicsComponent(physics)
+	PhysicsComponent(entity, physics)
 {
 	auto shape = make_shared<ofxBox2dEdge>();
 	this->collision = shape;
@@ -52,6 +55,8 @@ PhysicsComponent::PhysicsComponent(const PhysicsInfo & physics, const EdgeCollis
 	shape->create(world);
 	shape->body->SetType(collision.type);
 	shape->body->SetFixedRotation(true);
+
+	shape->body->SetUserData(&m_entity);
 }
 
 void PhysicsComponent::setVelocity(const glm::vec2 & vel)
@@ -62,7 +67,7 @@ void PhysicsComponent::setVelocity(const glm::vec2 & vel)
 		collision->setVelocity(vel);
 	}
 	
-	physics.velocity = vel;
+	m_physics.velocity = vel;
 }
 
 glm::vec2 PhysicsComponent::getVelocity()
@@ -70,29 +75,29 @@ glm::vec2 PhysicsComponent::getVelocity()
 	// keep velocity updated
 	if (collision)
 	{
-		physics.velocity = collision->getVelocity();
+		m_physics.velocity = collision->getVelocity();
 	}
-	return physics.velocity;
+	return m_physics.velocity;
 }
 
 void PhysicsComponent::setAcceleration(const glm::vec2 & acc)
 {
-	physics.acceleration = acc;
+	m_physics.acceleration = acc;
 }
 
 glm::vec2 PhysicsComponent::getAcceleration()
 {
-	return physics.acceleration;
+	return m_physics.acceleration;
 }
 
 void PhysicsComponent::setFrictionCoeff(const glm::vec2 & coeff)
 {
-	physics.frictionCoeff = coeff;
+	m_physics.frictionCoeff = coeff;
 }
 
 glm::vec2 PhysicsComponent::getFrictionCoeff()
 {
-	return physics.frictionCoeff;
+	return m_physics.frictionCoeff;
 }
 
 void PhysicsComponent::setPhysics(std::shared_ptr<ofxBox2dBaseShape> shape, const CollisionInfo & info)

@@ -9,6 +9,7 @@ ofApp::ofApp()
 	m_levelAspect(1),
 	m_screen(nullptr),
 	keyboard({ 'w', 'a', 's', 'd', ' ' }),
+	sounds(), // explicit order
 	soundPlayer(&sounds)
 {
 }

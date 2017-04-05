@@ -32,24 +32,22 @@ private:
 
 		void onGameEnd();
 
+		ofFbo levelRender;
+		ofImage levelDescriptor;
+
+		Keyboard keyboard;
 		GameTextures textures;
-		std::unique_ptr<Renderer> renderer;
 
 		GameSounds sounds;
 		SoundPlayer soundPlayer;
 
-		Keyboard keyboard;
-
+		std::unique_ptr<Renderer> renderer;
 		std::unique_ptr<LevelManager> levels;
 		std::unique_ptr<MainMenu> menu;
 
-		Screen * m_screen;
-
-		ofImage levelDescriptor;
-
 		glm::vec2 screenResolution;
 		glm::vec2 levelResolution;
-		ofFbo levelRender;
 
+		Screen * m_screen;
 		float m_levelAspect;
 };

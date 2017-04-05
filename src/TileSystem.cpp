@@ -2,32 +2,35 @@
 
 #include "HitsComponent.h"
 #include "LevelEvents.h"
+#include "DamageComponent.h"
 
-TileSystem::TileSystem(const std::map<TileType, std::vector<TextureId>> & tileMap, unsigned int tileCount)
+TileSystem::TileSystem(EventManager * events, const std::map<TileType, std::vector<TextureId>> & tileMap, unsigned int tileCount)
 	:
+	m_events(events),
 	m_tileCount(tileCount),
 	m_destroyCount(0),
 	m_tileMap(tileMap)
 {
 }
 
+void TileSystem::configure(EventManager & events)
+{
+	events.subscribe<EntityDestroyedEvent>(*this);
+}
+
 void TileSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
 {
 }
 
-// on block destroyed check if the level is over
-//if (m_destroyCount == m_tileCount)
-//{
-//	events.emit<LevelEndEvent>();
-//}
+void TileSystem::receive(const EntityDestroyedEvent & e)
+{
+	if (e.entity.has_component<TileTypeComponent>())
+	{
+		m_destroyCount++;
 
-
-// on collide update the texture given the map!
-//if (m_tileMap.find(tile.type) != m_tileMap.end())
-//{
-//	auto & vec = m_tileMap.at(tile.type);
-//	if (hits.getHits() < vec.size())
-//	{
-//		tile.visual = vec[hits.getHits()];
-//	}
-//}
+		if (m_destroyCount == m_tileCount)
+		{
+			m_events->emit<LevelEndEvent>();
+		}
+	}
+}

@@ -52,10 +52,10 @@ struct CollisionInfo
 class PhysicsComponent : public Component<PhysicsComponent>
 {
 public:
-	PhysicsComponent(const PhysicsInfo & physics);
-	PhysicsComponent(const PhysicsInfo & physics, const BoxCollision & box, const CollisionInfo & collision, b2World * world);
-	PhysicsComponent(const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & info, b2World * world);
-	PhysicsComponent(const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & info, b2World * world);
+	PhysicsComponent(Entity entity, const PhysicsInfo & physics);
+	PhysicsComponent(Entity entity, const PhysicsInfo & physics, const BoxCollision & box, const CollisionInfo & collision, b2World * world);
+	PhysicsComponent(Entity entity, const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & info, b2World * world);
+	PhysicsComponent(Entity entity, const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & info, b2World * world);
 
 	std::shared_ptr<ofxBox2dBaseShape> collision;
 
@@ -67,8 +67,8 @@ public:
 	glm::vec2 getFrictionCoeff();
 
 private:
-	PhysicsInfo physics;
-
+	PhysicsInfo m_physics;
+	Entity m_entity;
 	void setPhysics(std::shared_ptr<ofxBox2dBaseShape> shape, const CollisionInfo & info);
 	void setBody(CollisionInfo & info);
 };

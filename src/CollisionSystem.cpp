@@ -14,7 +14,6 @@ CollisionSystem::CollisionSystem(ofxBox2d * box2d, EventManager * events)
 
 CollisionSystem::~CollisionSystem()
 {
-	ofRemoveListener(m_box2d->contactEndEvents, this, &CollisionSystem::onCollision);
 }
 
 void CollisionSystem::update(EntityManager & entities, EventManager & events, TimeDelta dt)
@@ -26,11 +25,11 @@ void CollisionSystem::update(EntityManager & entities, EventManager & events, Ti
 void CollisionSystem::onCollision(ofxBox2dContactArgs & args)
 {
 	// assumes PhysicsComponent has set the entity id in the user data
-	assert(args.a->GetUserData() != nullptr);
-	assert(args.b->GetUserData() != nullptr);
+	assert(args.a->GetBody()->GetUserData() != nullptr);
+	assert(args.b->GetBody()->GetUserData() != nullptr);
 
-	Entity a = *(Entity*)args.a->GetUserData();
-	Entity b = *(Entity*)args.b->GetUserData();
+	Entity a = *(Entity*)args.a->GetBody()->GetUserData();
+	Entity b = *(Entity*)args.b->GetBody()->GetUserData();
 
 	m_events->emit<CollisionEvent>({ a, b });
 }

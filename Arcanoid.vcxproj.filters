@@ -274,6 +274,7 @@
     <ClCompile Include="src\SoundSystem.cpp">
       <Filter>src\Game\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="src\DamageComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -712,6 +713,9 @@
     </ClInclude>
     <ClInclude Include="src\SoundType.h">
       <Filter>src\Game\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DamageComponent.h">
+      <Filter>src\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

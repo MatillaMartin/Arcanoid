@@ -6,7 +6,7 @@
 #include "SoundPlayer.h"
 #include "CollisionEvent.h"
 
-class SoundSystem : public System<SoundSystem>, public Receiver<CollisionEvent>
+class SoundSystem : public System<SoundSystem>, public Receiver<SoundSystem>
 {
 public:
 	typedef TypeComponent<SoundType> SoundTypeComponent;
@@ -21,7 +21,6 @@ public:
 	void receive(const CollisionEvent & e);
 
 private:
-
 	SoundPlayer * m_soundPlayer;
 
 };

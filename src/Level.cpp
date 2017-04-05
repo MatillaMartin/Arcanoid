@@ -115,6 +115,7 @@ void Level::createTiles()
 		// common values for all tiles
 		entity.assign<PositionComponent>(tilePosition, tileSize);
 		entity.assign<PhysicsComponent>(
+			entity,
 			PhysicsInfo(),
 			BoxCollision(tilePosition, tileSize), 
 			CollisionInfo(false, b2BodyType::b2_staticBody),
@@ -158,6 +159,7 @@ void Level::createPaddle()
 	m_paddle.assign<PositionComponent>(paddlePosition, m_visuals.paddleSize);
 	m_paddle.assign<PhysicsComponent>
 	(
+		m_paddle,
 		PhysicsInfo(glm::vec2(), glm::vec2(), glm::vec2(m_params.paddleFrictionCoeff, 0.0f)), 
 		BoxCollision(paddlePosition, m_visuals.paddleSize), 
 		CollisionInfo(false, b2BodyType::b2_kinematicBody),
@@ -182,6 +184,7 @@ void Level::createBall()
 	m_ball.assign<PositionComponent>(ballPosition, m_visuals.ballSize);
 	m_ball.assign<PhysicsComponent>
 	(
+		m_ball,
 		PhysicsInfo(),
 		//CircleCollision(ballPosition, m_visuals.ballSize.x / 2.0f),
 		BoxCollision(ballPosition, m_visuals.ballSize),
@@ -199,6 +202,7 @@ void Level::createBounds()
 	auto leftBound = entities.create();
 	leftBound.assign<PhysicsComponent>
 	(
+		leftBound,
 		PhysicsInfo(),
 		EdgeCollision(glm::vec2(m_visuals.levelRegion.getTopLeft()), glm::vec2(m_visuals.levelRegion.getBottomLeft())),
 		CollisionInfo(false, b2BodyType::b2_staticBody),
@@ -209,6 +213,7 @@ void Level::createBounds()
 	auto rightBound = entities.create();
 	rightBound.assign<PhysicsComponent>
 	(
+		rightBound,
 		PhysicsInfo(),
 		EdgeCollision(glm::vec2(m_visuals.levelRegion.getTopRight()), glm::vec2(m_visuals.levelRegion.getBottomRight())),
 		CollisionInfo(false, b2BodyType::b2_staticBody),
@@ -219,6 +224,7 @@ void Level::createBounds()
 	auto topBound = entities.create();
 	topBound.assign<PhysicsComponent>
 	(
+		topBound,
 		PhysicsInfo(),
 		EdgeCollision(glm::vec2(m_visuals.levelRegion.getTopLeft()), glm::vec2(m_visuals.levelRegion.getTopRight())),
 		CollisionInfo(false, b2BodyType::b2_staticBody),
@@ -248,15 +254,15 @@ void Level::draw(Renderer * renderer)
 		renderer->drawSpriteCentered(position.position / PHYSICS_SCALE, position.size / PHYSICS_SCALE, visual.texture);
 	});
 
-	ofPushStyle();
-	ofNoFill();
-	ofSetLineWidth(2.0f);
-	entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
-		[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
-	{
-		physics.collision->draw();
-	});
-	ofPopStyle();
+	//ofPushStyle();
+	//ofNoFill();
+	//ofSetLineWidth(2.0f);
+	//entities.each<PhysicsComponent, PositionComponent, SpriteComponent>(
+	//	[renderer](Entity entity, PhysicsComponent & physics, PositionComponent & position, SpriteComponent & visual)
+	//{
+	//	physics.collision->draw();
+	//});
+	//ofPopStyle();
 }
 
 void Level::input(char input)

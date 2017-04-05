@@ -6,13 +6,13 @@
 class GameSounds
 {
 public:
-	typedef std::map<SoundId, ofSoundPlayer> SoundMap;
+	typedef std::map<SoundId, std::unique_ptr<ofSoundPlayer>> SoundMap;
 
 	GameSounds();
 
-	ofSoundPlayer & getSound(SoundId sound);
+	ofSoundPlayer * getSound(SoundId sound);
 
 	private:
 		SoundMap m_sounds;
-		ofSoundPlayer m_noSound;
+		std::unique_ptr<ofSoundPlayer> m_noSound;
 };

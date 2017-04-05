@@ -8,5 +8,5 @@ SoundPlayer::SoundPlayer(GameSounds * sounds)
 
 void SoundPlayer::playSound(SoundId id)
 {
-	m_sounds->getSound(id).play();
+	m_sounds->getSound(id)->play();
 }

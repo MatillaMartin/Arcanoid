@@ -8,6 +8,7 @@ class Keyboard
 {
 public:
 	Keyboard(const std::set<char> & filter);
+	~Keyboard();
 	const std::map<char, bool> & getKeys();
 
 	void setFilter(const std::set<char> & filter);
