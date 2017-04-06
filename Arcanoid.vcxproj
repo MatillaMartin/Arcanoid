@@ -238,6 +238,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClCompile Include="..\..\..\addons\ofxBox2d\src\ofxBox2dRect.cpp" />
     <ClCompile Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.cpp" />
     <ClCompile Include="src\DamageComponent.cpp" />
+    <ClCompile Include="src\DamageSystem.cpp" />
     <ClCompile Include="src\SoundSystem.cpp" />
     <ClCompile Include="src\BallSystem.cpp" />
     <ClCompile Include="src\CollisionSystem.cpp" />
@@ -340,6 +341,7 @@ C:\Users\Coherent\Libraries\OpenFrameworks\of_upstream\addons\ofxEntityX\src;%(A
     <ClInclude Include="..\..\..\addons\ofxBox2d\src\ofxBox2dUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxEntityX\src\ofxEntityX.h" />
     <ClInclude Include="src\DamageComponent.h" />
+    <ClInclude Include="src\DamageSystem.h" />
     <ClInclude Include="src\SoundSystem.h" />
     <ClInclude Include="src\SoundType.h" />
     <ClInclude Include="src\BallSystem.h" />

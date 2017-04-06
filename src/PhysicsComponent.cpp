@@ -59,6 +59,11 @@ PhysicsComponent::PhysicsComponent(Entity entity, const PhysicsInfo & physics, c
 	shape->body->SetUserData(&m_entity);
 }
 
+PhysicsComponent::~PhysicsComponent()
+{
+	this->collision->destroy();
+}
+
 void PhysicsComponent::setVelocity(const glm::vec2 & vel)
 {
 	// keep velocity updated

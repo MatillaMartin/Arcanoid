@@ -57,6 +57,8 @@ public:
 	PhysicsComponent(Entity entity, const PhysicsInfo & physics, const CircleCollision & circle, const CollisionInfo & info, b2World * world);
 	PhysicsComponent(Entity entity, const PhysicsInfo & physics, const EdgeCollision & edge, const CollisionInfo & info, b2World * world);
 
+	~PhysicsComponent();
+
 	std::shared_ptr<ofxBox2dBaseShape> collision;
 
 	void setVelocity(const glm::vec2 & vel);

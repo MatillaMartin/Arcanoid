@@ -20,8 +20,10 @@
 #include "PowerSystem.h"
 #include "PhysicsSystem.h"
 #include "SoundSystem.h"
+#include "DamageSystem.h"
 
 #include "StickComponent.h"
+#include "DamageComponent.h"
 
 #include "LevelEvents.h"
 
@@ -83,6 +85,7 @@ void Level::setupEntityX()
 	systems.add<PowerSystem>();
 	systems.add<PhysicsSystem>();
 	systems.add<SoundSystem>(m_soundPlayer);
+	systems.add<DamageSystem>();
 	systems.configure();
 
 	this->events.subscribe<LevelEndEvent>(m_levelEndHandler);
@@ -193,6 +196,7 @@ void Level::createBall()
 	);
 	m_ball.assign<SpriteComponent>(TextureId::BALL);
 	m_ball.assign<SoundSystem::SoundTypeComponent>(SoundType::BALL);
+	m_ball.assign<DamageComponent>(1);
 }
 
 void Level::createBounds()
@@ -233,7 +237,6 @@ void Level::createBounds()
 	topBound.assign<SoundSystem::SoundTypeComponent>(SoundType::BOUND);
 }
 
-
 void Level::update(double delta)
 {
 	systems.update<InputSystem>(delta);
@@ -243,6 +246,8 @@ void Level::update(double delta)
 	systems.update<PowerSystem>(delta);
 	systems.update<CollisionSystem>(delta);
 	systems.update<PhysicsSystem>(delta);
+	systems.update<SoundSystem>(delta);
+	systems.update<DamageSystem>(delta);
 }
 
 void Level::draw(Renderer * renderer)
