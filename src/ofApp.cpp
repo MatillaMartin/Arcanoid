@@ -71,7 +71,7 @@ void ofApp::setup(){
 	params.tiles = make_shared<TileMatrix>(levelDescriptor);
 	params.time = 120; // in secs
 	params.paddlePosition = glm::vec2(0.5, 0.9);
-	params.paddleSpeed = 0.04f;
+	params.paddleSpeed = 0.03f;
 	params.paddleFrictionCoeff = 40.0f;
 	params.paddleStickTime = 3.0f;
 	params.ballSpeed = 0.02f; // screen fractions per second

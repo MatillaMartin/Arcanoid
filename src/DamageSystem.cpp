@@ -2,10 +2,14 @@
 
 #include "DamageComponent.h"
 #include "HitsComponent.h"
+#include "LevelEvents.h"
 #include "ofLog.h"
 
-DamageSystem::DamageSystem()
+DamageSystem::DamageSystem(EventManager * events)
+	:
+	m_events(events)
 {
+	assert(m_events);
 }
 
 void DamageSystem::configure(EventManager & events)
@@ -47,6 +51,8 @@ void DamageSystem::dealDamage(Entity from, Entity to)
 			ofLogVerbose("DamageSystem") << "Dealing damage " + damage->damage;
 
 			hits->onHit(damage->damage);
+
+			m_events->emit<DamageEvent>({ from, to });
 		}
 	}
 }

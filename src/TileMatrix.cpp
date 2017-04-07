@@ -4,7 +4,8 @@
 TileMatrix::TileMatrix(const ofImage & descriptor)
 	:
 	nCols(descriptor.getWidth()),
-	nRows(descriptor.getHeight())
+	nRows(descriptor.getHeight()),
+	m_count(0)
 {
 	const static ofColor emptyColor = ofColor::black;
 	const static ofColor basicColor = ofColor::white;
@@ -25,11 +26,11 @@ TileMatrix::TileMatrix(const ofImage & descriptor)
 			}
 			if (color == basicColor)
 			{
-				matrix.push_back(TileType::BASIC); continue;
+				matrix.push_back(TileType::BASIC); m_count++; continue;
 			}
 			if (color == strongColor)
 			{
-				matrix.push_back(TileType::STRONG); continue;
+				matrix.push_back(TileType::STRONG); m_count++; continue;
 			}
 		}
 	}
@@ -37,5 +38,5 @@ TileMatrix::TileMatrix(const ofImage & descriptor)
 
 unsigned int TileMatrix::count()
 {
-	return nCols * nRows;
+	return m_count;
 }

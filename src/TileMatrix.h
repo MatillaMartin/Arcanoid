@@ -19,4 +19,6 @@ private:
 	const static ofColor s_EmptyColor;
 	const static ofColor s_BasicColor;
 	const static ofColor s_StrongColor;
+
+	unsigned int m_count;
 };

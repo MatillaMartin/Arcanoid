@@ -85,7 +85,7 @@ void Level::setupEntityX()
 	systems.add<PowerSystem>();
 	systems.add<PhysicsSystem>();
 	systems.add<SoundSystem>(m_soundPlayer);
-	systems.add<DamageSystem>();
+	systems.add<DamageSystem>(&events);
 	systems.configure();
 
 	this->events.subscribe<LevelEndEvent>(m_levelEndHandler);
@@ -140,7 +140,7 @@ void Level::createTiles()
 		}
 		case TileType::STRONG:
 		{
-			entity.assign<SpriteComponent>(TextureId::STRONG_1);
+			entity.assign<SpriteComponent>(TextureId::STRONG_0);
 			entity.assign<TileTypeComponent>(TileType::STRONG);
 			entity.assign<HitsComponent>(2);
 			break;

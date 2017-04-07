@@ -7,7 +7,7 @@
 #include <vector>
 #include "CollisionEvent.h"
 #include "TypeComponent.h"
-
+#include "LevelEvents.h"
 class TileSystem : public System<TileSystem>, public Receiver<TileSystem>
 {
 public:
@@ -21,6 +21,7 @@ public:
 	virtual void update(EntityManager & entities, EventManager & events, TimeDelta dt) override;
 
 	void receive(const EntityDestroyedEvent & e);
+	void receive(const DamageEvent & e);
 
 private:
 	unsigned int m_tileCount;

@@ -2,8 +2,10 @@
 
 #include "ofxEntityX.h";
 
-struct TilesDestoyedEvent
+struct DamageEvent
 {
+	Entity from;
+	Entity to;
 };
 
 struct LevelEndEvent
@@ -16,4 +18,4 @@ public:
 	PaddleUseEvent(Entity instigator) : instigator(instigator) {}
 
 	Entity instigator;
-};
+}; 

@@ -6,7 +6,7 @@
 class DamageSystem : public System<DamageSystem>, public Receiver<DamageSystem>
 {
 public:
-	DamageSystem();
+	DamageSystem(EventManager * events);
 	
 	void configure(EventManager & events) override;
 	// Inherited via System
@@ -15,6 +15,6 @@ public:
 	void receive(const CollisionEvent & e);
 
 private:
-
 	void dealDamage(Entity from, Entity to);
+	EventManager * m_events;
 };
