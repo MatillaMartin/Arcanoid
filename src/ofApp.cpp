@@ -109,7 +109,10 @@ void ofApp::draw(){
 void ofApp::onGameEnd()
 {
 	// credits or close.. or go back to menu
-	ofExit();
+	//ofExit();
+	keyboard.clear();
+	// change the current screen to the level manager
+	m_screen = menu.get();
 }
 
 void ofApp::onPlay()
